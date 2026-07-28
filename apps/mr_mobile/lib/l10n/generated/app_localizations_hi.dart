@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for Hindi (`hi`).
 class AppLocalizationsHi extends AppLocalizations {
@@ -32,7 +36,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get registerTitle => 'खाता बनाएं';
 
   @override
-  String get registerSubtitle => 'अपनी विज़िट प्रबंधित करने के लिए MediVisit Pro से जुड़ें';
+  String get registerSubtitle =>
+      'अपनी विज़िट प्रबंधित करने के लिए MediVisit Pro से जुड़ें';
 
   @override
   String get nameLabel => 'पूरा नाम';
@@ -53,10 +58,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get pendingVerificationTitle => 'खाता समीक्षा के अधीन';
 
   @override
-  String get pendingVerificationMessage => 'आपका खाता क्षेत्रीय प्रशासक द्वारा सत्यापन के लिए लंबित है। कृपया बाद में जांचें।';
+  String get pendingVerificationMessage =>
+      'आपका खाता क्षेत्रीय प्रशासक द्वारा सत्यापन के लिए लंबित है। कृपया बाद में जांचें।';
 
   @override
-  String get contactAdmin => 'सहायता के लिए अपने क्षेत्रीय व्यवस्थापक से संपर्क करें।';
+  String get contactAdmin =>
+      'सहायता के लिए अपने क्षेत्रीय व्यवस्थापक से संपर्क करें।';
 
   @override
   String dashboardGreeting(String name) {

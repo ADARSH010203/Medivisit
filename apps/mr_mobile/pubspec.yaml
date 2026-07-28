@@ -13,7 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   get: ^4.6.6
   table_calendar: ^3.1.2
-  intl: ^0.19.0
+  intl: any
   flutter_localizations:
     sdk: flutter
   core:
@@ -35,7 +35,7 @@ dependencies:
   firebase_auth: ^4.20.0
   cached_network_image: ^3.4.0
   phosphor_flutter: ^2.0.0
-  google_fonts: ^6.2.1
+  google_fonts: 6.2.1
   firebase_app_check: ^0.2.2+7
   workmanager: ^0.7.0
 dev_dependencies:

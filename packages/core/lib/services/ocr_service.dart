@@ -31,7 +31,7 @@ class OcrService {
     final result = <String, String>{};
     
     // Basic regex for total amount (e.g. Total: $1250.00, Rs. 500)
-    final amountRegex = RegExp(r'(?i)(total|amount|rs\.?|usd|\$|₹)\s*:?\s*(\d+[\.,]\d{2})');
+    final amountRegex = RegExp(r'(total|amount|rs\.?|usd|\$|₹)\s*:?\s*(\d+[\.,]\d{2})', caseSensitive: false);
     final amountMatch = amountRegex.firstMatch(text);
     if (amountMatch != null) {
       result['total'] = amountMatch.group(2) ?? '';
