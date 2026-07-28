@@ -1,0 +1,17 @@
+name: Recompute Leaderboard
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour
+  workflow_dispatch:
+
+jobs:
+  recompute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_FUNCTION_SECRET }}" \
+            -H "Content-Type: application/json" \
+            https://wrjxzzdqrbytufdpbeyo.supabase.co/functions/v1/recompute-leaderboard

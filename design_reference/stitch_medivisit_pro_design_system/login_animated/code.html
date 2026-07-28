@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e9ddff",
+                        "secondary-container": "#e1d4fd",
+                        "tertiary": "#765b00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "surface-variant": "#e6e0e9",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "surface-container-low": "#f8f2fa",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#494551",
+                        "on-background": "#1d1b20",
+                        "tertiary-container": "#c9a74d",
+                        "outline": "#7a7582",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "outline-variant": "#cbc4d2",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-highest": "#e6e0e9",
+                        "surface-dim": "#ded8e0",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f5eff7",
+                        "inverse-primary": "#cfbcff",
+                        "surface-container": "#f2ecf4",
+                        "surface": "#fdf7ff",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "on-primary-fixed": "#22005d",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-surface": "#1d1b20",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-bright": "#fdf7ff",
+                        "on-tertiary-container": "#503d00",
+                        "tertiary-fixed": "#ffdf93",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#63597c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed": "#e9ddff",
+                        "primary": "#4f378a",
+                        "surface-container-high": "#ece6ee",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#6750a4",
+                        "inverse-surface": "#322f35",
+                        "on-error": "#ffffff",
+                        "mesh-start": "#F7F9FC",
+                        "mesh-end": "#EEF2FA"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "title-md": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .mesh-bg {
+            background-color: #F7F9FC;
+            background-image: 
+                radial-gradient(at 40% 20%, #EEF2FA 0px, transparent 50%),
+                radial-gradient(at 80% 0%, #e9ddff 0px, transparent 50%),
+                radial-gradient(at 0% 50%, #EEF2FA 0px, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .input-glass {
+            background: rgba(241, 245, 249, 0.6);
+            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .input-glass:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, #4f378a 0%, #6750a4 100%);
+            box-shadow: 0 4px 14px rgba(79, 55, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .primary-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 0 24px rgba(79, 55, 138, 0.6);
+        }
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+        }
+
+        /* Animations */
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-entrance {
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .delay-50 { animation-delay: 50ms; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-150 { animation-delay: 150ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-250 { animation-delay: 250ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-350 { animation-delay: 350ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen mesh-bg flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop text-on-surface font-body-lg">
+<!-- Note: TopAppBar and BottomNavBar are suppressed as this is a linear transactional login screen -->
+<div class="w-full max-w-md relative z-10 flex flex-col items-center">
+<!-- Header -->
+<div class="mb-8 text-center flex flex-col items-center">
+<img alt="UMAKIND Pharma Logo" class="h-16 w-auto mb-6 rounded-lg shadow-sm animate-entrance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEEbUT4aH4YPs03xUojrpH5uwH7QJgiQcKRWgWPQc7VUKuabmpCONK5o3uN0W_gn-yqaE2a-OySvOrG6Psor8dOvtreo5w-3taiY7QkepcdrxFSbfQssbpHq_o1A4RgW7oL5FMA8F7KFwoA7HY6r60vAkagMQ-il3hsc1fd5E4dZLFdZDvCGdjDi0YB65y1rq9Z47KXv_BWWahnSs8ro8Yb3J66YqUipk04KKJ9AyGFPcR4-xgaXEl_QvdqKCyom9j5bNaioBTlJ6X"/>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface animate-entrance delay-50">Welcome back</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 animate-entrance delay-100">Sign in to MediVisit Pro</p>
+</div>
+<!-- Glass Card -->
+<div class="glass-card w-full rounded-2xl p-6 md:p-8 relative overflow-hidden animate-entrance delay-150">
+<!-- Subtle internal glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2 animate-entrance delay-200">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary/70" style="font-variation-settings: 'FILL' 0;">mail</span>
+</div>
+<input class="input-glass w-full rounded-lg py-3 pl-10 pr-4 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/50" id="email" placeholder="rep@umakind.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2 animate-entrance delay-250">
+<div class="flex justify-between items-center">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="password">Password</label>
+<a class="font-body-sm text-body-sm text-primary hover:text-primary-container transition-colors" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary/70" style="font-variation-settings: 'FILL' 0;">lock</span>
+</div>
+<input class="input-glass w-full rounded-lg py-3 pl-10 pr-4 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/50" id="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="primary-btn animate-entrance delay-300 w-full rounded-lg py-3 mt-4 flex items-center justify-center font-title-md text-title-md text-on-primary hover:opacity-90 transition-opacity" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined ml-2" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 text-center space-y-4 animate-entrance delay-350">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                New Employee? <a class="text-primary font-title-md text-title-md hover:underline" href="#">Register here</a>
+</p>
+<!-- Secure Badge -->
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container/50 border border-outline-variant/30 backdrop-blur-sm mt-4 shimmer-badge animate-entrance delay-400">
+<div class="relative">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">shield_locked</span>
+<div class="absolute inset-0 bg-tertiary-container/30 blur-sm rounded-full"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Secure company login</span>
+</div>
+</div>
+</div>
+</body></html>

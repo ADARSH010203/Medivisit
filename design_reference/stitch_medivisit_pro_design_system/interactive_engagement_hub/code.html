@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive Engagement Hub - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b3c5ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fffeff",
+                        "tertiary-fixed": "#dde1ff",
+                        "surface-variant": "#dce2f3",
+                        "surface": "#f9f9ff",
+                        "on-secondary-fixed": "#00201a",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a6bff",
+                        "outline-variant": "#c2c6d8",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "primary-fixed": "#dae1ff",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container": "#e7eefe",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#68fadd",
+                        "on-surface": "#151c27",
+                        "on-secondary-container": "#007261",
+                        "secondary-container": "#68fadd",
+                        "surface-container-high": "#e2e8f8",
+                        "secondary": "#006b5c",
+                        "background": "#f9f9ff",
+                        "primary": "#0053d3",
+                        "tertiary": "#575c76",
+                        "outline": "#727687",
+                        "on-tertiary-container": "#fffeff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#707490",
+                        "on-surface-variant": "#424655",
+                        "surface-dim": "#d3daea",
+                        "inverse-surface": "#2a313d",
+                        "surface-tint": "#0055d5",
+                        "surface-container-highest": "#dce2f3",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#001849",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "on-background": "#151c27"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "stack-md": "16px",
+                        "edge": "20px",
+                        "card-padding": "16px",
+                        "stack-sm": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .hotspot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(26, 107, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(26, 107, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 107, 255, 0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0053d3 0%, #1a6bff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- TopAppBar -->
+<!-- Suppressed TopAppBar since this is a focused presentation/engagement screen -->
+<header class="w-full h-16 px-edge flex justify-between items-center bg-surface/80 backdrop-blur-xl sticky top-0 z-40 shadow-sm transition-transform">
+<div class="flex items-center gap-3">
+<button aria-label="Close Presentation" class="w-10 h-10 rounded-full hover:bg-surface-variant/50 flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Interactive Visual Aids</span>
+<h1 class="text-headline-md font-headline-md font-bold gradient-text">CardioVax Plus</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Settings" class="w-10 h-10 rounded-full hover:bg-surface-variant/50 flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-[1200px] mx-auto flex flex-col relative pb-32">
+<!-- 3D Model Area (Simulated with image and hotspots) -->
+<section class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center mt-stack-md">
+<!-- Background glow for depth -->
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-[2rem] mx-edge -z-10"></div>
+<!-- Central visual reference -->
+<div class="relative w-full max-w-2xl aspect-square flex items-center justify-center">
+<img alt="Interactive 3D model of heart mechanism for CardioVax Plus presentation" class="w-full h-full object-contain drop-shadow-2xl z-10 p-8" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<!-- Hotspot 1: Clinical Trial Data -->
+<button aria-label="View Clinical Trial Data" class="absolute top-[20%] right-[15%] z-20 group">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-white glass-panel flex items-center justify-center text-primary hotspot transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<div class="absolute right-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<div class="glass-panel px-4 py-2 rounded-lg text-label-sm font-label-sm text-on-surface shadow-[0_4px_12px_rgba(0,0,0,0.08)] pointer-events-none">
+<span class="block font-bold text-primary mb-1">Clinical Trial Data</span>
+<span class="block text-on-surface-variant text-xs">Phase III Results</span>
+</div>
+</div>
+</div>
+</button>
+<!-- Hotspot 2: Mechanism of Action -->
+<button aria-label="View Mechanism of Action" class="absolute bottom-[30%] left-[10%] z-20 group">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-white glass-panel flex items-center justify-center text-secondary hotspot transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">zoom_in</span>
+</div>
+<div class="absolute left-full ml-3 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<div class="glass-panel px-4 py-2 rounded-lg text-label-sm font-label-sm text-on-surface shadow-[0_4px_12px_rgba(0,0,0,0.08)] pointer-events-none">
+<span class="block font-bold text-secondary mb-1">Mechanism of Action</span>
+<span class="block text-on-surface-variant text-xs">Cellular Level View</span>
+</div>
+</div>
+</div>
+</button>
+</div>
+<!-- Floating Data Card (Ambient context) -->
+<div class="absolute top-8 left-edge glass-panel rounded-xl p-card-padding z-10 max-w-[200px] hidden md:block">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Efficacy</span>
+</div>
+<div class="text-display font-display text-primary">94<span class="text-headline-md font-headline-md">%</span></div>
+<p class="text-[10px] text-on-surface-variant mt-1 leading-tight">Reduction in adverse cardiac events in target demo.</p>
+</div>
+</section>
+<!-- Horizontal Tray of Interactive Content -->
+<section class="w-full px-edge mt-stack-lg z-20">
+<div class="flex items-center justify-between mb-stack-sm">
+<h3 class="text-headline-md font-headline-md text-on-surface">Supporting Materials</h3>
+<span class="text-label-sm font-label-sm text-primary cursor-pointer hover:underline">View All</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4 snap-x snap-mandatory">
+<!-- Item 1 -->
+<div class="snap-start shrink-0 w-64 glass-panel rounded-xl p-card-padding flex flex-col gap-3 hover:-translate-y-1 transition-transform cursor-pointer group border border-transparent hover:border-primary/20">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">play_circle</span>
+</div>
+<div>
+<h4 class="text-body-md font-body-md font-semibold text-on-surface line-clamp-2">Mechanism of Action</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Video • 2:15</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="snap-start shrink-0 w-64 glass-panel rounded-xl p-card-padding flex flex-col gap-3 hover:-translate-y-1 transition-transform cursor-pointer group border border-transparent hover:border-secondary/20">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">description</span>
+</div>
+<div>
+<h4 class="text-body-md font-body-md font-semibold text-on-surface line-clamp-2">Patient Success Stories</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">PDF • 12 Pages</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="snap-start shrink-0 w-64 glass-panel rounded-xl p-card-padding flex flex-col gap-3 hover:-translate-y-1 transition-transform cursor-pointer group border border-transparent hover:border-tertiary/20">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">calculate</span>
+</div>
+<div>
+<h4 class="text-body-md font-body-md font-semibold text-on-surface line-clamp-2">Interactive Dosage Calc</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Tool • Real-time</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl border-t border-surface-variant/50 p-edge z-50 flex justify-center pb-[max(env(safe-area-inset-bottom),20px)] shadow-[0_-4px_24px_rgba(0,0,0,0.02)]">
+<div class="w-full max-w-md">
+<button class="w-full h-12 rounded-lg bg-gradient-to-r from-primary to-[#1a6bff] text-white text-body-lg font-body-lg font-semibold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(26,107,255,0.25)] hover:shadow-[0_6px_20px_rgba(26,107,255,0.4)] transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                Share with Doctor
+            </button>
+</div>
+</div>
+<!-- Suppressed BottomNavBar since this is a focused task/presentation screen -->
+<script>
+        // Simple script to handle hover states on mobile if needed, though Tailwind handles most
+        document.querySelectorAll('.hotspot').forEach(button => {
+            button.addEventListener('click', (e) => {
+                // Prevent event bubbling
+                e.stopPropagation();
+                // Toggle active state for mobile tapping
+                const tooltip = button.nextElementSibling;
+                if(tooltip.classList.contains('opacity-0')) {
+                    document.querySelectorAll('.hotspot + div').forEach(t => t.classList.replace('opacity-100', 'opacity-0'));
+                    tooltip.classList.replace('opacity-0', 'opacity-100');
+                } else {
+                    tooltip.classList.replace('opacity-100', 'opacity-0');
+                }
+            });
+        });
+
+        // Close tooltips when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.hotspot + div').forEach(t => {
+                if(t.classList.contains('opacity-100')) {
+                    t.classList.replace('opacity-100', 'opacity-0');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Onboarding 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f2ecf4",
+                        "outline-variant": "#cbc4d2",
+                        "tertiary-container": "#c9a74d",
+                        "on-surface-variant": "#494551",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-surface": "#1d1b20",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#322f35",
+                        "secondary": "#63597c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ded8e0",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece6ee",
+                        "secondary-container": "#e1d4fd",
+                        "primary-fixed": "#e9ddff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "surface-variant": "#e6e0e9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#765b00",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "inverse-primary": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "surface-container-low": "#f8f2fa",
+                        "on-primary-fixed": "#22005d",
+                        "primary": "#4f378a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .mesh-gradient {
+            background-color: #fdf7ff;
+            background-image: 
+                radial-gradient(at 100% 0%, hsla(271,78%,92%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(271,78%,92%,0.7) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(260,80%,90%,0.8) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(260,80%,94%,1) 0px, transparent 50%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        
+        .primary-btn-glow {
+            box-shadow: 0 4px 20px -2px rgba(79, 55, 138, 0.3);
+        }
+        
+        .img-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="mesh-gradient min-h-screen text-on-surface antialiased flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Top Nav / Skip -->
+<div class="absolute top-0 w-full max-w-md mx-auto px-margin-mobile py-6 flex justify-between items-center z-50">
+<div class="font-title-md text-title-md text-primary font-bold">MediVisit Pro</div>
+<button class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/40">
+            Skip
+        </button>
+</div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-md mx-auto px-margin-mobile flex flex-col items-center flex-grow pt-24 pb-32 justify-center z-10 relative">
+<!-- Illustration Container -->
+<div class="relative w-full aspect-square mb-8 rounded-[32px] glass-card overflow-hidden flex items-center justify-center p-6 border-t border-l border-white/60">
+<!-- Decorative background elements -->
+<div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent z-0"></div>
+<div class="absolute w-48 h-48 bg-primary/10 rounded-full blur-3xl z-0 -top-8 -right-8"></div>
+<div class="absolute w-32 h-32 bg-tertiary-container/20 rounded-full blur-2xl z-0 bottom-4 left-4"></div>
+<img alt="Premium 3D illustration in a soft-shadow, modern tech style. A digital map with glowing connected route pins in a vibrant violet/AI-accent color. Subtle motion lines suggesting a path. Soft ambient depth, high-end fintech/productivity tool aesthetic. White background." class="w-[85%] h-[85%] object-contain z-10 img-float filter drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNrqCCpj3KoGGdHnUCCZEoN9xZGkaHpG5NVlXChyOGxyckciznZPCOf4L0t7vDF_uKYnZqCwYVazvI5KZ81CzYGW3jAjo0xeCkfciLhh2uDVduECmrzX7WHyEyKX0LKxvlKebG9_k_0Cq___q16h3JoeeF6LV7mFEoarWL0Vfsshv8r-HZoG4olTx3Xv6hbaXRmX17ZbzUxHmVDf_W9buWBtD2Ialjxe5EU8rZMNCHqpel78XBHPS2gZMQupiq_z6m6HMSzrGgKwfG"/>
+</div>
+<!-- Text Content -->
+<div class="text-center space-y-4 px-4 w-full">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface bg-clip-text text-transparent bg-gradient-to-r from-on-surface to-primary">Smart Route Planning</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs mx-auto">Get AI-optimized daily routes so you visit more doctors in less time.</p>
+</div>
+</main>
+<!-- Bottom Action Bar Fixed -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-gradient-to-t from-surface via-surface/90 to-transparent pt-12 pb-8 px-margin-mobile">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<!-- Pagination Indicators -->
+<div class="flex space-x-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant/50 transition-all duration-300"></div>
+<div class="w-8 h-2 rounded-full bg-primary transition-all duration-300 shadow-[0_0_8px_rgba(79,55,138,0.4)]"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant/50 transition-all duration-300"></div>
+</div>
+<!-- Next Button -->
+<button class="bg-gradient-to-r from-primary to-primary-container text-white font-title-md text-title-md px-8 py-4 rounded-full flex items-center space-x-2 primary-btn-glow hover:opacity-90 active:scale-95 transition-all duration-200 group">
+<span>Next</span>
+<span class="material-symbols-outlined text-white group-hover:translate-x-1 transition-transform" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

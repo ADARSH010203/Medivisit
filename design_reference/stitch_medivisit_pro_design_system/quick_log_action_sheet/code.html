@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Quick Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#151c27",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "surface-variant": "#dce2f3",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#707490",
+                        "inverse-surface": "#2a313d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#dde1ff",
+                        "surface-container-high": "#e2e8f8",
+                        "secondary-fixed": "#68fadd",
+                        "primary-container": "#1a6bff",
+                        "surface-container": "#e7eefe",
+                        "outline-variant": "#c2c6d8",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed": "#dae1ff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "surface-tint": "#0055d5",
+                        "on-surface-variant": "#424655",
+                        "secondary-container": "#68fadd",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#b3c5ff",
+                        "on-primary-fixed": "#001849",
+                        "on-secondary-fixed": "#00201a",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#fffeff",
+                        "on-secondary-container": "#007261",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-container": "#fffeff",
+                        "surface": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#727687",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-error": "#ffffff",
+                        "tertiary": "#575c76",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#151c27",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "error": "#ba1a1a",
+                        "primary": "#0053d3",
+                        "secondary": "#006b5c",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "8px",
+                        "card-padding": "16px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "edge": "20px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .stagger-1 { animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; transform: translateY(20px); }
+        .stagger-2 { animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; transform: translateY(20px); }
+        .stagger-3 { animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; opacity: 0; transform: translateY(20px); }
+        
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-sheet {
+            box-shadow: 0 -12px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased h-screen w-screen overflow-hidden relative font-body-lg">
+<!-- Simulated background content to show the overlay effect -->
+<div class="absolute inset-0 p-edge opacity-30 pointer-events-none flex flex-col gap-stack-lg">
+<div class="w-full h-32 bg-surface-variant rounded-xl"></div>
+<div class="w-full h-64 bg-surface-variant rounded-xl"></div>
+</div>
+<!-- Dark Semi-transparent Overlay -->
+<div class="fixed inset-0 bg-on-surface/50 backdrop-blur-md z-50 flex flex-col justify-end">
+<!-- Action Sheet -->
+<div class="bg-surface/85 backdrop-blur-2xl rounded-t-[24px] w-full max-w-2xl mx-auto glass-sheet border-t border-white/40 pb-safe relative">
+<!-- Pill Drag Handle -->
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto mt-4 mb-6"></div>
+<!-- Header -->
+<div class="flex justify-between items-center px-edge mb-stack-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold tracking-tight">Quick Actions</h2>
+<button aria-label="Close" class="w-8 h-8 rounded-full bg-surface-variant/50 hover:bg-surface-variant transition-colors flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Action Rows -->
+<div class="px-edge pb-10 flex flex-col gap-stack-sm">
+<!-- Action 1 -->
+<div class="stagger-1 flex items-center gap-stack-md p-card-padding bg-white/40 border border-white/50 rounded-xl hover:bg-white/60 transition-all cursor-pointer group shadow-sm hover:shadow-md">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-fixed to-primary-container/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined icon-fill text-primary text-[24px] drop-shadow-[0_2px_4px_rgba(26,107,255,0.3)]">stethoscope</span>
+</div>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold text-on-surface mb-0.5">Mark Doctor Visit</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Log a new physician interaction</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Action 2 -->
+<div class="stagger-2 flex items-center gap-stack-md p-card-padding bg-white/40 border border-white/50 rounded-xl hover:bg-white/60 transition-all cursor-pointer group shadow-sm hover:shadow-md">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-secondary-fixed to-secondary-container/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined icon-fill text-secondary text-[24px] drop-shadow-[0_2px_4px_rgba(0,107,92,0.3)]">location_on</span>
+</div>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold text-on-surface mb-0.5">Mark Attendance</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Check-in for your daily territory</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+<!-- Action 3 -->
+<div class="stagger-3 flex items-center gap-stack-md p-card-padding bg-white/40 border border-white/50 rounded-xl hover:bg-white/60 transition-all cursor-pointer group shadow-sm hover:shadow-md">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-tertiary-fixed to-tertiary-container/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined icon-fill text-on-tertiary-fixed-variant text-[24px] drop-shadow-[0_2px_4px_rgba(87,92,118,0.3)]">calendar_month</span>
+</div>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold text-on-surface mb-0.5">Request Leave</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Submit time-off or vacation</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-on-tertiary-fixed-variant transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

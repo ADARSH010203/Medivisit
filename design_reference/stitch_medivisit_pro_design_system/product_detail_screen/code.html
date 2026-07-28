@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>MediVisit Pro - Product Detail</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#575c76",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-container": "#fffeff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "on-surface": "#151c27",
+                        "on-primary-container": "#fffeff",
+                        "inverse-primary": "#b3c5ff",
+                        "secondary-fixed": "#68fadd",
+                        "on-tertiary-fixed": "#151a31",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#151c27",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-surface-variant": "#424655",
+                        "outline-variant": "#c2c6d8",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006b5c",
+                        "surface-tint": "#0055d5",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-primary-fixed": "#001849",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-secondary-fixed": "#00201a",
+                        "on-secondary-container": "#007261",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#68fadd",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#0053d3",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed": "#dae1ff",
+                        "surface-variant": "#dce2f3",
+                        "primary-container": "#1a6bff",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "outline": "#727687",
+                        "surface-container": "#e7eefe",
+                        "background": "#f9f9ff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#707490",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "surface-container-low": "#f0f3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "edge": "20px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "base": "4px",
+                        "card-padding": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
+        }
+        
+        .glass-button {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.secondary'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-pill {
+            background: linear-gradient(135deg, theme('colors.surface-container-high'), theme('colors.surface'));
+            border: 1px solid theme('colors.outline-variant');
+        }
+
+        .product-plate {
+            background: radial-gradient(circle at 50% 50%, theme('colors.surface-container-lowest') 0%, theme('colors.surface-container-low') 100%);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 15px theme('colors.secondary-fixed-dim');
+        }
+        
+        /* Smooth scrolling for expanded descriptions */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar but keep functionality */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md relative overflow-x-hidden pb-[100px]">
+<!-- Main Container -->
+<div class="max-w-md mx-auto min-h-screen relative shadow-[0_0_40px_rgba(0,0,0,0.05)] bg-surface">
+<!-- Header / Product Image Section -->
+<section class="relative w-full rounded-b-[2rem] overflow-hidden product-plate shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-b border-surface-variant z-10">
+<!-- Top Actions (Floating over image) -->
+<div class="absolute top-0 left-0 right-0 p-edge pt-6 flex justify-between items-center z-20">
+<button class="w-10 h-10 rounded-full glass-button flex items-center justify-center text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back</span>
+</button>
+<button class="w-10 h-10 rounded-full glass-button flex items-center justify-center text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">share</span>
+</button>
+</div>
+<!-- Product Image -->
+<div class="w-full aspect-square flex items-center justify-center p-8 mt-4 relative">
+<!-- Subtle decorative background ring -->
+<div class="absolute w-[80%] h-[80%] rounded-full border border-surface-container-high bg-surface/30 backdrop-blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"></div>
+<img alt="LipoStat Product Package" class="w-full h-full object-contain filter drop-shadow-2xl z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnh7WyJPF7F4VzQ4FvVmaU-d-Br3Tj_BKzwnPqKmwZO23_AYNNcL8BL2a1xeomXLSMyGX8SbI6ltYULZeRRDntWxf6XcahWur0DEij72GRNP0HkDCmgBo5IiczcqSHN3jJUwleNvVV6xa7tmX0PbuT-uTH_GghIxGKqfe0es8hkZToZQf6-7KUU6DqDn2fHjkCwgRg1F2xqaVgNpuHoHvNI8krxirk51_-MAZssuuI5KrkfFGfLfqf7gVU1pGNuBr8oMspDq5voAs2"/>
+</div>
+</section>
+<!-- Content Canvas -->
+<main class="px-edge py-stack-lg relative z-0">
+<!-- Title & Status Section -->
+<div class="flex flex-col gap-stack-sm mb-stack-lg">
+<div class="flex items-start justify-between w-full">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1 tracking-tight">LipoStat</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Atorvastatin Calcium</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<!-- Category Badge -->
+<span class="px-3 py-1 rounded-full gradient-pill font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">medication</span>
+                            Statins
+                        </span>
+</div>
+</div>
+<!-- Stock Status -->
+<div class="flex items-center mt-2">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#006b5c]/10 text-secondary font-label-sm text-label-sm">
+<div class="w-2 h-2 rounded-full bg-secondary glow-effect relative">
+<div class="absolute inset-0 rounded-full bg-secondary animate-ping opacity-75"></div>
+</div>
+                        In Stock • Regional Hub
+                    </div>
+</div>
+</div>
+<!-- Core Info Specs Card (Glassmorphism) -->
+<div class="glass-card rounded-[1.5rem] p-card-padding mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+                    Product Specifications
+                </h3>
+<div class="flex flex-col">
+<!-- Spec Row 1 -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant/50">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">vaccines</span>
+</div>
+<span class="font-body-md text-body-md">Dosage</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">20mg</span>
+</div>
+<!-- Spec Row 2 -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant/50">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">pill</span>
+</div>
+<span class="font-body-md text-body-md">Form</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Film-coated Tablet</span>
+</div>
+<!-- Spec Row 3 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<span class="font-body-md text-body-md">Pack Size</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">30 Tabs / Box</span>
+</div>
+</div>
+</div>
+<!-- Description (Expandable) -->
+<div class="mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Clinical Overview</h3>
+<div class="relative" id="desc-container">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3 transition-all duration-300" id="desc-text">
+                        LipoStat is indicated as an adjunct to diet to reduce elevated total-C, LDL-C, apo B, and TG levels and to increase HDL-C in patients with primary hypercholesterolemia (heterozygous familial and nonfamilial) and mixed dyslipidemia. It acts by competitively inhibiting HMG-CoA reductase, the rate-limiting enzyme that converts 3-hydroxy-3-methylglutaryl-coenzyme A to mevalonate, a precursor of sterols, including cholesterol.
+                    </p>
+<!-- Fade overlay for clamped text -->
+<div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-surface to-transparent pointer-events-none" id="desc-fade"></div>
+</div>
+<button class="mt-2 font-label-sm text-label-sm text-primary flex items-center gap-1 hover:text-primary-fixed-variant transition-colors" id="desc-btn" onclick="toggleDesc()">
+                    Read Full Description
+                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+<!-- Key Highlights (Bento-style list) -->
+<div class="mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Key Benefits</h3>
+<div class="grid gap-3">
+<div class="flex items-start gap-3 bg-surface-container/30 p-3 rounded-xl border border-surface-variant/50">
+<div class="mt-0.5 rounded-full bg-gradient-to-br from-primary to-secondary p-[2px] flex-shrink-0">
+<div class="bg-surface rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] gradient-text" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Rapid reduction in LDL-C levels within 2 weeks of initiation.</p>
+</div>
+<div class="flex items-start gap-3 bg-surface-container/30 p-3 rounded-xl border border-surface-variant/50">
+<div class="mt-0.5 rounded-full bg-gradient-to-br from-primary to-secondary p-[2px] flex-shrink-0">
+<div class="bg-surface rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] gradient-text" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Extensive clinical trial data supporting cardiovascular risk reduction.</p>
+</div>
+<div class="flex items-start gap-3 bg-surface-container/30 p-3 rounded-xl border border-surface-variant/50">
+<div class="mt-0.5 rounded-full bg-gradient-to-br from-primary to-secondary p-[2px] flex-shrink-0">
+<div class="bg-surface rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] gradient-text" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Available in multiple dosage strengths for flexible patient titration.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<!-- Placed at bottom, fixed to viewport to simulate bottom bar, suppressing global nav for detail screen -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md px-edge py-4 bg-surface/80 backdrop-blur-xl border-t border-surface-variant/50 z-50 flex gap-3 pb-8">
+<button class="flex-1 h-12 rounded-xl flex items-center justify-center gap-2 border border-outline/30 bg-surface hover:bg-surface-container-low transition-colors font-label-sm text-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-tertiary">picture_as_pdf</span>
+                Brochure
+            </button>
+<button class="flex-[2] h-12 rounded-xl flex items-center justify-center gap-2 bg-primary-container text-on-primary-container shadow-[0_4px_14px_rgba(26,107,255,0.3)] hover:opacity-90 transition-opacity font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+                Share with Doctor
+            </button>
+</div>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        function toggleDesc() {
+            const textEl = document.getElementById('desc-text');
+            const fadeEl = document.getElementById('desc-fade');
+            const btnEl = document.getElementById('desc-btn');
+            
+            if (textEl.classList.contains('line-clamp-3')) {
+                textEl.classList.remove('line-clamp-3');
+                fadeEl.style.display = 'none';
+                btnEl.innerHTML = `Show Less <span class="material-symbols-outlined text-[16px] rotate-180 transition-transform">expand_more</span>`;
+            } else {
+                textEl.classList.add('line-clamp-3');
+                fadeEl.style.display = 'block';
+                btnEl.innerHTML = `Read Full Description <span class="material-symbols-outlined text-[16px] transition-transform">expand_more</span>`;
+            }
+        }
+    </script>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Account Under Review</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f2ecf4",
+                        "outline-variant": "#cbc4d2",
+                        "tertiary-container": "#c9a74d",
+                        "on-surface-variant": "#494551",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-surface": "#1d1b20",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#322f35",
+                        "secondary": "#63597c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ded8e0",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece6ee",
+                        "secondary-container": "#e1d4fd",
+                        "primary-fixed": "#e9ddff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "surface-variant": "#e6e0e9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#765b00",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "inverse-primary": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "surface-container-low": "#f8f2fa",
+                        "on-primary-fixed": "#22005d",
+                        "primary": "#4f378a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Animations */
+        @keyframes float-rotate {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(4deg); }
+        }
+        @keyframes pedestal-pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        @keyframes blob-drift-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 10%) scale(1.1); }
+        }
+        @keyframes blob-drift-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-5%, -10%) scale(1.05); }
+        }
+        
+        .animate-float-rotate {
+            animation: float-rotate 6s ease-in-out infinite;
+        }
+        .animate-pedestal {
+            animation: pedestal-pulse 4s ease-in-out infinite;
+        }
+        .animate-blob-1 {
+            animation: blob-drift-1 15s ease-in-out infinite;
+        }
+        .animate-blob-2 {
+            animation: blob-drift-2 18s ease-in-out infinite reverse;
+        }
+        
+        /* Material Icon Font Settings */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden font-body-lg text-body-lg antialiased">
+<!-- Ambient Background Shader/Blobs -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<!-- Blue Blob -->
+<div class="absolute top-[-10%] right-[-5%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-primary-fixed/40 rounded-full blur-[120px] animate-blob-1"></div>
+<!-- Amber Blob -->
+<div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-tertiary-container/30 rounded-full blur-[100px] animate-blob-2"></div>
+</div>
+<!-- Main Content Canvas (No Nav Shell per rules for transactional/linear screens) -->
+<main class="relative z-10 w-full max-w-[560px] px-margin-mobile md:px-0 mx-auto my-12">
+<!-- Premium Glassmorphism Card (Level 2) -->
+<div class="bg-white/70 dark:bg-surface-container/80 backdrop-blur-[24px] rounded-[32px] shadow-[0_16px_48px_rgba(0,0,0,0.06)] border border-white/60 p-8 md:p-12 flex flex-col items-center text-center relative">
+<!-- 3D Centerpiece Area -->
+<div class="relative w-48 h-48 mb-6 flex flex-col items-center justify-center">
+<!-- Glowing Pedestal -->
+<div class="absolute bottom-4 w-32 h-6 bg-gradient-to-r from-tertiary-container to-primary rounded-[100%] blur-[12px] animate-pedestal"></div>
+<div class="absolute bottom-5 w-24 h-3 bg-white/40 rounded-[100%] blur-[4px]"></div>
+<!-- 3D Hourglass Image Placeholder -->
+<div class="relative z-10 w-36 h-36 animate-float-rotate">
+<img class="w-full h-full object-contain drop-shadow-xl" data-alt="A highly detailed 3D render of a futuristic glass hourglass containing glowing blue sand, with a glowing solid green checkmark hovering dynamically in front of it. The aesthetic is clean clinical futurism, high-end medical software style, bright light-mode setting with soft ambient studio lighting. Rendered with hyper-realistic glassmorphism textures, soft reflections, on a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9KAR-MbfgRNBo0janbbUUh1oYcN1rCZQuHCrcAdbd8ehc_fng2kCwnqshj1LUPDmehU-EYnqKv8aDrak24lhhHl6TbjaDqxlp9GNK8_mUe-nFalGryLYj15iEhqJgRiGTPyg7T_ylpE6Q9b9j6BQVaTENUcpd7b9D_fOPuB2hb4nDtcy1T93IBiZ8hWYbf9Oz3FS1BMq7omuffniy6ldbQYRyym3SF5guHmNwBwtA0FmOFXosFiubmIg6RPvCmv-S7bDft2wGN3x0"/>
+</div>
+</div>
+<!-- Typography -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-3 tracking-tight">
+                Account Under Review
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[400px] mb-8 leading-relaxed">
+                We've received your credentials. Our medical board verification team is currently reviewing your profile to ensure platform integrity.
+            </p>
+<!-- Submitted Info Card (Level 1 Sub-Card) -->
+<div class="w-full bg-white/50 backdrop-blur-md border border-white/80 rounded-2xl p-5 text-left space-y-4 mb-10 shadow-sm relative overflow-hidden">
+<!-- Subtle internal reflection -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-80"></div>
+<!-- Data Row 1 -->
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon-fill text-primary text-[20px]">person</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-wider mb-0.5">Applicant</div>
+<div class="font-title-md text-title-md text-on-surface text-[16px] leading-tight">Dr. Sarah Jenkins</div>
+</div>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30"></div>
+<!-- Data Row 2 -->
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon-fill text-tertiary-container text-[20px]">mail</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-wider mb-0.5">Email Contact</div>
+<div class="font-body-lg text-body-lg text-on-surface-variant text-[15px] leading-tight">sarah.j@medivisit.pro</div>
+</div>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30"></div>
+<!-- Data Row 3 -->
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon-fill text-secondary text-[20px]">calendar_today</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-wider mb-0.5">Submitted On</div>
+<div class="font-body-lg text-body-lg text-on-surface-variant text-[15px] leading-tight">October 24, 2023 • 09:41 AM</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col items-center gap-5 w-full">
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-primary/20 bg-white/40 backdrop-blur-md text-primary font-title-md text-title-md text-[15px] hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                    Contact Support
+                </button>
+<a class="font-label-caps text-label-caps text-outline hover:text-primary transition-colors flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Login
+                </a>
+</div>
+</div>
+<!-- Subtle Footer Note -->
+<div class="text-center mt-6">
+<p class="font-body-sm text-body-sm text-outline-variant">
+                Verification typically takes 24-48 business hours.
+            </p>
+</div>
+</main>
+</body></html>

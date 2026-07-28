@@ -1,0 +1,17 @@
+name: Daily Notification Checks
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 3 AM UTC daily (8:30 AM IST)
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger notification check
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_FUNCTION_SECRET }}" \
+            -H "Content-Type: application/json" \
+            https://wrjxzzdqrbytufdpbeyo.supabase.co/functions/v1/daily-notification-check

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#575c76",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#00201a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "outline-variant": "#c2c6d8",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-primary-container": "#fffeff",
+                        "outline": "#727687",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006b5c",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001849",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#68fadd",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#424655",
+                        "on-surface": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-container": "#707490",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#68fadd",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "surface-variant": "#dce2f3",
+                        "surface-tint": "#0055d5",
+                        "inverse-surface": "#2a313d",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-highest": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#151a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "edge": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .loading-bar {
+            width: 0%;
+            animation: load 2.5s ease-in-out forwards;
+        }
+
+        @keyframes load {
+            0% { width: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            50% { width: 60%; }
+            100% { width: 100%; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .pulse-slow {
+            animation: pulseSlow 3s infinite;
+        }
+
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-[#F7F9FC] to-[#EBF1FF] min-h-screen flex flex-col justify-between items-center relative overflow-hidden font-body-md text-on-background">
+<!-- Ambient Background Elements for Fintech Polish -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-primary-fixed-dim opacity-10 blur-3xl mix-blend-multiply"></div>
+<div class="absolute top-[40%] -left-[20%] w-[70%] h-[70%] rounded-full bg-inverse-on-surface opacity-30 blur-3xl mix-blend-multiply"></div>
+</div>
+<!-- Top Spacer -->
+<div class="w-full flex-1"></div>
+<!-- Center Content: Logo & Brand Identity -->
+<main class="flex-none flex flex-col items-center justify-center z-10 px-edge max-w-sm w-full fade-in">
+<!-- App Logo (DataStore Placeholder) -->
+<div class="w-24 h-24 sm:w-32 sm:h-32 mb-stack-lg rounded-DEFAULT sm:rounded-lg shadow-[0px_4px_16px_rgba(26,107,255,0.15)] bg-surface-container-lowest overflow-hidden flex items-center justify-center pulse-slow border border-outline-variant"><img alt="Umakind Pharma Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF3PdPEqTDW5hXT_D0kfU1h67VHTXL-8QtPSRSgn7wMg3B8NoeDMl5fy7NVZO6MwCEtVyDPE_1nA0xAn9rMKHQ9ah_QzpmZ1HY2mzS7ID91vSvz-YBnZgX7vQo1EncILJwhTGy5SS1bCH-HmAZhR0vAIBaCMmkfAH1fhTGo5H9hJIWFNuzSjxh7-2vlNKwkDg49gogB-oZesmx7xPn9I5ibE6HLFK2K4JhsgiSy0CreVh68rwOu9965hexCUB8DHJHul9_-ilAb_1h"/></div>
+<!-- Brand Headline -->
+<h1 class="font-headline-lg text-headline-lg text-on-background text-center mb-stack-sm tracking-tight drop-shadow-sm">
+            MediVisit Pro
+        </h1>
+<!-- Tagline -->
+<p class="font-body-md text-body-md text-on-surface-variant text-center opacity-80 font-medium">
+            Field Excellence, Simplified
+        </p>
+</main>
+<!-- Bottom Spacer & Loading Indicator -->
+<div class="w-full flex-1 flex flex-col justify-end items-center pb-12 z-10">
+<!-- Progress Bar Container -->
+<div class="w-48 sm:w-64 h-1 bg-surface-container-high rounded-full overflow-hidden mb-stack-md shadow-inner">
+<div class="h-full bg-primary-container loading-bar rounded-full"></div>
+</div>
+<!-- Loading Text (Optional, minimal) -->
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider opacity-60">
+            Initializing Secure Session...
+        </span>
+</div>
+</body></html>

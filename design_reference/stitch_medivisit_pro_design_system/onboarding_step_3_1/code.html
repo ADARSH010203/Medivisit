@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track Your Growth - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#575c76",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#00201a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "outline-variant": "#c2c6d8",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-primary-container": "#fffeff",
+                        "outline": "#727687",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006b5c",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001849",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#68fadd",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#424655",
+                        "on-surface": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-container": "#707490",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#68fadd",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "surface-variant": "#dce2f3",
+                        "surface-tint": "#0055d5",
+                        "inverse-surface": "#2a313d",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-highest": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#151a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "edge": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Placeholder - Intentionally suppressed for Onboarding/Transactional flow per rules -->
+<main class="flex-grow flex flex-col items-center justify-center px-edge py-stack-lg max-w-md mx-auto w-full relative">
+<!-- Skip Button (Absolute positioned top right) -->
+<button aria-label="Skip onboarding" class="absolute top-edge right-edge font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-DEFAULT px-2 py-1 z-10">
+            Skip
+        </button>
+<!-- Illustration Area (Bento Grid / Glassmorphism approach for high-end feel instead of simple image) -->
+<div class="w-full flex-grow flex flex-col items-center justify-center mb-stack-lg relative perspective-1000">
+<!-- Decorative Background Element -->
+<div class="absolute inset-0 bg-surface-container-lowest rounded-full filter blur-[80px] opacity-60 w-64 h-64 mx-auto my-auto animate-pulse"></div>
+<!-- Bento Card Concept: Main Dashboard Chart Representation -->
+<div class="relative w-full aspect-square max-w-[280px] mx-auto z-10 transform rotate-y-[-5deg] rotate-x-[5deg] transition-transform duration-500 hover:rotate-y-0 hover:rotate-x-0">
+<!-- Main Glass Card -->
+<div class="absolute inset-0 bg-surface-container-lowest/80 backdrop-blur-md rounded-xl border border-outline-variant/30 shadow-[0px_8px_32px_rgba(0,0,0,0.08)] flex flex-col p-card-padding overflow-hidden">
+<!-- Card Header -->
+<div class="flex justify-between items-center mb-stack-md">
+<div class="h-4 w-24 bg-surface-variant rounded-full animate-pulse"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<!-- Abstract Chart Area -->
+<div class="flex-grow flex items-end gap-2 pb-stack-sm border-b border-surface-variant/50">
+<div class="w-full bg-primary-fixed rounded-t-DEFAULT h-[30%] relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-transparent to-white/20"></div>
+</div>
+<div class="w-full bg-primary-fixed-dim rounded-t-DEFAULT h-[50%] relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-transparent to-white/20"></div>
+</div>
+<div class="w-full bg-primary-container rounded-t-DEFAULT h-[80%] relative overflow-hidden shadow-[0_0_15px_rgba(26,107,255,0.4)]">
+<div class="absolute inset-0 bg-gradient-to-t from-transparent to-white/20"></div>
+</div>
+<div class="w-full bg-secondary-fixed-dim rounded-t-DEFAULT h-[60%] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-transparent to-white/20"></div>
+</div>
+</div>
+<!-- Floating Badge Element (Trophy) -->
+<div class="absolute -right-4 -bottom-4 bg-surface-container-lowest rounded-full p-4 shadow-[0px_4px_16px_rgba(0,0,0,0.12)] border border-outline-variant/20 flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+<div class="bg-secondary-container/20 p-3 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">trophy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Typography Area -->
+<div class="w-full text-center mb-stack-lg z-10 flex flex-col gap-stack-sm">
+<h1 class="font-display text-display text-on-surface">
+                Track Your Growth
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm mx-auto">
+                See your performance, earn streaks, and grow your career.
+            </p>
+</div>
+<!-- Pagination Dots -->
+<div aria-label="Pagination, slide 3 of 3" class="flex items-center justify-center gap-2 mb-stack-lg z-10">
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-colors duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-colors duration-300"></div>
+<div class="w-8 h-2 rounded-full bg-primary transition-all duration-300 shadow-[0_0_8px_rgba(26,107,255,0.5)]"></div>
+</div>
+<!-- Action Button -->
+<div class="w-full mt-auto pb-stack-md z-10">
+<button class="w-full h-12 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider rounded-lg shadow-[0px_2px_8px_rgba(0,0,0,0.06)] hover:bg-surface-tint hover:shadow-[0px_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background flex items-center justify-center gap-2">
+                Get Started
+                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Placeholder - Intentionally suppressed for Onboarding/Transactional flow per rules -->
+<style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+    </style>
+</body></html>

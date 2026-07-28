@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PulseConnect - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "keyframes": {
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-8px)" }
+                        },
+                        "slide-up-fade": {
+                            "0%": { opacity: "0", transform: "translateY(8px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        },
+                        "pop": {
+                            "0%": { transform: "scale(0.8)" },
+                            "50%": { transform: "scale(1.2)" },
+                            "100%": { transform: "scale(1)" }
+                        },
+                        "shared-axis-slide": {
+                            "0%": { opacity: "0", transform: "translateX(20px)" },
+                            "100%": { opacity: "1", transform: "translateX(0)" }
+                        }
+                    },
+                    "animation": {
+                        "float": "float 6s ease-in-out infinite",
+                        "slide-up-fade": "slide-up-fade 0.5s ease-out forwards",
+                        "pop": "pop 0.3s ease-out",
+                        "shared-axis-slide": "shared-axis-slide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards"
+                    },
+                    "colors": {
+                        "tertiary": "#575c76",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#00201a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "outline-variant": "#c2c6d8",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-primary-container": "#fffeff",
+                        "outline": "#727687",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006b5c",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001849",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#68fadd",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#424655",
+                        "on-surface": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-container": "#707490",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#68fadd",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "surface-variant": "#dce2f3",
+                        "surface-tint": "#0055d5",
+                        "inverse-surface": "#2a313d",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-highest": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#151a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "edge": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col justify-between">
+<!-- Top Navigation / Actions -->
+<div class="w-full flex justify-end px-edge pt-edge">
+<button class="font-label-sm text-label-sm text-tertiary hover:text-primary transition-colors py-2 px-4 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+            Skip
+        </button>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center px-edge py-stack-lg max-w-lg mx-auto w-full opacity-0 animate-shared-axis-slide">
+<!-- Illustration -->
+<div class="w-full max-w-sm mb-12 aspect-square relative flex items-center justify-center rounded-xl bg-surface-container-low shadow-[0px_2px_8px_rgba(0,0,0,0.06)] overflow-hidden animate-float">
+<img class="w-full h-full object-cover" data-alt="A modern, flat vector illustration showing a medical sales representative holding a digital tablet while standing in a brightly lit, contemporary doctor's clinic. The color palette emphasizes clean corporate blues (#1A6BFF) and soft teals (#006B5C) against a light, clinical white background. The style is highly professional, clean, and suited for a premium fintech or medical SaaS platform onboarding screen. The atmosphere is efficient, trustworthy, and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyI-thu1lt3AIhKqSqMOL-8YGTcbMOWv3_H13EMQcDJ_TkhUH_tNJciFopvObW3e4v9o_2VQV2NpfnKU-W9cGJB-v99cOEUQn8D7vCz_olEmpHlhthCpThLUTuYDG7hwXTNA9M_Vb5UbE0-OsEzjx1SNd3C_2kOkeQiREZEa19nnTXM6DZ-8tXIwEazvjOdwQJgiFE2GkHN045kd_C-bbHSjsDhEbJsJla7Wgj1mwcNfeyrtISkQOWG6bVnQJkTDeuNNJc2vO__UNy"/>
+</div>
+<!-- Text Content -->
+<div class="text-center w-full max-w-md">
+<h1 class="font-display text-display text-on-surface mb-stack-md opacity-0 animate-slide-up-fade">Log Visits in Seconds</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant opacity-0 animate-slide-up-fade [animation-delay:150ms]">Capture doctor visits with one tap — location and time recorded automatically.</p>
+</div>
+</main>
+<!-- Bottom Actions / Pagination -->
+<div class="w-full flex items-center justify-between px-edge pb-edge pt-stack-lg border-t border-outline-variant bg-surface-container-lowest md:border-t-0 md:bg-transparent">
+<!-- Pagination Dots -->
+<div class="flex space-x-2 items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300 animate-pop"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant transition-all duration-300"></div>
+</div>
+<!-- Next Button -->
+<button class="bg-primary-container text-on-primary font-label-sm text-label-sm h-12 px-8 rounded-lg shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface-container-lowest flex items-center justify-center transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.96]">
+            Next
+        </button>
+</div>
+</body></html>

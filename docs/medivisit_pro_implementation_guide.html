@@ -1,0 +1,438 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.guide{padding:1rem 0;max-width:100%}
+.phase-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab-btn{padding:8px 16px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);border-radius:var(--border-radius-md);font-size:13px;cursor:pointer;color:var(--color-text-secondary);transition:all 0.15s}
+.tab-btn.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info);font-weight:500}
+.section{display:none}
+.section.active{display:block}
+.screen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:1rem 0}
+.screen-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;cursor:pointer;transition:border-color 0.15s}
+.screen-card:hover{border-color:var(--color-border-info)}
+.screen-card .icon{font-size:20px;margin-bottom:8px;color:var(--color-text-info)}
+.screen-card .name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.screen-card .sub{font-size:12px;color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500;margin-left:6px}
+.badge-phase1{background:var(--color-background-success);color:var(--color-text-success)}
+.badge-phase2{background:var(--color-background-warning);color:var(--color-text-warning)}
+.badge-phase3{background:var(--color-background-info);color:var(--color-text-info)}
+.badge-phase4{background:var(--color-background-danger);color:var(--color-text-danger)}
+.section-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px;margin-top:1.5rem}
+.section-title:first-child{margin-top:0}
+.code-block{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 16px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);overflow-x:auto;margin:8px 0;white-space:pre}
+.step-list{list-style:none;margin:8px 0}
+.step-list li{display:flex;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.step-list li:last-child{border-bottom:none}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-content .step-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.step-content .step-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px}
+.info-card .label{font-size:11px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.info-card .value{font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.color-row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.color-swatch{width:28px;height:28px;border-radius:6px;flex-shrink:0}
+.color-info{font-size:12px;color:var(--color-text-secondary)}
+.color-info strong{color:var(--color-text-primary);font-weight:500}
+.folder-tree{font-family:var(--font-mono);font-size:12px;color:var(--color-text-secondary);line-height:1.8}
+.folder-tree .dir{color:var(--color-text-info)}
+.folder-tree .file{color:var(--color-text-primary)}
+.progress-bar-wrap{margin:12px 0}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
+.progress-bar{height:6px;background:var(--color-background-secondary);border-radius:20px;overflow:hidden}
+.progress-fill{height:100%;border-radius:20px;transition:width 0.5s}
+.tip-box{background:var(--color-background-warning);border-radius:var(--border-radius-md);padding:10px 14px;margin:10px 0;font-size:12px;color:var(--color-text-warning);line-height:1.6}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);border-radius:var(--border-radius-md);font-size:13px;cursor:pointer;color:var(--color-text-primary);margin:6px 4px 6px 0;transition:all 0.15s}
+.ask-btn:hover{background:var(--color-background-secondary)}
+</style>
+
+<h2 class="sr-only">MediVisit Pro — Flutter App Implementation Guide</h2>
+<div class="guide">
+
+<div class="phase-tabs">
+  <button class="tab-btn active" onclick="showSection('overview')">Project Overview</button>
+  <button class="tab-btn" onclick="showSection('design')">Design System</button>
+  <button class="tab-btn" onclick="showSection('structure')">Flutter Structure</button>
+  <button class="tab-btn" onclick="showSection('screens')">All Screens</button>
+  <button class="tab-btn" onclick="showSection('firebase')">Firebase & DB</button>
+  <button class="tab-btn" onclick="showSection('phases')">Dev Phases</button>
+</div>
+
+<div id="overview" class="section active">
+  <div class="section-title">Tech stack</div>
+  <div class="info-grid">
+    <div class="info-card"><div class="label">Framework</div><div class="value">Flutter 3.x + Dart</div></div>
+    <div class="info-card"><div class="label">State management</div><div class="value">GetX (preferred)</div></div>
+    <div class="info-card"><div class="label">Backend (Phase 1)</div><div class="value">Firebase Auth + Firestore + Storage</div></div>
+    <div class="info-card"><div class="label">Backend (Phase 2+)</div><div class="value">Node.js + PostgreSQL</div></div>
+    <div class="info-card"><div class="label">Architecture</div><div class="value">Clean Architecture — feature-first folders</div></div>
+    <div class="info-card"><div class="label">Local storage</div><div class="value">Hive (offline cache) + flutter_secure_storage</div></div>
+  </div>
+
+  <div class="section-title">Key Flutter packages</div>
+  <div class="code-block">firebase_core: ^2.x
+firebase_auth: ^4.x
+cloud_firestore: ^4.x
+firebase_storage: ^11.x
+firebase_messaging: ^14.x
+get: ^4.x                  # GetX state + navigation
+geolocator: ^10.x          # GPS location capture
+google_maps_flutter: ^2.x  # Maps for admin tracking
+hive_flutter: ^1.x         # Offline storage
+flutter_secure_storage: ^9.x
+cached_network_image: ^3.x
+image_picker: ^1.x
+fl_chart: ^0.65.x          # Charts for admin dashboard
+intl: ^0.18.x              # Date formatting
+shimmer: ^3.x              # Loading skeletons</div>
+
+  <div class="section-title">App users — 2 roles</div>
+  <ul class="step-list">
+    <li><div class="step-num"><i class="ti ti-user" style="font-size:12px"></i></div><div class="step-content"><div class="step-name">MR (Medical Representative)</div><div class="step-desc">Self-register → Admin verifies → Login. Can log visits, attendance, leave, view products.</div></div></li>
+    <li><div class="step-num"><i class="ti ti-shield" style="font-size:12px"></i></div><div class="step-content"><div class="step-name">Admin</div><div class="step-desc">Direct account creation by company. Full dashboard — manage MRs, doctors, products, approvals, live tracking.</div></div></li>
+  </ul>
+
+  <div style="margin-top:1rem">
+    <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke liye Flutter project setup kaise karein? Step by step batao.')">Flutter project setup guide ↗</button>
+    <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke liye GetX ke saath Clean Architecture folder structure explain karo.')">Architecture detail ↗</button>
+  </div>
+</div>
+
+<div id="design" class="section">
+  <div class="section-title">Design theme — 2 variants (tumhare zip mein dono hain)</div>
+  <div class="info-grid">
+    <div class="info-card"><div class="label">MR App theme</div><div class="value">Clinical Futurism 2 — Light mode, Blue primary, Teal accent</div></div>
+    <div class="info-card"><div class="label">Admin theme</div><div class="value">Clinical Futurism Admin — Dark mode, Cyan/Purple, Deep dark bg</div></div>
+  </div>
+
+  <div class="section-title">MR app colors (Light)</div>
+  <div class="color-row"><div class="color-swatch" style="background:#0053d3"></div><div class="color-info"><strong>Primary Blue</strong> — #0053d3 — Buttons, active states, links</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#68fadd"></div><div class="color-info"><strong>Teal Accent</strong> — #68fadd — Success, highlights, tags</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#f9f9ff"></div><div class="color-info"><strong>Background</strong> — #f9f9ff — App bg, scaffold</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#151c27"></div><div class="color-info"><strong>On-surface</strong> — #151c27 — Primary text</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#424655"></div><div class="color-info"><strong>Secondary text</strong> — #424655 — Subtitles, captions</div></div>
+
+  <div class="section-title">Admin app colors (Dark)</div>
+  <div class="color-row"><div class="color-swatch" style="background:#00dbe7;border:0.5px solid #888"></div><div class="color-info"><strong>Primary Cyan</strong> — #00dbe7 — Key CTAs, active nav</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#7000ff"></div><div class="color-info"><strong>Secondary Purple</strong> — #7000ff — Charts, badges</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#101221"></div><div class="color-info"><strong>Dark bg</strong> — #101221 — Scaffold background</div></div>
+  <div class="color-row"><div class="color-swatch" style="background:#1d1f2d"></div><div class="color-info"><strong>Surface container</strong> — #1d1f2d — Cards, panels</div></div>
+
+  <div class="section-title">Typography</div>
+  <div class="code-block">Font: Inter (MR app) + Geist (Admin labels)
+Base size: 4px grid system
+
+TextStyle examples (Flutter):
+displayXL: Inter, 32px, w700
+headlineLg: Inter, 24px, w600
+bodyLg: Inter, 16px, w400
+labelSm: Geist, 12px, w500</div>
+
+  <div class="section-title">Reusable widgets to banao</div>
+  <ul class="step-list">
+    <li><div class="step-num">1</div><div class="step-content"><div class="step-name">AppButton</div><div class="step-desc">Primary, Secondary, Outlined, Danger — 4 variants</div></div></li>
+    <li><div class="step-num">2</div><div class="step-content"><div class="step-name">AppTextField</div><div class="step-desc">Custom input with label, error state, icons</div></div></li>
+    <li><div class="step-num">3</div><div class="step-content"><div class="step-name">AppCard</div><div class="step-desc">Rounded card with shadow and tap effect</div></div></li>
+    <li><div class="step-num">4</div><div class="step-content"><div class="step-name">LoadingOverlay + Shimmer</div><div class="step-desc">Full screen loader + skeleton cards</div></div></li>
+    <li><div class="step-num">5</div><div class="step-content"><div class="step-name">BottomNavBar</div><div class="step-desc">MR app — Home, Visits, Products, Attendance, Profile</div></div></li>
+    <li><div class="step-num">6</div><div class="step-content"><div class="step-name">EmptyState widget</div><div class="step-desc">Illustration + message + action button</div></div></li>
+  </ul>
+
+  <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke liye Flutter mein AppButton aur AppTextField custom widgets ka code likho — Clinical Futurism 2 design follow karein.')">Widget code generate karo ↗</button>
+</div>
+
+<div id="structure" class="section">
+  <div class="section-title">Flutter folder structure (Clean Architecture)</div>
+  <div class="code-block"><span class="dir">lib/</span>
+├── <span class="dir">core/</span>
+│   ├── <span class="dir">constants/</span>   <span class="file"># app_colors.dart, app_strings.dart</span>
+│   ├── <span class="dir">theme/</span>        <span class="file"># app_theme.dart (light + dark)</span>
+│   ├── <span class="dir">widgets/</span>      <span class="file"># AppButton, AppCard, etc.</span>
+│   ├── <span class="dir">utils/</span>        <span class="file"># validators, formatters, helpers</span>
+│   └── <span class="dir">services/</span>     <span class="file"># location_service, notification_service</span>
+│
+├── <span class="dir">features/</span>
+│   ├── <span class="dir">auth/</span>
+│   │   ├── <span class="dir">controllers/</span>  <span class="file"># auth_controller.dart</span>
+│   │   ├── <span class="dir">models/</span>       <span class="file"># user_model.dart</span>
+│   │   └── <span class="dir">views/</span>        <span class="file"># login, register, splash, onboarding</span>
+│   ├── <span class="dir">mr_dashboard/</span>
+│   ├── <span class="dir">doctor_visits/</span>
+│   ├── <span class="dir">products/</span>
+│   ├── <span class="dir">attendance/</span>
+│   ├── <span class="dir">leave/</span>
+│   ├── <span class="dir">profile/</span>
+│   ├── <span class="dir">expense/</span>       <span class="file"># Phase 2</span>
+│   ├── <span class="dir">leaderboard/</span>   <span class="file"># Phase 2</span>
+│   └── <span class="dir">admin/</span>
+│       ├── <span class="dir">dashboard/</span>
+│       ├── <span class="dir">mr_management/</span>
+│       ├── <span class="dir">doctor_mgmt/</span>
+│       ├── <span class="dir">product_mgmt/</span>
+│       ├── <span class="dir">leave_approval/</span>
+│       ├── <span class="dir">live_tracking/</span>
+│       └── <span class="dir">reports/</span>
+│
+├── <span class="dir">routes/</span>           <span class="file"># app_routes.dart (GetX routes)</span>
+└── <span class="file">main.dart</span></div>
+
+  <div class="section-title">GetX route example</div>
+  <div class="code-block">// routes/app_routes.dart
+class AppRoutes {
+  static const splash = '/splash';
+  static const login = '/login';
+  static const register = '/register';
+  static const mrDashboard = '/mr-dashboard';
+  static const adminDashboard = '/admin-dashboard';
+  // ... baaki routes
+
+  static List&lt;GetPage&gt; pages = [
+    GetPage(name: splash, page: () => SplashScreen()),
+    GetPage(name: login, page: () => LoginScreen()),
+    GetPage(name: mrDashboard, page: () => MrDashboardView(),
+      binding: DashboardBinding()),
+    // role check main.dart mein karein
+  ];
+}</div>
+
+  <div class="section-title">Role-based navigation (main.dart)</div>
+  <div class="code-block">// Auth check — user ka role dekho, route karo
+Future&lt;void&gt; _handleAuthState(User? user) async {
+  if (user == null) { Get.offAllNamed(AppRoutes.login); return; }
+  final doc = await FirebaseFirestore.instance
+    .collection('users').doc(user.uid).get();
+  final role = doc['role'];
+  final verified = doc['is_verified'] ?? false;
+  
+  if (role == 'admin') {
+    Get.offAllNamed(AppRoutes.adminDashboard);
+  } else if (role == 'mr' && verified) {
+    Get.offAllNamed(AppRoutes.mrDashboard);
+  } else {
+    Get.offAllNamed(AppRoutes.pendingVerification);
+  }
+}</div>
+
+  <button class="ask-btn" onclick="sendPrompt('MediVisit Pro Flutter project mein auth_controller.dart ka pura code likho — Firebase Auth, GetX, role-based navigation, aur pending verification ke saath.')">Auth controller code ↗</button>
+  <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke doctor visit module ka pura Flutter code batao — GPS location capture, Firestore mein save, aur success animation ke saath.')">Visit module code ↗</button>
+</div>
+
+<div id="screens" class="section">
+  <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:12px">Tumhare design system ZIP mein <strong style="color:var(--color-text-primary)">65+ screens</strong> hain. Niche sab screen map hain phase ke saath:</div>
+
+  <div class="section-title">Auth flow screens <span class="badge badge-phase1">Phase 1</span></div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="icon"><i class="ti ti-rocket" aria-hidden="true"></i></div><div class="name">Splash screen</div><div class="sub">splash_screen_animated</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-list" aria-hidden="true"></i></div><div class="name">Onboarding 1-3</div><div class="sub">onboarding_step_1_2 / _2_2 / _3_2</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-login" aria-hidden="true"></i></div><div class="name">Login</div><div class="sub">login_clinical_futurism_2</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-user-plus" aria-hidden="true"></i></div><div class="name">Register</div><div class="sub">register_clinical_futurism</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-clock-pause" aria-hidden="true"></i></div><div class="name">Pending verification</div><div class="sub">account_under_review_clinical_futurism</div></div>
+  </div>
+
+  <div class="section-title">MR app screens <span class="badge badge-phase1">Phase 1</span></div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="icon"><i class="ti ti-home" aria-hidden="true"></i></div><div class="name">MR Dashboard</div><div class="sub">mr_dashboard_home</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-calendar" aria-hidden="true"></i></div><div class="name">Visit day selector</div><div class="sub">doctor_visits_day_selector</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-user-circle" aria-hidden="true"></i></div><div class="name">Doctor profile</div><div class="sub">doctor_profile_detail</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div><div class="name">Confirm location</div><div class="sub">confirm_visit_location</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-circle-check" aria-hidden="true"></i></div><div class="name">Visit success</div><div class="sub">visit_success_celebration</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-star" aria-hidden="true"></i></div><div class="name">Doctor rating</div><div class="sub">doctor_rating_feedback</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-history" aria-hidden="true"></i></div><div class="name">Visit history</div><div class="sub">visit_history_log</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-pill" aria-hidden="true"></i></div><div class="name">Product catalog</div><div class="sub">product_catalog_grid</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-package" aria-hidden="true"></i></div><div class="name">Product detail</div><div class="sub">product_detail_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-share" aria-hidden="true"></i></div><div class="name">Share product</div><div class="sub">share_product_modal</div></div>
+  </div>
+
+  <div class="section-title">Attendance & Leave <span class="badge badge-phase2">Phase 2</span></div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="icon"><i class="ti ti-check" aria-hidden="true"></i></div><div class="name">Mark attendance</div><div class="sub">mark_attendance_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-calendar-event" aria-hidden="true"></i></div><div class="name">Attendance history</div><div class="sub">attendance_history_calendar</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-file-text" aria-hidden="true"></i></div><div class="name">Leave request</div><div class="sub">leave_request_form</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-list-check" aria-hidden="true"></i></div><div class="name">Leave history</div><div class="sub">leave_history_status</div></div>
+  </div>
+
+  <div class="section-title">Advanced MR features <span class="badge badge-phase2">Phase 2</span></div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="icon"><i class="ti ti-route" aria-hidden="true"></i></div><div class="name">Smart route planner</div><div class="sub">smart_route_planner</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-receipt" aria-hidden="true"></i></div><div class="name">Expense + OCR</div><div class="sub">expense_submission_ocr</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-flask" aria-hidden="true"></i></div><div class="name">Sample log</div><div class="sub">sample_log_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-trophy" aria-hidden="true"></i></div><div class="name">Achievements</div><div class="sub">achievements_badges_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-podium" aria-hidden="true"></i></div><div class="name">Leaderboard</div><div class="sub">leaderboard_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div><div class="name">Performance report</div><div class="sub">performance_report_screen</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-microphone" aria-hidden="true"></i></div><div class="name">AI voice search</div><div class="sub">ai_voice_search_actions_rebuilt</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-messages" aria-hidden="true"></i></div><div class="name">Manager feedback</div><div class="sub">manager_feedback_loop</div></div>
+  </div>
+
+  <div class="section-title">Admin panel screens <span class="badge badge-phase1">Phase 1 onwards</span></div>
+  <div class="screen-grid">
+    <div class="screen-card"><div class="icon"><i class="ti ti-login" aria-hidden="true"></i></div><div class="name">Admin login</div><div class="sub">admin_login</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-layout-dashboard" aria-hidden="true"></i></div><div class="name">Admin dashboard</div><div class="sub">admin_dashboard_overview</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-users" aria-hidden="true"></i></div><div class="name">MR management</div><div class="sub">mr_management_list</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-user-check" aria-hidden="true"></i></div><div class="name">MR verification queue</div><div class="sub">mr_verification_queue</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-stethoscope" aria-hidden="true"></i></div><div class="name">Doctor management</div><div class="sub">doctor_management</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-pill" aria-hidden="true"></i></div><div class="name">Product management</div><div class="sub">product_management</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-map" aria-hidden="true"></i></div><div class="name">Live location map</div><div class="sub">live_location_tracking_map</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-file-analytics" aria-hidden="true"></i></div><div class="name">Reports & analytics</div><div class="sub">reports_analytics</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-bell" aria-hidden="true"></i></div><div class="name">Notification sender</div><div class="sub">notification_sender</div></div>
+    <div class="screen-card"><div class="icon"><i class="ti ti-calendar-check" aria-hidden="true"></i></div><div class="name">Leave approval</div><div class="sub">leave_approval_screen</div></div>
+  </div>
+</div>
+
+<div id="firebase" class="section">
+  <div class="section-title">Firestore collections structure</div>
+  <div class="code-block">/users/{uid}
+  uid, name, email, phone
+  role: "mr" | "admin"
+  is_verified: bool       # MR approval
+  is_blocked: bool
+  profile_photo_url
+  total_visits, attendance_streak
+  created_at, last_active
+
+/doctors/{docId}
+  name, specialty, qualification
+  clinic_name, clinic_address, phone
+  photo_url, bio
+  available_days[], timing_start, timing_end
+  is_active, total_visits_by_mrs
+
+/products/{productId}
+  name, category, description, dosage
+  image_url, is_available
+  price, expiry_date, stock_level
+  created_at, updated_at
+
+/visits/{visitId}
+  mr_id, doctor_id, doctor_name
+  visit_date, visit_time, day_of_week
+  notes, rating (1-5)
+  latitude, longitude       # MANDATORY GPS
+  location_timestamp
+  samples_given[]           # Phase 2
+  created_at
+
+/attendance/{id}
+  mr_id, attendance_date, attendance_time
+  latitude, longitude       # GPS proof
+  status: "present"|"absent"|"leave"
+  created_at
+
+/leave_requests/{id}
+  mr_id, leave_type
+  start_date, end_date, reason
+  status: "pending"|"approved"|"rejected"
+  requested_at, approved_by, approved_at
+
+/expenses/{id}             # Phase 2
+  mr_id, amount, category
+  receipt_image_url
+  ocr_extracted_data{}
+  status, submitted_at
+
+/samples/{id}              # Phase 2
+  mr_id, doctor_id, visit_id
+  product_id, quantity
+  given_at</div>
+
+  <div class="section-title">Firestore security rules (important!)</div>
+  <div class="code-block">rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    
+    // MR apna data hi dekh sakta hai
+    match /visits/{id} {
+      allow read: if request.auth.uid == resource.data.mr_id
+                  || isAdmin();
+      allow create: if request.auth.uid == request.resource.data.mr_id;
+    }
+    
+    // Admin hi products manage kar sakta hai
+    match /products/{id} {
+      allow read: if isVerifiedMR() || isAdmin();
+      allow write: if isAdmin();
+    }
+    
+    function isAdmin() {
+      return get(/databases/$(db)/documents/users/$(request.auth.uid))
+        .data.role == 'admin';
+    }
+    function isVerifiedMR() {
+      let u = get(/databases/$(db)/documents/users/$(request.auth.uid)).data;
+      return u.role == 'mr' && u.is_verified == true;
+    }
+  }
+}</div>
+
+  <div class="tip-box"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Important: GPS location ko visit confirm hone se pehle capture karo. Agar location permission deny ho, visit log allow mat karo — yahi anti-fraud protection hai.</div>
+
+  <button class="ask-btn" onclick="sendPrompt('MediVisit Pro Flutter mein doctor visit log karne ka complete flow banao — GPS capture, Firestore save, aur anti-fraud location validation ke saath. Code do.')">Visit logging code ↗</button>
+  <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke liye Firebase Cloud Functions likho — MR registration ke baad admin ko notification bhejo, aur MR approved hone par MR ko push notification bhejo.')">FCM notification code ↗</button>
+</div>
+
+<div id="phases" class="section">
+  <div class="section-title">Development roadmap</div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Phase 1 — MVP <span class="badge badge-phase1">Weeks 1–6</span></span><span>Foundation</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:25%;background:#22c55e"></div></div>
+  </div>
+  <ul class="step-list" style="margin-bottom:1.5rem">
+    <li><div class="step-num">1</div><div class="step-content"><div class="step-name">Project setup + Firebase config</div><div class="step-desc">pubspec.yaml, flavor config (dev/prod), firebase setup, theme setup</div></div></li>
+    <li><div class="step-num">2</div><div class="step-content"><div class="step-name">Auth flow — Splash → Onboarding → Login → Register</div><div class="step-desc">Email/password auth, pending verification screen, role-based routing</div></div></li>
+    <li><div class="step-num">3</div><div class="step-content"><div class="step-name">MR Dashboard + Bottom nav</div><div class="step-desc">Smart banner, today's summary, module cards, FAB quick log</div></div></li>
+    <li><div class="step-num">4</div><div class="step-content"><div class="step-name">Doctor Visit module (core feature)</div><div class="step-desc">Day selector, doctor cards, GPS capture, confirm modal, success animation, visit history</div></div></li>
+    <li><div class="step-num">5</div><div class="step-content"><div class="step-name">Product catalog (read-only)</div><div class="step-desc">Grid/list view, search, filter by category, product detail, WhatsApp share</div></div></li>
+    <li><div class="step-num">6</div><div class="step-content"><div class="step-name">Admin MVP — MR verification + Doctor/Product CRUD</div><div class="step-desc">Admin login (dark theme), verification queue, add/edit/delete doctors & products</div></div></li>
+  </ul>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Phase 2 — Expansion <span class="badge badge-phase2">Weeks 7–11</span></span><span>Core modules</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:50%;background:#f59e0b"></div></div>
+  </div>
+  <ul class="step-list" style="margin-bottom:1.5rem">
+    <li><div class="step-num">7</div><div class="step-content"><div class="step-name">Attendance system</div><div class="step-desc">Mark attendance (GPS), calendar view, admin attendance report</div></div></li>
+    <li><div class="step-num">8</div><div class="step-content"><div class="step-name">Leave management</div><div class="step-desc">Leave request form, status tracking, admin approval flow, FCM notifications</div></div></li>
+    <li><div class="step-num">9</div><div class="step-content"><div class="step-name">Admin full MR management</div><div class="step-desc">MR list, visit history per MR, block/unblock, export CSV</div></div></li>
+    <li><div class="step-num">10</div><div class="step-content"><div class="step-name">Gamification — Achievements + Leaderboard</div><div class="step-desc">Visit streak badges, weekly leaderboard, performance report screen</div></div></li>
+    <li><div class="step-num">11</div><div class="step-content"><div class="step-name">Expense tracking + OCR</div><div class="step-desc">Expense form, receipt photo, OCR via Google Vision API, admin approval</div></div></li>
+  </ul>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Phase 3 — Maps & Polish <span class="badge badge-phase3">Weeks 12–15</span></span><span>Premium feel</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:75%;background:#3b82f6"></div></div>
+  </div>
+  <ul class="step-list" style="margin-bottom:1.5rem">
+    <li><div class="step-num">12</div><div class="step-content"><div class="step-name">Smart route planner</div><div class="step-desc">Google Maps integration, optimized daily route for MR</div></div></li>
+    <li><div class="step-num">13</div><div class="step-content"><div class="step-name">Admin live location tracking</div><div class="step-desc">Real-time MR location on map, geo-fence validation</div></div></li>
+    <li><div class="step-num">14</div><div class="step-content"><div class="step-name">Dark mode + Hindi language</div><div class="step-desc">Full dark theme, intl localization (en + hi)</div></div></li>
+    <li><div class="step-num">15</div><div class="step-content"><div class="step-name">PDF reports + Offline mode</div><div class="step-desc">Admin PDF export, Hive offline cache, background sync</div></div></li>
+  </ul>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Phase 4 — AI Features <span class="badge badge-phase4">Weeks 16–21</span></span><span>Enterprise level</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#ef4444"></div></div>
+  </div>
+  <ul class="step-list">
+    <li><div class="step-num">16</div><div class="step-content"><div class="step-name">AI voice search</div><div class="step-desc">ai_voice_search_actions_rebuilt screen — speech-to-text + Claude API integration</div></div></li>
+    <li><div class="step-num">17</div><div class="step-content"><div class="step-name">Smart doctor targeting</div><div class="step-desc">ML model — visit pattern se high-priority doctors suggest karo</div></div></li>
+    <li><div class="step-num">18</div><div class="step-content"><div class="step-name">AI performance insights</div><div class="step-desc">Admin ko natural language mein MR performance summary</div></div></li>
+  </ul>
+
+  <div style="margin-top:1rem">
+    <button class="ask-btn" onclick="sendPrompt('MediVisit Pro Phase 1 ke liye start kahan se karein? Project create karne se lekar pehla screen deploy karne tak step-by-step guide do.')">Phase 1 start guide ↗</button>
+    <button class="ask-btn" onclick="sendPrompt('MediVisit Pro ke admin dashboard Flutter screen ka code likho — dark Clinical Futurism Admin theme ke saath, GetX state management ke saath.')">Admin dashboard code ↗</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>

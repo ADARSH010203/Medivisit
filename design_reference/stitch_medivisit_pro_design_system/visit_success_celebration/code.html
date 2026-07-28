@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visit Logged Successfully</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#707490",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#68fadd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "primary": "#0053d3",
+                        "on-secondary-fixed": "#00201a",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary": "#575c76",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "surface-variant": "#dce2f3",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#c2c6d8",
+                        "on-background": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#fffeff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary": "#006b5c",
+                        "on-secondary-container": "#007261",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-container-high": "#e2e8f8",
+                        "on-surface-variant": "#424655",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-surface": "#151c27",
+                        "inverse-surface": "#2a313d",
+                        "on-primary": "#ffffff",
+                        "outline": "#727687"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "16px",
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Particle Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+        }
+        .particle {
+            animation: float 3s ease-in-out infinite;
+        }
+        .particle-1 { animation-delay: 0s; }
+        .particle-2 { animation-delay: 1s; }
+        .particle-3 { animation-delay: 2s; }
+
+        /* Progress Bar Animation */
+        @keyframes fillProgress {
+            from { width: 0%; }
+            to { width: 60%; } /* 3/5 visits */
+        }
+        .progress-bar-fill {
+            animation: fillProgress 1.5s ease-out forwards;
+        }
+        
+        /* Pop Animation */
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            70% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .pop-in {
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Pulse Glow */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(104, 250, 221, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(104, 250, 221, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(104, 250, 221, 0); }
+        }
+        .pulse-circle {
+            animation: pulseGlow 2s infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-hidden">
+<!-- Background Gradient Mesh -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary-container/20 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px]"></div>
+</div>
+<!-- Main Content Canvas (Transactional Page - Shell Suppressed) -->
+<main class="flex-1 flex flex-col items-center justify-center relative z-10 px-edge max-w-md mx-auto w-full">
+<!-- Celebration Centerpiece -->
+<div class="relative mb-stack-lg pop-in">
+<!-- Glowing Circle -->
+<div class="w-32 h-32 rounded-full bg-gradient-to-br from-secondary-container to-secondary-fixed-dim flex items-center justify-center shadow-[0_0_40px_rgba(104,250,221,0.5)] pulse-circle">
+<span class="material-symbols-outlined fill text-[64px] text-on-secondary-fixed">check_circle</span>
+</div>
+<!-- Particles -->
+<span class="material-symbols-outlined fill text-secondary-container absolute -top-4 -left-4 particle particle-1">spark</span>
+<span class="material-symbols-outlined fill text-primary absolute top-4 -right-8 particle particle-2">star</span>
+<span class="material-symbols-outlined fill text-secondary-fixed absolute -bottom-2 -left-6 particle particle-3 text-sm">auto_awesome</span>
+</div>
+<!-- Typography Context -->
+<div class="text-center mb-stack-lg pop-in" style="animation-delay: 0.2s; opacity: 0;">
+<h1 class="text-headline-lg font-headline-lg text-on-background mb-stack-sm">Visit Logged Successfully!</h1>
+<p class="text-body-md font-body-md text-on-surface-variant flex items-center justify-center gap-2">
+                Dr. Sharma — 10:42 AM 
+                <span class="inline-flex items-center text-secondary bg-secondary-container/20 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                    Location verified <span class="material-symbols-outlined text-[12px] ml-1">check</span>
+</span>
+</p>
+</div>
+<!-- Progress Card (Glassmorphism) -->
+<div class="w-full bg-surface-container-low/60 backdrop-blur-md border border-outline-variant/30 rounded-xl p-card-padding mb-stack-lg pop-in shadow-[0_2px_8px_rgba(0,0,0,0.04)]" style="animation-delay: 0.4s; opacity: 0;">
+<div class="flex justify-between items-end mb-stack-sm">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Today's Progress</span>
+<span class="text-stats-lg font-stats-lg text-primary">3/5 <span class="text-body-md font-body-md text-on-surface-variant">visits</span></span>
+</div>
+<!-- Progress Bar Container -->
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden relative">
+<!-- Progress Bar Fill -->
+<div class="h-full bg-gradient-to-r from-primary to-secondary-fixed rounded-full progress-bar-fill relative">
+<!-- Glow at leading edge -->
+<div class="absolute right-0 top-0 bottom-0 w-4 bg-white/50 blur-sm"></div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-stack-sm pop-in" style="animation-delay: 0.6s; opacity: 0;">
+<button class="h-12 w-full rounded-lg bg-primary text-on-primary text-label-sm font-label-sm flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,83,211,0.39)] hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+                Add Rating &amp; Feedback
+            </button>
+<button class="h-12 w-full rounded-lg text-primary text-label-sm font-label-sm flex items-center justify-center hover:bg-surface-container transition-colors">
+                Back to List
+            </button>
+</div>
+<!-- Auto-dismiss Hint -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-label-sm font-label-sm text-outline pop-in" style="animation-delay: 1s; opacity: 0;">
+            Auto-dismissing in 5s...
+        </div>
+</main>
+</body></html>

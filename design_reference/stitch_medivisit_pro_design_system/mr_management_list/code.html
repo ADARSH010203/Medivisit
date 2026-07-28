@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Medical Representative Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-variant": "#323443",
+                            "surface-dim": "#101221",
+                            "secondary-container": "#7000ff",
+                            "on-surface": "#e1e1f6",
+                            "error-container": "#93000a",
+                            "on-surface-variant": "#b9cacb",
+                            "error": "#ffb4ab",
+                            "surface-container-high": "#272938",
+                            "inverse-primary": "#00696f",
+                            "tertiary-container": "#ffcfd8",
+                            "on-error": "#690005",
+                            "on-tertiary-fixed": "#3f0019",
+                            "on-secondary": "#3c0090",
+                            "outline-variant": "#3a494b",
+                            "tertiary-fixed-dim": "#ffb1c3",
+                            "on-tertiary": "#66002c",
+                            "surface-bright": "#363848",
+                            "surface-container": "#1d1f2d",
+                            "on-secondary-container": "#ddcdff",
+                            "tertiary": "#fff5f6",
+                            "on-primary": "#00363a",
+                            "inverse-surface": "#e1e1f6",
+                            "on-background": "#e1e1f6",
+                            "primary-container": "#00f2ff",
+                            "primary-fixed-dim": "#00dbe7",
+                            "on-secondary-fixed-variant": "#5700c9",
+                            "on-secondary-fixed": "#23005b",
+                            "surface": "#101221",
+                            "on-primary-fixed": "#002022",
+                            "surface-container-lowest": "#0b0d1b",
+                            "on-error-container": "#ffdad6",
+                            "secondary-fixed-dim": "#d1bcff",
+                            "primary": "#e1fdff",
+                            "surface-container-low": "#191b29",
+                            "on-tertiary-fixed-variant": "#8f0041",
+                            "on-primary-container": "#006a71",
+                            "inverse-on-surface": "#2e2f3f",
+                            "secondary": "#d1bcff",
+                            "primary-fixed": "#74f5ff",
+                            "secondary-fixed": "#e9ddff",
+                            "surface-container-highest": "#323443",
+                            "on-primary-fixed-variant": "#004f54",
+                            "background": "#101221",
+                            "tertiary-fixed": "#ffd9e0",
+                            "surface-tint": "#00dbe7",
+                            "on-tertiary-container": "#be0059",
+                            "outline": "#849495"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "gutter": "24px",
+                            "sidebar-width": "280px",
+                            "stack-lg": "32px",
+                            "margin-page": "40px",
+                            "stack-md": "16px",
+                            "stack-sm": "8px",
+                            "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                            "kpi-value": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-sm": ["Geist"],
+                            "headline-md": ["Inter"],
+                            "body-md": ["Inter"],
+                            "display-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                            "kpi-value": ["40px", { "lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                            "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                            "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                            "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                            "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #03040A; /* Level 0 Base */
+            color: #e1e1f6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Level 0 Mesh Blobs */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.05;
+            background: radial-gradient(circle at 20% 30%, #00f2ff 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, #7000ff 0%, transparent 40%);
+            filter: blur(100px);
+        }
+
+        /* Level 1 Glass Panel Background */
+        .level-1-glass {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Level 2 Glass Card */
+        .level-2-glass {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0px 0px 8px 1px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Input Glass */
+        .input-glass {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        .input-glass:focus-within {
+            border-bottom-color: #00dbe7;
+            box-shadow: 0 1px 0 0 #00dbe7;
+        }
+
+        /* Primary Button Gradient */
+        .btn-primary {
+            background: linear-gradient(135deg, #00f2ff 0%, #7000ff 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Status Dots */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .status-active { background-color: #00dbe7; box-shadow: 0 0 8px #00dbe7; }
+        .status-inactive { background-color: #ffb4ab; box-shadow: 0 0 8px #ffb4ab; }
+        .status-pending { background-color: #d1bcff; box-shadow: 0 0 8px #d1bcff; }
+
+        /* Avatar Ring */
+        .avatar-ring {
+            padding: 2px;
+            background: linear-gradient(135deg, #00f2ff, #7000ff);
+            border-radius: 50%;
+        }
+
+        /* Table Row Hover */
+        .table-row-hover {
+            transition: background-color 0.2s ease;
+        }
+        .table-row-hover:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Glass Pills */
+        .glass-pill {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen text-on-surface">
+<div class="mesh-bg"></div>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl z-50 flex flex-col gap-stack-md py-margin-page">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center shadow-[0_0_15px_rgba(0,242,255,0.4)]">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Clinical Admin Console</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col px-2">
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 rounded-xl font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active Tab -->
+<a class="flex items-center gap-4 bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+                Patients
+            </a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 rounded-xl font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">calendar_today</span>
+                Schedules
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 rounded-xl font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">analytics</span>
+                Clinical Data
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 rounded-xl font-body-md text-body-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">settings</span>
+                System Config
+            </a>
+</div>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A macro shot of a sleek, futuristic avatar placeholder displaying an abstract geometric rendering of a human silhouette, glowing in clinical cyan and deep purple, high-contrast lighting, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqfUSugeaATtVIFFqdd_M1bP4PRfF_X7djfFOWcgRM-yiFS4FUY5SY4YF9nwnSzXM4i7SXwCwvxoeNZjnVTLd6enaZLv2fWIn3w5BXnf3z_Vd_e5YSHwI9zu2hOqGORVuoyDujK6qVc2dbdjy4-gMrqaaWDm2EIqt-_zfjh0Mts6ZziX6UHjt1gN0KtH5h924gLcLAOkv7qEe21BxmbuBOeznc9HA4jXgDvt6cxRIo1IsFoRVxPObmGIu6CNcn4m3ynIMgUaKQ-ljH"/>
+<div>
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Admin User</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">System Administrator</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="sticky top-0 ml-[280px] w-[calc(100%-280px)] bg-white/10 backdrop-blur-[20px] border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-64 glass-pill px-4 py-2 flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-sm">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-label-sm text-label-sm w-full placeholder-on-surface-variant/50 focus:ring-0" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[280px] min-h-[calc(100vh-80px)] p-margin-page">
+<div class="max-w-container-max mx-auto space-y-stack-lg">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Medical Representatives</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and monitor field representatives across territories.</p>
+</div>
+<button class="btn-primary px-6 py-3 rounded-lg font-label-sm text-label-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Add MR
+                </button>
+</div>
+<!-- Data Table Container (Level 2 Glass) -->
+<div class="level-2-glass rounded-xl overflow-hidden">
+<!-- Table Header Actions -->
+<div class="p-6 border-b border-white/10 flex justify-between items-center">
+<div class="flex gap-4">
+<button class="glass-pill px-4 py-2 font-label-sm text-label-sm text-on-surface flex items-center gap-2 hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+<button class="glass-pill px-4 py-2 font-label-sm text-label-sm text-on-surface flex items-center gap-2 hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span>
+                            Sort
+                        </button>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                        Showing 1-5 of 124 Reps
+                    </div>
+</div>
+<!-- Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 bg-white/5">
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pl-6">Representative</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Territory</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Performance</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Last Active</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pr-6 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-white/5 table-row-hover group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-4">
+<div class="avatar-ring">
+<img alt="Dr. Alex Chen" class="w-10 h-10 rounded-full object-cover border-2 border-surface-dim" data-alt="A clean, highly detailed, futuristic portrait of a young male professional wearing a subtle, tech-infused clinical lab coat, set against a dark void background illuminated by rim light in glowing cyan, photorealistic style, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhXJJmlPC0omFNgzzZVXvZfQqYMFQPiybSY57QoANMlJqQp61i4GKJxMoLTg2b5-X9tbIFdp084JYCKTFdfSdjy_Iu6s7Xwsly8Dwxb4us9EVn4YmcqJO55Hf0NTdISp2uRoFxhl797kugg96LJI4MIkRHPpLJPfQrrN8xqS_GJyIpPAe5cBGN9tuyCaJLhj3aP18R3pNJiKJrfxBgDckr59wae3OTFyR1wNsyiCBCGI99L0jED1cr7RPqmFp5k2KGBmkzlRkcwHj6"/>
+</div>
+<div>
+<p class="font-bold">Alex Chen</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">MR-1042</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Northwest Region</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="status-dot status-active"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Active in Field</span>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container" style="width: 85%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">85%</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">10 mins ago</td>
+<td class="p-4 pr-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors opacity-0 group-hover:opacity-100 p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-white/5 table-row-hover group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-4">
+<div class="avatar-ring">
+<img alt="Sarah Jenkins" class="w-10 h-10 rounded-full object-cover border-2 border-surface-dim" data-alt="A clean, highly detailed, futuristic portrait of a professional female medical representative, wearing a sleek dark suit with glowing cyan accents, dark clinical background, highly detailed, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJhnZagN04hEwRaX2Cy7WTkJLIkAizoJNklEFwgnUEZoYBWL-i7Ler88YhHYvfwDeGFonDKqcQh_6q1eow4AaVpsYAdD8lHnF52pSwNo6GJxx-bpe-7FqE1y8dQPFKn0k9qmj3D0JLnwnH2yaj_Y0MvnrSLsWxID7ZdPhbP8y8Alehhdyl3N6xn9HIob5-GV9DU_7vop-S0Y0VDPMaBakVrTCWwc98cksFZJy5YjlEeYHvs9KYKSS6HAgr5gHOh1Ad11-zUy0KCxgx"/>
+</div>
+<div>
+<p class="font-bold">Sarah Jenkins</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">MR-0891</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Central Hub</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="status-dot status-pending"></span>
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">In Meeting</span>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container" style="width: 92%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">92%</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">1 hr ago</td>
+<td class="p-4 pr-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors opacity-0 group-hover:opacity-100 p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-white/5 table-row-hover group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-4">
+<div class="avatar-ring">
+<img alt="Marcus Vance" class="w-10 h-10 rounded-full object-cover border-2 border-surface-dim" data-alt="A highly detailed, cinematic portrait of a mature male medical field agent, short gray hair, wearing minimalist black tech-wear, lit by stark white and deep blue neon lights, moody sci-fi clinical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHXTfQ8XVBNvFLQ2KaDQNMW_9Ne25NPfSqPZsgDGMsQGY6UV_eQd_CR1Q0nfQFxmSKJ6fxeNEhzDuYdKtXmtc-Cv_wNr--UZCu6slZMsostvMDMxDL9oQDMYnz25X59NuT7Cr-2LSf91ddrcuG7Vm4c4XcW2-CY_xmwpHDVnk2vhL9aSRu2b8TysR86BDJBnz6Zx2cG0VxbE3LnBnc9cwjrUofM5srphw5nhBoKfvgvE7ejpV4xhH9ZWBw9_wKVd56umU3QJXe16SS"/>
+</div>
+<div>
+<p class="font-bold">Marcus Vance</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">MR-1105</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Eastern Seaboard</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="status-dot status-inactive"></span>
+<span class="font-label-sm text-label-sm text-error">Offline</span>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container" style="width: 45%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">45%</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">2 days ago</td>
+<td class="p-4 pr-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors opacity-0 group-hover:opacity-100 p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-white/5 table-row-hover group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-4">
+<div class="avatar-ring">
+<img alt="Elena Rostova" class="w-10 h-10 rounded-full object-cover border-2 border-surface-dim" data-alt="A hyper-detailed, clean portrait of a female bio-tech researcher, short hair, wearing a high-collared minimalist white shirt against a dark, moody background with subtle violet backlighting, cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMAbRtk3b7lhA17GrrE38ZAmCG75ssFhaRDfHlbWCafgq29RyJMtFD7PXIhUXagmCE4hWPSNvo6W8PjpL_IjyOio9mmaMEOPYCiY9x6jgcfotqg18p4d2FNEPDXDIORclshQ6Tohsrdei5mHblT9c8KpEXWRVAyqvkgtlVHwnWzOykCaSxtXN8ePBOsWsLK977ahD0cSC818dIEF8xANq_p8mAmQjnNlc-hzXrYy689ow3twxnE4PYMog9ZW91clypZMT9LTidwwRb"/>
+</div>
+<div>
+<p class="font-bold">Elena Rostova</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">MR-2099</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Euro-West</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="status-dot status-active"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Active in Field</span>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container" style="width: 78%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">78%</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">Just now</td>
+<td class="p-4 pr-6 text-right">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors opacity-0 group-hover:opacity-100 p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-6 bg-white/5 flex justify-center border-t border-white/10">
+<div class="glass-pill px-2 py-1 flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<button class="w-8 h-8 rounded-full bg-white/20 text-on-surface flex items-center justify-center font-bold">1</button>
+<button class="w-8 h-8 rounded-full text-on-surface-variant hover:bg-white/10 flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-full text-on-surface-variant hover:bg-white/10 flex items-center justify-center transition-colors">3</button>
+<span class="text-on-surface-variant px-1">...</span>
+<button class="w-8 h-8 rounded-full text-on-surface-variant hover:bg-white/10 flex items-center justify-center transition-colors">12</button>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>MediVisit Pro - Optimized Route</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#dce2f3",
+                    "primary-fixed": "#dae1ff",
+                    "error": "#ba1a1a",
+                    "on-background": "#151c27",
+                    "on-secondary-fixed-variant": "#005145",
+                    "tertiary-fixed": "#dde1ff",
+                    "surface-tint": "#0055d5",
+                    "on-primary-fixed": "#001849",
+                    "primary-fixed-dim": "#b3c5ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#44ddc1",
+                    "tertiary": "#575c76",
+                    "on-tertiary-container": "#fffeff",
+                    "surface-dim": "#d3daea",
+                    "outline-variant": "#c2c6d8",
+                    "on-tertiary-fixed-variant": "#41455f",
+                    "inverse-primary": "#b3c5ff",
+                    "primary": "#0053d3",
+                    "tertiary-fixed-dim": "#c1c5e3",
+                    "on-surface-variant": "#424655",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#007261",
+                    "on-primary-container": "#fffeff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#003fa4",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#dce2f3",
+                    "tertiary-container": "#707490",
+                    "on-tertiary-fixed": "#151a31",
+                    "secondary-container": "#68fadd",
+                    "inverse-on-surface": "#ebf1ff",
+                    "surface": "#f9f9ff",
+                    "primary-container": "#1a6bff",
+                    "inverse-surface": "#2a313d",
+                    "surface-container-high": "#e2e8f8",
+                    "surface-container": "#e7eefe",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#68fadd",
+                    "on-surface": "#151c27",
+                    "on-secondary-fixed": "#00201a",
+                    "surface-bright": "#f9f9ff",
+                    "on-primary": "#ffffff",
+                    "background": "#f9f9ff",
+                    "secondary": "#006b5c",
+                    "outline": "#727687",
+                    
+                    // Custom AI Accents requested in prompt
+                    "ai-violet": "#8b5cf6",
+                    "ai-violet-glow": "rgba(139, 92, 246, 0.4)",
+                    "ai-blue": "#3b82f6",
+                    "ai-teal": "#14b8a6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "2xl": "1rem",
+                    "3xl": "1.5rem"
+            },
+            "spacing": {
+                    "edge": "20px",
+                    "base": "4px",
+                    "stack-md": "16px",
+                    "card-padding": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "stats-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "stats-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "21px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            },
+            animation: {
+                'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'float': 'float 3s ease-in-out infinite',
+            },
+            keyframes: {
+                pulseGlow: {
+                    '0%, 100%': { opacity: 1, transform: 'scale(1)', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' },
+                    '50%': { opacity: .7, transform: 'scale(1.1)', boxShadow: '0 0 25px rgba(59, 130, 246, 0.8)' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-5px)' },
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0f172a; /* Dark base for map context */
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-pill {
+            background: rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Map Mock Styles */
+        .map-bg {
+            background-color: #1e293b;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+        }
+
+        .route-line {
+            stroke-dasharray: 10;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-screen w-full overflow-hidden flex flex-col font-body-md relative">
+<!-- TopAppBar from JSON Component -->
+<header class="bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl docked full-width top-0 border-b border-white/20 dark:border-outline-variant/10 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex justify-between items-center px-margin-mobile py-4 w-full z-50 absolute">
+<div class="flex items-center gap-3 pl-edge">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A professional medical headshot of a doctor with a subtle dark background and dramatic modern lighting, suitable for a high-end corporate app avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD8Eu89ho-DV7ZPSRkt1_YJk3nda4-5M6nFtwblbGEBgXabSqkA7CP7e6UmexPAVndA6y5c1qtvfnZJK0Hct36WWzFxMAjFvepXiCRjiM4o_WFs4s7vuqXlf1Hjd5HjuuXPcWOJsKXFWYFHFC_Kg38Q_DVM9yMpWDgrTav9VHR0NomFSRHUITIl0_ykPP0NTxGE0HLyyT5S1a8x4qAuRLOaKL9NjL5lbMbwJzBxQsWxT-IpHrBXA8iOODbK89ADmzFTz61BWMR-171"/>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary-fixed-dim">MediVisit Pro</h1>
+</div>
+<div class="pr-edge">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-200 glass-pill">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+</div>
+</header>
+<!-- Map Canvas Area (60%) -->
+<main class="flex-1 relative w-full h-[530px] map-bg z-0 overflow-hidden pt-20">
+<!-- SVG Route Line Mock -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 600">
+<defs>
+<lineargradient id="routeGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#8b5cf6"></stop>
+<stop offset="50%" stop-color="#6366f1"></stop>
+<stop offset="100%" stop-color="#3b82f6"></stop>
+</lineargradient>
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="4"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Background subtle roads -->
+<path d="M-50,200 Q150,150 200,300 T450,400" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"></path>
+<path d="M100,-50 L150,250 L50,450" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6"></path>
+<!-- Active AI Route -->
+<path class="route-line shadow-lg" d="M80,450 C120,380 200,400 220,300 C240,200 150,150 280,80" fill="none" filter="url(#glow)" stroke="url(#routeGradient)" stroke-width="5"></path>
+</svg>
+<!-- Current Location -->
+<div class="absolute bottom-[20%] left-[20%] w-6 h-6 bg-ai-blue rounded-full border-4 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)] animate-pulse-glow z-10"></div>
+<!-- Stop Pins -->
+<!-- Stop 1 -->
+<div class="absolute top-[65%] left-[55%] flex flex-col items-center animate-float" style="animation-delay: 0s;">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-ai-violet to-ai-blue flex items-center justify-center font-label-sm text-white shadow-lg border border-white/20">1</div>
+<div class="w-1 h-4 bg-white/50"></div>
+</div>
+<!-- Stop 2 -->
+<div class="absolute top-[48%] left-[52%] flex flex-col items-center animate-float" style="animation-delay: 0.5s;">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-ai-violet to-ai-blue flex items-center justify-center font-label-sm text-white shadow-lg border border-white/20">2</div>
+<div class="w-1 h-4 bg-white/50"></div>
+</div>
+<!-- Stop 3 -->
+<div class="absolute top-[25%] left-[38%] flex flex-col items-center animate-float" style="animation-delay: 1s;">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-ai-violet to-ai-blue flex items-center justify-center font-label-sm text-white shadow-lg border border-white/20">3</div>
+<div class="w-1 h-4 bg-white/50"></div>
+</div>
+<!-- Stop 4 -->
+<div class="absolute top-[12%] left-[65%] flex flex-col items-center animate-float" style="animation-delay: 1.5s;">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-ai-violet to-ai-blue flex items-center justify-center font-label-sm text-white shadow-lg border border-white/20">4</div>
+<div class="w-1 h-4 bg-white/50"></div>
+</div>
+<!-- AI Badge Overlay -->
+<div class="absolute top-24 left-edge right-edge flex justify-between items-start z-20">
+<div>
+<h2 class="font-headline-md text-white drop-shadow-md">Today's Optimized Route</h2>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 mt-2 rounded-full glass-pill text-ai-violet-300 font-label-sm shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                    AI Suggested
+                </div>
+</div>
+<button class="glass-panel w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">my_location</span>
+</button>
+</div>
+</main>
+<!-- Bottom UI Overlay (40%) -->
+<div class="absolute bottom-0 w-full bg-gradient-to-t from-[#0f172a] via-[#0f172a]/90 to-transparent pt-12 pb-24 z-30 flex flex-col gap-stack-lg">
+<!-- Stats Bar -->
+<div class="px-edge flex gap-2 overflow-x-auto hide-scrollbar">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-outline-variant text-[16px]">route</span>
+<span class="font-label-sm text-outline-variant">Total:</span>
+<span class="font-body-md text-white font-semibold">14.2 mi</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-outline-variant text-[16px]">schedule</span>
+<span class="font-label-sm text-outline-variant">Est:</span>
+<span class="font-body-md text-white font-semibold">4h 15m</span>
+</div>
+<div class="glass-pill px-4 py-2 rounded-full flex items-center gap-2 whitespace-nowrap border-ai-teal/30 shadow-[0_0_10px_rgba(20,184,166,0.2)]">
+<span class="material-symbols-outlined text-ai-teal text-[16px]">bolt</span>
+<span class="font-label-sm text-ai-teal">Time Saved:</span>
+<span class="font-body-md text-white font-semibold">45 min</span>
+</div>
+</div>
+<!-- Route Stops Horizontal Scroll -->
+<div class="w-full overflow-x-auto hide-scrollbar px-edge pb-2">
+<div class="flex gap-4 w-max">
+<!-- Card 1 -->
+<div class="glass-panel w-[260px] rounded-2xl p-card-padding flex flex-col gap-3 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-ai-violet to-ai-blue"></div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-gradient-to-br from-ai-violet to-ai-blue flex items-center justify-center font-label-sm text-white">1</div>
+<span class="font-label-sm text-outline-variant">Next Stop</span>
+</div>
+<span class="font-body-md text-white font-semibold">09:00 AM</span>
+</div>
+<div class="flex items-start gap-3">
+<img class="w-12 h-12 rounded-full object-cover border border-white/10" data-alt="A small, circular avatar of a modern medical building exterior with glass facades, bathed in morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiBkvveNLKk1j8m4XwTvEtk6tn-FvRwYJEStzkLRf0AGeunKynZZdHRrrtsfVss6KL9WHYUjV7z87j_3bDhm-vIUYWUuqbC0hraBC1V1dVZvuz6Mh-6b_7qjjg_0hXzxtLz8lRz8liBRinAgxpq3YcsYDiXhMcZ9vtiyp9xTnK5COsK3CQeO1lLThx6WfS0_70A9QYU4-B07AZT_orsH93n5nSO44V5Ogi3XHwSrc5vYAjy_DM5UdY-1_LlD2Ryg3BscSMi7MQ19Yn"/>
+<div>
+<h3 class="font-body-lg text-white font-semibold">Dr. Sarah Jenkins</h3>
+<p class="font-body-md text-outline-variant">Cardiology Dept.</p>
+<p class="font-label-sm text-ai-violet mt-1">2.4 mi away</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel w-[260px] rounded-2xl p-card-padding flex flex-col gap-3 opacity-70">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-dim/30 border border-white/20 flex items-center justify-center font-label-sm text-white">2</div>
+<span class="font-label-sm text-outline-variant">Upcoming</span>
+</div>
+<span class="font-body-md text-white">10:15 AM</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-dim/20 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">domain</span>
+</div>
+<div>
+<h3 class="font-body-lg text-white font-semibold">Mercy Hospital</h3>
+<p class="font-body-md text-outline-variant">Dr. R. Chen</p>
+<p class="font-label-sm text-outline-variant mt-1">4.1 mi from prev</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel w-[260px] rounded-2xl p-card-padding flex flex-col gap-3 opacity-70">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-dim/30 border border-white/20 flex items-center justify-center font-label-sm text-white">3</div>
+<span class="font-label-sm text-outline-variant">Upcoming</span>
+</div>
+<span class="font-body-md text-white">11:30 AM</span>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-dim/20 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">domain</span>
+</div>
+<div>
+<h3 class="font-body-lg text-white font-semibold">City Clinic</h3>
+<p class="font-body-md text-outline-variant">Dr. M. Davis</p>
+<p class="font-label-sm text-outline-variant mt-1">1.8 mi from prev</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="px-edge flex gap-4 mt-2">
+<button class="glass-panel w-14 h-14 rounded-2xl flex items-center justify-center text-white hover:bg-white/10 active:scale-95 transition-all">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="flex-1 h-14 rounded-2xl bg-gradient-to-r from-ai-violet to-primary flex items-center justify-center gap-2 text-white font-headline-md shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">navigation</span>
+                Start Navigation
+            </button>
+</div>
+</div>
+<!-- BottomNavBar from JSON (Semantic Shell Mandate: Destination context allows it, but it might clutter a focused map. I will include it as requested by the JSON components, but ensure it sits below the map UI). -->
+<nav class="fixed bottom-4 left-4 right-4 rounded-full max-w-md mx-auto bg-white/70 dark:bg-surface-container/70 backdrop-blur-[30px] border border-white/40 dark:border-outline-variant/20 shadow-[0_16px_48px_rgba(0,0,0,0.08)] z-50 flex justify-around items-center px-6 py-3">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#4f378a] hover:opacity-100 transition-all scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Visits</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Patients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

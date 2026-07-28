@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leave Approvals - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Scrollbar for Clinical Futurism */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(16, 18, 33, 0.8); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 219, 231, 0.5); 
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#323443",
+                      "surface-dim": "#101221",
+                      "secondary-container": "#7000ff",
+                      "on-surface": "#e1e1f6",
+                      "error-container": "#93000a",
+                      "on-surface-variant": "#b9cacb",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#272938",
+                      "inverse-primary": "#00696f",
+                      "tertiary-container": "#ffcfd8",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#3f0019",
+                      "on-secondary": "#3c0090",
+                      "outline-variant": "#3a494b",
+                      "tertiary-fixed-dim": "#ffb1c3",
+                      "on-tertiary": "#66002c",
+                      "surface-bright": "#363848",
+                      "surface-container": "#1d1f2d",
+                      "on-secondary-container": "#ddcdff",
+                      "tertiary": "#fff5f6",
+                      "on-primary": "#00363a",
+                      "inverse-surface": "#e1e1f6",
+                      "on-background": "#e1e1f6",
+                      "primary-container": "#00f2ff",
+                      "primary-fixed-dim": "#00dbe7",
+                      "on-secondary-fixed-variant": "#5700c9",
+                      "on-secondary-fixed": "#23005b",
+                      "surface": "#101221",
+                      "on-primary-fixed": "#002022",
+                      "surface-container-lowest": "#0b0d1b",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#d1bcff",
+                      "primary": "#e1fdff",
+                      "surface-container-low": "#191b29",
+                      "on-tertiary-fixed-variant": "#8f0041",
+                      "on-primary-container": "#006a71",
+                      "inverse-on-surface": "#2e2f3f",
+                      "secondary": "#d1bcff",
+                      "primary-fixed": "#74f5ff",
+                      "secondary-fixed": "#e9ddff",
+                      "surface-container-highest": "#323443",
+                      "on-primary-fixed-variant": "#004f54",
+                      "background": "#101221",
+                      "tertiary-fixed": "#ffd9e0",
+                      "surface-tint": "#00dbe7",
+                      "on-tertiary-container": "#be0059",
+                      "outline": "#849495"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sidebar-width": "280px",
+                      "stack-lg": "32px",
+                      "margin-page": "40px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "kpi-value": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-xl": ["Inter"]
+              },
+              "fontSize": {
+                      "kpi-value": ["40px", { "lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Mesh Background (Level 0) -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-container/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary-container/10 rounded-full blur-[150px]"></div>
+</div>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl z-50 flex flex-col gap-stack-md py-margin-page hidden md:flex">
+<div class="px-gutter mb-stack-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shadow-[inset_0_0_10px_rgba(0,242,255,0.2)]">
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Clinical Admin Console</p>
+</div>
+</div>
+<div class="flex flex-col flex-grow w-full">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 font-body-md text-body-md group mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 font-body-md text-body-md group mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span>Patients</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-4 bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 font-body-md text-body-md transition-all duration-300 ease-in-out mr-2" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span>Schedules</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 font-body-md text-body-md group mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">analytics</span>
+<span>Clinical Data</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 font-body-md text-body-md group mx-2 rounded-lg mt-auto" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span>System Config</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="sticky top-0 ml-0 md:ml-[280px] w-full md:w-[calc(100%-280px)] bg-white/10 backdrop-blur-[20px] border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40">
+<div class="flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-2 focus-within:border-primary-fixed focus-within:shadow-[0_0_10px_rgba(0,242,255,0.2)] transition-all w-64 md:w-96">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none outline-none font-body-md text-body-md text-on-surface placeholder-on-surface-variant w-full focus:ring-0 p-0" placeholder="Search approvals..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 rounded-full hover:bg-white/5 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full shadow-[0_0_5px_rgba(255,180,171,0.8)]"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 rounded-full hover:bg-white/5 mr-4">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="w-10 h-10 rounded-full border border-white/20 overflow-hidden shadow-sm">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-resolution portrait of a medical administrator wearing high-tech smart glasses, set against a dark, sterile laboratory background with subtle neon cyan lighting. The aesthetic is futuristic, clean, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb3ksuboiTwb20BSX0nutxLBtCfCnmq_VL4AGk_ug5wTv5Zgf8sel4AHi281XrkeI4LLMl3sBNb-P-GirbqJK4avyBJZL2xqPpG-me4hKpEwKeYtPVUZW8mGRvQgT13q8uiQDAJqgNEF5FnXkVOLUR1ain6Ra1bIIOfmZe_UZ8wssHyAQiwGOvZf5OwojqGOvSdbYlE2P0pJCsrTdic0duJXhDbZVg6BZ1d4Xa2d_oEHPLO0vqSM1LowWVHe9IfIir0awirVx3AWg-"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 ml-0 md:ml-[280px] p-margin-page max-w-container-max mx-auto min-h-[calc(100vh-80px)]">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Leave Approvals</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Review and manage clinical staff leave requests.</p>
+</div>
+<!-- Glass Pills Filters -->
+<div class="flex flex-wrap gap-2 p-1 bg-surface-container/50 backdrop-blur-md rounded-full border border-white/5">
+<button class="bg-primary-container/20 text-primary-fixed border border-primary-fixed/50 shadow-[0_0_10px_rgba(0,242,255,0.1)] rounded-full px-5 py-2 font-label-sm text-label-sm transition-all flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+                    Pending
+                </button>
+<button class="bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-white/10 rounded-full px-5 py-2 font-label-sm text-label-sm transition-all border border-transparent">
+                    Approved
+                </button>
+<button class="bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-white/10 rounded-full px-5 py-2 font-label-sm text-label-sm transition-all border border-transparent">
+                    Rejected
+                </button>
+</div>
+</div>
+<!-- Data Table Module (Level 1 Glass) -->
+<div class="bg-white/5 backdrop-blur-[20px] rounded-xl border border-white/10 shadow-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 bg-surface-container-high/50 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<th class="p-4 font-medium pl-6">Medical Representative</th>
+<th class="p-4 font-medium">Leave Type</th>
+<th class="p-4 font-medium">Duration</th>
+<th class="p-4 font-medium">Reason</th>
+<th class="p-4 font-medium text-right pr-6">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-white/5">
+<!-- Row 1: Pending -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-white/20" data-alt="A close-up profile portrait of a confident medical representative in a pristine white clinical setting. The lighting is soft but precise, creating a modern, high-tech healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOqzC0WLwnj8dn3GB9nuT68syiMm0XmVqY36eLLMgdVzohDdKL4rv2GMvuxZqMLxu745UvyUod6jNStTIUfNjUoVw5f5CKPqPNRx4xMqcTNY5GwW5PFlcP5Et0vefpILV55nAPFeQTL2WeIKY_aqL4S9Ifs5tOOe7XD4Fa4A8On3VpaO7f9EIeax8sEwGlvJ6Xq6l_TcRjGRRztP9cnwFRJeq70HvLsU8OopNwJvLruv8w1g5VdSGC8p086PaAH36xSdQoLyL9tLgz"/>
+<div>
+<p class="font-medium text-on-surface">Dr. Sarah Jenkins</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cardiology Division</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-container/20 text-secondary border border-secondary/30 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">flight</span>
+                                    Annual Leave
+                                </span>
+</td>
+<td class="p-4 text-on-surface-variant">
+                                Oct 12 - Oct 18, 2023 <br/>
+<span class="font-label-sm text-label-sm text-outline-variant">6 Days</span>
+</td>
+<td class="p-4">
+<div class="relative inline-block group/tooltip">
+<button class="p-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</button>
+<!-- Expanding Glass Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-[#0A0C1A]/95 backdrop-blur-[40px] border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5),inset_0_0_8px_1px_rgba(0,242,255,0.05)] rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-10 pointer-events-none translate-y-2 group-hover/tooltip:translate-y-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Details</p>
+<p class="font-body-md text-body-md text-on-surface">Attending the International Cardiology Symposium in Geneva. All patient schedules have been handed over to Dr. Smith.</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-error-container/20 text-error border border-error/30 hover:bg-error-container/40 hover:shadow-[0_0_10px_rgba(255,180,171,0.2)] transition-all" title="Reject">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary-fixed/80 to-primary-container/80 text-surface-dim hover:shadow-[0_0_15px_rgba(0,242,255,0.4)] transition-all font-bold" title="Approve">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Sick Leave -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-white/20" data-alt="A portrait of a male clinical specialist with a short beard, wearing dark blue scrubs, positioned in a subtly lit, dark-mode futuristic hospital corridor with cool cyan ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqNkGAd2SoFsW1DGg70AnHw8MDk_yvqoBDJ6xC-3oc5MPQVMdjI11d3IchwpDdwMF1QIGceTJnbZ8W0vXoa5nzrgyXHVKO80zcPLr6bq1k-ETtaSkf3op1z1mmeg4MaqiC93JfbNyquEQBjCMlS7DLP0K7LIWPXeVvdgQGZQqLnEyxATwVEjYwZYHaywom1jDYeiu_ZXRhiGr7BosD1XH5qvho8wJMbvLyWXlCJWU06bLUCKXJWWlpCt5jrTk7u9pEDDSbDD1TydZX"/>
+<div>
+<p class="font-medium text-on-surface">Marcus Vance, RN</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ICU Ward A</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-container/20 text-tertiary border border-tertiary/30 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">local_hospital</span>
+                                    Sick Leave
+                                </span>
+</td>
+<td class="p-4 text-on-surface-variant">
+                                Oct 24 - Oct 25, 2023 <br/>
+<span class="font-label-sm text-label-sm text-outline-variant">2 Days</span>
+</td>
+<td class="p-4">
+<div class="relative inline-block group/tooltip">
+<button class="p-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-[#0A0C1A]/95 backdrop-blur-[40px] border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5),inset_0_0_8px_1px_rgba(0,242,255,0.05)] rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-10 pointer-events-none translate-y-2 group-hover/tooltip:translate-y-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Details</p>
+<p class="font-body-md text-body-md text-on-surface">Severe migraine cluster. Medical certificate attached in system profile.</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-error-container/20 text-error border border-error/30 hover:bg-error-container/40 hover:shadow-[0_0_10px_rgba(255,180,171,0.2)] transition-all" title="Reject">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary-fixed/80 to-primary-container/80 text-surface-dim hover:shadow-[0_0_15px_rgba(0,242,255,0.4)] transition-all font-bold" title="Approve">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Conference -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-primary font-bold">
+                                        EL
+                                    </div>
+<div>
+<p class="font-medium text-on-surface">Elena Rostova</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Neurology Tech</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-inverse-primary/20 text-primary border border-inverse-primary/50 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">school</span>
+                                    Training
+                                </span>
+</td>
+<td class="p-4 text-on-surface-variant">
+                                Nov 01 - Nov 05, 2023 <br/>
+<span class="font-label-sm text-label-sm text-outline-variant">5 Days</span>
+</td>
+<td class="p-4">
+<div class="relative inline-block group/tooltip">
+<button class="p-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-[#0A0C1A]/95 backdrop-blur-[40px] border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5),inset_0_0_8px_1px_rgba(0,242,255,0.05)] rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-10 pointer-events-none translate-y-2 group-hover/tooltip:translate-y-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Details</p>
+<p class="font-body-md text-body-md text-on-surface">Mandatory recertification for advanced imaging machinery in Wing B.</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-error-container/20 text-error border border-error/30 hover:bg-error-container/40 hover:shadow-[0_0_10px_rgba(255,180,171,0.2)] transition-all" title="Reject">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary-fixed/80 to-primary-container/80 text-surface-dim hover:shadow-[0_0_15px_rgba(0,242,255,0.4)] transition-all font-bold" title="Approve">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="border-t border-white/10 bg-surface-container-low/30 p-4 flex justify-between items-center px-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Showing 1 to 3 of 12 entries</span>
+<div class="flex gap-2">
+<button class="p-1 rounded bg-white/5 border border-white/10 text-on-surface-variant hover:text-white transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded bg-white/5 border border-white/10 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

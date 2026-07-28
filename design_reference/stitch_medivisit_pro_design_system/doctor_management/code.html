@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Doctor Management - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#323443",
+                        "surface-dim": "#101221",
+                        "secondary-container": "#7000ff",
+                        "on-surface": "#e1e1f6",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#272938",
+                        "inverse-primary": "#00696f",
+                        "tertiary-container": "#ffcfd8",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#3f0019",
+                        "on-secondary": "#3c0090",
+                        "outline-variant": "#3a494b",
+                        "tertiary-fixed-dim": "#ffb1c3",
+                        "on-tertiary": "#66002c",
+                        "surface-bright": "#363848",
+                        "surface-container": "#1d1f2d",
+                        "on-secondary-container": "#ddcdff",
+                        "tertiary": "#fff5f6",
+                        "on-primary": "#00363a",
+                        "inverse-surface": "#e1e1f6",
+                        "on-background": "#e1e1f6",
+                        "primary-container": "#00f2ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "on-secondary-fixed": "#23005b",
+                        "surface": "#101221",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0b0d1b",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#e1fdff",
+                        "surface-container-low": "#191b29",
+                        "on-tertiary-fixed-variant": "#8f0041",
+                        "on-primary-container": "#006a71",
+                        "inverse-on-surface": "#2e2f3f",
+                        "secondary": "#d1bcff",
+                        "primary-fixed": "#74f5ff",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#323443",
+                        "on-primary-fixed-variant": "#004f54",
+                        "background": "#101221",
+                        "tertiary-fixed": "#ffd9e0",
+                        "surface-tint": "#00dbe7",
+                        "on-tertiary-container": "#be0059",
+                        "outline": "#849495"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "stack-lg": "32px",
+                        "margin-page": "40px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "kpi-value": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    fontSize: {
+                        "kpi-value": ["40px", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "display-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Scrollbar for a cleaner clinical look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* Animated Toggle Switch */
+        .toggle-checkbox:checked + .toggle-label {
+            background: linear-gradient(to right, #00dbe7, #7000ff);
+        }
+        .toggle-checkbox:checked + .toggle-label .toggle-circle {
+            transform: translateX(100%);
+        }
+        .toggle-label {
+            background-color: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen flex selection:bg-primary-container/30">
+<!-- Global Background Mesh (Level 0) -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary-container/5 blur-[120px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-secondary-container/5 blur-[150px]"></div>
+</div>
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl flex flex-col gap-stack-md py-margin-page z-40 transition-all duration-300 ease-in-out">
+<!-- Header -->
+<div class="px-6 flex items-center gap-4 mb-stack-lg">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,219,231,0.2)]">
+<span class="material-symbols-outlined text-primary-fixed icon-fill">medical_services</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)] leading-none">MediVisit Pro</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Clinical Admin Console</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col flex-grow">
+<!-- Dashboard -->
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-6 transition-all hover:bg-white/5 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- Patients (Forced Active based on prompt) -->
+<a class="bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-6 flex items-center gap-4 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined icon-fill drop-shadow-[0_0_4px_currentColor]">group</span>
+<span class="font-body-md text-body-md font-semibold">Patients</span>
+</a>
+<!-- Schedules -->
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-6 transition-all hover:bg-white/5 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-md text-body-md">Schedules</span>
+</a>
+<!-- Clinical Data -->
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-6 transition-all hover:bg-white/5 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Clinical Data</span>
+</a>
+<!-- System Config -->
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-6 transition-all hover:bg-white/5 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">System Config</span>
+</a>
+</div>
+<!-- Bottom Profile -->
+<div class="mt-auto px-6 border-t border-white/5 pt-6">
+<div class="flex items-center gap-3">
+<img alt="MediVisit Pro Logo" class="w-8 h-8 rounded-full border border-white/20 object-cover" data-alt="A small circular avatar of a futuristic medical administrator in a sleek environment with subtle cyan lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3fw6zPLgPJCIJ-ocUFw4QqjswHW5oN62Pykxih8qClKlMN75OTLADTuUfeAjp2QOMvHyOMFEv5XMWzTeXvfgGhNEh-NMWFzIVSMyCOYLUaEzdXso48--cUghZxTC5Y__31rJHVptLqgFHP9Bkh1JmvLi7O7Np31x81y9gYIPFeuvtTgApLL9dij3ch93RTus04T_50Ibs75hrs1hy4PLrYFWaoRq3Keq967xEM2toI_XclcXEwWIGsS3Mp3GDBeZtF9u41x2R2_zx"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Dr. A. Vance</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Chief Admin</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[280px] w-[calc(100%-280px)] min-h-screen p-margin-page flex justify-center z-10 relative">
+<div class="max-w-container-max w-full flex flex-col gap-stack-lg">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-2 tracking-tight">Doctor Management</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage clinical staff, specialties, and operational statuses.</p>
+</div>
+<!-- Primary Action Button -->
+<button class="group relative px-6 py-3 rounded-lg overflow-hidden font-label-sm text-label-sm uppercase tracking-widest text-white shadow-[0_4px_14px_0_rgba(0,219,231,0.2)] hover:shadow-[0_6px_20px_rgba(0,219,231,0.4)] transition-all duration-300 transform hover:-translate-y-0.5" id="addDoctorBtn">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-fixed-dim to-secondary-container transition-transform duration-300 group-hover:scale-105"></div>
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"></div>
+<span class="relative flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add Doctor
+                    </span>
+</button>
+</header>
+<!-- Table Filters / Controls (Level 1 Glass) -->
+<div class="flex flex-wrap gap-4 items-center bg-white/5 backdrop-blur-[10px] p-4 rounded-xl border border-white/5">
+<div class="relative flex-grow max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:border-primary-fixed focus:outline-none focus:ring-1 focus:ring-primary-fixed transition-colors" placeholder="Search by name, clinic, or specialty..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full px-4 py-2 font-label-sm text-label-sm text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                    Filter
+                </button>
+<button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full px-4 py-2 font-label-sm text-label-sm text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[16px]">sort</span>
+                    Sort
+                </button>
+</div>
+<!-- Glass Data Table Wrapper (Level 2) -->
+<div class="bg-white/10 backdrop-blur-[20px] rounded-xl border border-white/15 shadow-[inset_0_0_8px_rgba(0,219,231,0.05)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 bg-white/5">
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider w-12"></th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Doctor Profile</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Specialty</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Assigned Clinic</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Total Visits</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-center">Status</th>
+<th class="py-4 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Row 1 -->
+<tr class="hover:bg-white/[0.03] transition-colors group">
+<td class="py-4 px-6">
+<input class="w-4 h-4 rounded border-white/20 bg-black/20 text-primary-fixed focus:ring-primary-fixed focus:ring-offset-0 focus:ring-1 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover border border-white/20" data-alt="A professional headshot of a futuristic medical doctor wearing a sleek, high-tech clinical uniform in a brightly lit, sterile laboratory environment. The lighting is crisp and cool, emphasizing a modern, glassmorphic aesthetic with subtle cyan and purple reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY88776D2pfHcQADLfiQIi4RC6lUl9qwwcI5Hp8wDdGgh1M84Mk-GGuqGhbOGVVo8k_gAAPlGerSd_ClM-iNtlFwMSgAed4WXG1PDuab3BNDHn9sJdQv5SiYYF4KR5Keuq8YexaBwxuaUEAcQqO1WIPyYi3zdh94NIVjik8Pb78MCYINzc_F1BMzghvReV37Ju6PUSGNHctpcwhnwcHe8Y870Fq-Xinah2PyoB4OCHrRX3br0NklpiJ_ATM3AqGmotKCiTDGnwjkUA"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-[#00e676] rounded-full border-2 border-surface-dim"></div>
+</div>
+<div>
+<div class="font-headline-md text-[18px] font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Dr. Sarah Jenkins</div>
+<div class="font-body-md text-[14px] text-on-surface-variant">ID: MED-9021</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center bg-gradient-to-r from-primary-container/10 to-secondary-container/10 border border-primary-fixed/30 text-primary-fixed font-label-sm text-label-sm px-3 py-1 rounded-full shadow-[0_0_10px_rgba(0,219,231,0.1)]">
+                                        Neurology
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">domain</span>
+                                        Central Hub - Alpha
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right">
+<span class="font-kpi-value text-[24px] bg-clip-text text-transparent bg-gradient-to-r from-primary-fixed to-secondary-fixed">
+                                        1,245
+                                    </span>
+</td>
+<td class="py-4 px-6 text-center">
+<!-- Gradient Toggle Switch -->
+<div class="inline-block relative w-12 h-6 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-transparent appearance-none cursor-pointer z-10 opacity-0" id="toggle1" name="toggle1" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer border border-white/10 transition-all duration-300 relative" for="toggle1">
+<span class="toggle-circle absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 shadow-sm"></span>
+</label>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary-fixed transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-white/[0.03] transition-colors group">
+<td class="py-4 px-6">
+<input class="w-4 h-4 rounded border-white/20 bg-black/20 text-primary-fixed focus:ring-primary-fixed focus:ring-offset-0 focus:ring-1 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover border border-white/20" data-alt="A portrait of a male doctor in his 40s with a serious expression, wearing a minimalist dark cyber-scrub uniform. The background is a blurred high-tech medical facility with glowing ambient blue lights and sterile glass partitions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV8UNiIT21OCjmyjSb9IQtb7jEn3qHwZZOe3icnmbPVPq1yUPcTNi-klRt-lrmPAXDQ13u6O4fMqoNAlNNlMa37gw9SsFSEALBJ30_Qvwv_-IKkLl8NUgIzb9R8qdO3HQ9oadwFBcy9GD6-QjGHLhYNWNEcL5RaKNQrKFMusJdXbW41WOdON4EkbUCuD_m27J3sV3aSXhd7-f41dt5hqevh6nmH3Gl_VvyR7UDARJLEc78l0CSSSxOVBy5_dEaQ2fdoNF_-fsLlaAr"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-error rounded-full border-2 border-surface-dim"></div>
+</div>
+<div>
+<div class="font-headline-md text-[18px] font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Dr. Marcus Chen</div>
+<div class="font-body-md text-[14px] text-on-surface-variant">ID: MED-7734</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center bg-gradient-to-r from-secondary-container/10 to-primary-container/10 border border-secondary/30 text-secondary font-label-sm text-label-sm px-3 py-1 rounded-full shadow-[0_0_10px_rgba(209,188,255,0.1)]">
+                                        Cardiology
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">domain</span>
+                                        Westside Bio-Lab
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right">
+<span class="font-kpi-value text-[24px] bg-clip-text text-transparent bg-gradient-to-r from-primary-fixed to-secondary-fixed">
+                                        892
+                                    </span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="inline-block relative w-12 h-6 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-transparent appearance-none cursor-pointer z-10 opacity-0" id="toggle2" name="toggle2" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer border border-white/10 transition-all duration-300 relative" for="toggle2">
+<span class="toggle-circle absolute left-1 top-1 w-4 h-4 bg-white/50 rounded-full transition-transform duration-300 shadow-sm"></span>
+</label>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary-fixed transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-white/[0.03] transition-colors group">
+<td class="py-4 px-6">
+<input class="w-4 h-4 rounded border-white/20 bg-black/20 text-primary-fixed focus:ring-primary-fixed focus:ring-offset-0 focus:ring-1 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover border border-white/20" data-alt="A close-up shot of a female surgeon with a futuristic visor resting on her forehead. She is in a pristine white and chrome operating prep room. Subtle volumetric lighting filters through frosted glass behind her, creating a sterile yet inviting glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eopOsEX9yC56tGKme_uCWPAj40HsHFsDP2WTQjkq3SfZc2ptTV2lWNt8ga_qFpj_0b2TLYuKDtLcPe8YkrVKEfb3yOwH0DIqw9Uc31yerPnwXCOXtfvpFsN7DT7RhSQRe1_Qg8lpaLjp3mENfslkts1N3mCR24gObSRywohADskfEobYQoEC_bboPa42uwps39ACzdJltwysjlGf5ELVu9ExMd5z2MedkoljsEzzXs5j8PmAJKwUGbVDlmr6MJYeedtYNEWefL6l"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-[#00e676] rounded-full border-2 border-surface-dim"></div>
+</div>
+<div>
+<div class="font-headline-md text-[18px] font-semibold text-on-surface group-hover:text-primary-fixed transition-colors">Dr. Elena Rostova</div>
+<div class="font-body-md text-[14px] text-on-surface-variant">ID: MED-1105</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center bg-gradient-to-r from-primary-container/10 to-secondary-container/10 border border-primary-fixed/30 text-primary-fixed font-label-sm text-label-sm px-3 py-1 rounded-full shadow-[0_0_10px_rgba(0,219,231,0.1)]">
+                                        General Surgery
+                                    </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">domain</span>
+                                        Central Hub - Beta
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right">
+<span class="font-kpi-value text-[24px] bg-clip-text text-transparent bg-gradient-to-r from-primary-fixed to-secondary-fixed">
+                                        3,104
+                                    </span>
+</td>
+<td class="py-4 px-6 text-center">
+<div class="inline-block relative w-12 h-6 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-transparent appearance-none cursor-pointer z-10 opacity-0" id="toggle3" name="toggle3" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer border border-white/10 transition-all duration-300 relative" for="toggle3">
+<span class="toggle-circle absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 shadow-sm"></span>
+</label>
+</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary-fixed transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="border-t border-white/10 bg-white/5 p-4 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Showing 1 to 3 of 42 doctors</span>
+<div class="flex gap-2">
+<button class="p-2 border border-white/10 rounded-lg text-on-surface hover:bg-white/10 transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-2 border border-white/10 rounded-lg text-on-surface hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Slide-in Overlay: Add Doctor Panel -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300" id="overlayBg"></div>
+<aside class="fixed right-0 top-0 h-full w-[450px] bg-surface-container-low/95 backdrop-blur-[40px] border-l border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-50 transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col" id="slidePanel">
+<!-- Panel Header -->
+<div class="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed">person_add</span>
+                Add New Doctor
+            </h2>
+<button class="p-2 text-on-surface-variant hover:text-white rounded-full hover:bg-white/10 transition-colors" id="closePanelBtn">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Panel Body -->
+<div class="p-6 overflow-y-auto flex-grow flex flex-col gap-8 custom-scrollbar">
+<!-- Basic Info Section -->
+<div class="flex flex-col gap-5">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed/80">Profile Information</h3>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center border-dashed cursor-pointer hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">add_a_photo</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Upload Avatar</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">JPG, PNG up to 2MB</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full bg-white/5 border-b border-white/10 border-t-0 border-x-0 rounded-t-md py-3 px-3 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 focus:border-primary-fixed focus:bg-white/10 transition-all outline-none" placeholder="e.g. Dr. Jane Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Specialty</label>
+<select class="w-full bg-white/5 border-b border-white/10 border-t-0 border-x-0 rounded-t-md py-3 px-3 font-body-md text-body-md text-on-surface focus:ring-0 focus:border-primary-fixed focus:bg-white/10 transition-all outline-none appearance-none cursor-pointer">
+<option class="bg-surface-container" disabled="" selected="" value="">Select a specialty...</option>
+<option class="bg-surface-container" value="neuro">Neurology</option>
+<option class="bg-surface-container" value="cardio">Cardiology</option>
+<option class="bg-surface-container" value="surgery">General Surgery</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 bottom-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Clinic Assignment & Map Section -->
+<div class="flex flex-col gap-5">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed/80">Clinic Assignment</h3>
+<div class="flex flex-col gap-1 relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Primary Clinic</label>
+<select class="w-full bg-white/5 border-b border-white/10 border-t-0 border-x-0 rounded-t-md py-3 px-3 font-body-md text-body-md text-on-surface focus:ring-0 focus:border-primary-fixed focus:bg-white/10 transition-all outline-none appearance-none cursor-pointer">
+<option class="bg-surface-container" disabled="" selected="" value="">Select a facility...</option>
+<option class="bg-surface-container" value="alpha">Central Hub - Alpha</option>
+<option class="bg-surface-container" value="beta">Central Hub - Beta</option>
+<option class="bg-surface-container" value="west">Westside Bio-Lab</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 bottom-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- Mini Map Picker -->
+<div class="flex flex-col gap-2 mt-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                        Location Preview
+                    </span>
+<div class="w-full h-40 rounded-xl overflow-hidden border border-white/10 relative group cursor-pointer">
+<!-- Map Image with data-location -->
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A highly stylized, minimalist digital map interface of a metropolitan area. The map uses a dark mode palette with deep navy and charcoal tones, punctuated by glowing cyan and purple routes, indicating high-tech clinical futurism." data-location="San Francisco" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1VmaxJG3-HxVA520GbXLCIZi6y0o0af6D-glQnag5_680UNlK3Hnb9Ba4kUkjRcvmZtASrYJ2-A_UhPp8dmD7kVFomN69m29ZbtKPPwqru6wYphZErLbs8VWB_HOXnyK1bjinf-pyE5PvY6u_POBjUKs5hfn2US8esR8B3Z4omwLTqp_P-7L8reM89A9RPOUiguAzGEUJPPx3DjlWYJnyQHvmFUL_5n1ejleMnfSVkXj49RtF31-F7uYm8TBYjUjBgoulg2PhGfYd')"></div>
+<!-- Map Overlay details -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_8px_#00dbe7] animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface drop-shadow-md">Central Hub - Alpha</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40 backdrop-blur-[2px] transition-all duration-300">
+<span class="bg-white/10 border border-white/20 text-white font-label-sm px-3 py-1 rounded-full backdrop-blur-md">Change Location</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Status -->
+<div class="flex flex-col gap-5 mt-auto pt-4 border-t border-white/5">
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Active Status</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enable immediate system access</span>
+</div>
+<div class="inline-block relative w-12 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-transparent appearance-none cursor-pointer z-10 opacity-0" id="toggleNew" name="toggleNew" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer border border-white/10 transition-all duration-300 relative" for="toggleNew">
+<span class="toggle-circle absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 shadow-sm"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel Footer -->
+<div class="p-6 border-t border-white/10 bg-surface-dim/50 backdrop-blur-md flex gap-4">
+<button class="flex-1 py-3 px-4 rounded-lg border border-white/10 font-label-sm text-label-sm uppercase tracking-widest text-on-surface hover:bg-white/5 transition-colors" id="cancelBtn">
+                Cancel
+            </button>
+<button class="flex-1 py-3 px-4 rounded-lg bg-gradient-to-r from-primary-fixed-dim to-secondary-container font-label-sm text-label-sm uppercase tracking-widest text-white shadow-[0_4px_14px_0_rgba(0,219,231,0.2)] hover:shadow-[0_6px_20px_rgba(0,219,231,0.4)] transition-all duration-300 relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"></div>
+                Save Doctor
+            </button>
+</div>
+</aside>
+<!-- Simple interaction script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addDoctorBtn = document.getElementById('addDoctorBtn');
+            const slidePanel = document.getElementById('slidePanel');
+            const closePanelBtn = document.getElementById('closePanelBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const overlayBg = document.getElementById('overlayBg');
+
+            function openPanel() {
+                slidePanel.classList.remove('translate-x-full');
+                overlayBg.classList.remove('hidden');
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => {
+                    overlayBg.classList.remove('opacity-0');
+                    overlayBg.classList.add('opacity-100');
+                }, 10);
+            }
+
+            function closePanel() {
+                slidePanel.classList.add('translate-x-full');
+                overlayBg.classList.remove('opacity-100');
+                overlayBg.classList.add('opacity-0');
+                // Wait for transition before hiding
+                setTimeout(() => {
+                    overlayBg.classList.add('hidden');
+                }, 300);
+            }
+
+            addDoctorBtn.addEventListener('click', openPanel);
+            closePanelBtn.addEventListener('click', closePanel);
+            cancelBtn.addEventListener('click', closePanel);
+            overlayBg.addEventListener('click', closePanel);
+        });
+    </script>
+</body></html>

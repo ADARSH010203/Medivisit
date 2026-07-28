@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Analytics - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#323443",
+                        "surface-dim": "#101221",
+                        "secondary-container": "#7000ff",
+                        "on-surface": "#e1e1f6",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#272938",
+                        "inverse-primary": "#00696f",
+                        "tertiary-container": "#ffcfd8",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#3f0019",
+                        "on-secondary": "#3c0090",
+                        "outline-variant": "#3a494b",
+                        "tertiary-fixed-dim": "#ffb1c3",
+                        "on-tertiary": "#66002c",
+                        "surface-bright": "#363848",
+                        "surface-container": "#1d1f2d",
+                        "on-secondary-container": "#ddcdff",
+                        "tertiary": "#fff5f6",
+                        "on-primary": "#00363a",
+                        "inverse-surface": "#e1e1f6",
+                        "on-background": "#e1e1f6",
+                        "primary-container": "#00f2ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "on-secondary-fixed": "#23005b",
+                        "surface": "#101221",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0b0d1b",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#e1fdff",
+                        "surface-container-low": "#191b29",
+                        "on-tertiary-fixed-variant": "#8f0041",
+                        "on-primary-container": "#006a71",
+                        "inverse-on-surface": "#2e2f3f",
+                        "secondary": "#d1bcff",
+                        "primary-fixed": "#74f5ff",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#323443",
+                        "on-primary-fixed-variant": "#004f54",
+                        "background": "#101221",
+                        "tertiary-fixed": "#ffd9e0",
+                        "surface-tint": "#00dbe7",
+                        "on-tertiary-container": "#be0059",
+                        "outline": "#849495"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "stack-lg": "32px",
+                        "margin-page": "40px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "kpi-value": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    fontSize: {
+                        "kpi-value": ["40px", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "display-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .duotone-icon {
+            position: relative;
+            display: inline-flex;
+        }
+        .duotone-icon::after {
+            content: attr(data-icon);
+            font-family: 'Material Symbols Outlined';
+            position: absolute;
+            inset: 0;
+            color: theme('colors.primary-fixed');
+            filter: drop-shadow(0 0 4px theme('colors.primary-fixed/50'));
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.white/10'); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.white/20'); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden flex">
+<!-- Global Level 0 Mesh Background -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-5">
+<div class="absolute top-0 left-0 w-1/2 h-1/2 bg-primary-fixed rounded-full mix-blend-screen filter blur-[150px]"></div>
+<div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-secondary-container rounded-full mix-blend-screen filter blur-[150px]"></div>
+</div>
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl flex flex-col gap-stack-md py-margin-page z-50 transition-all duration-300 ease-in-out hidden md:flex">
+<div class="px-gutter mb-stack-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Clinical Admin Console</p>
+</div>
+<div class="flex flex-col font-body-md text-body-md w-full">
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 flex items-center gap-3 mx-2 rounded-xl" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 flex items-center gap-3 mx-2 rounded-xl" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="group">group</span> Patients
+            </a>
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 flex items-center gap-3 mx-2 rounded-xl" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="calendar_today">calendar_today</span> Schedules
+            </a>
+<a class="bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 flex items-center gap-3 mr-2" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span> Clinical Data
+            </a>
+<a class="text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all hover:bg-white/5 flex items-center gap-3 mx-2 rounded-xl" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="settings">settings</span> System Config
+            </a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<div class="md:ml-[280px] w-full md:w-[calc(100%-280px)] flex flex-col relative z-10 min-h-screen">
+<!-- TopNavBar Component -->
+<header class="sticky top-0 bg-white/10 backdrop-blur-[20px] border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40 transition-all duration-150">
+<div class="flex items-center gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Reports &amp; Analytics</h2>
+</div>
+<div class="flex items-center gap-stack-md">
+<!-- Date Range Glass Picker -->
+<button class="flex items-center gap-2 bg-white/15 backdrop-blur-[40px] border border-white/10 rounded-full px-4 py-2 font-label-sm text-label-sm text-on-surface hover:bg-white/20 hover:border-primary/50 transition-all shadow-[inset_0_0_8px_rgba(255,255,255,0.05)]">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">calendar_month</span>
+<span>Q3 2023: Jul 1 - Sep 30</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">arrow_drop_down</span>
+</button>
+<div class="h-6 w-[1px] bg-white/10 mx-2"></div>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-white/20 overflow-hidden ml-2 shadow-[0_0_10px_rgba(0,219,231,0.2)]">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a medical administrator in a sleek, dimly lit futuristic office setting. Cool cyan and deep purple accent lighting highlights their features. Minimalist, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMpAAUvlN4m5t3BOzwj4JPxMsJPMjFjE35HpSAA71ryQb5M03pFJy-K5oa7-n7ZpGz50SRD2hVAqDKdlG4oAWZGaM6-mheQGG3hV8IhQYEDg7alOD6_HLVx4niCEY9Lm9wYi7T5oVEKWk2k9pv4fdNo0DB9ooN3bJH2k-EwoOXKvDotLyoIYaEL5e9-qpBdkV-3oBqRCaMUlc3CHKRn3Mcwg4G44m82rQFLrxaivdz5jXDNKFTLV_PJ_m4YVqqCEi7M2tb8mC_K7Uk"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 p-margin-page max-w-container-max mx-auto w-full">
+<!-- 3-Column Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg auto-rows-[380px]">
+<!-- Widget 1: Visits by Territory (Heatmap approx) -->
+<div class="col-span-1 lg:col-span-2 relative bg-white/20 backdrop-blur-[40px] border border-white/15 rounded-xl p-stack-md shadow-[inset_0_0_8px_1px_rgba(0,219,231,0.1)] overflow-hidden group flex flex-col">
+<!-- Glow Blobs -->
+<div class="absolute -top-12 -left-12 w-32 h-32 bg-primary/20 rounded-full blur-[40px] opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+<div class="absolute -bottom-12 -right-12 w-32 h-32 bg-secondary-container/20 rounded-full blur-[40px] opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+<div class="flex justify-between items-start relative z-10 mb-stack-md">
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold tracking-wide">Visits by Territory</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Geospatial concentration</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex-1 relative z-10 rounded-lg overflow-hidden border border-white/5 bg-surface-dim/30 flex items-center justify-center">
+<span class="font-label-sm text-on-surface-variant opacity-50">[Map Visualization Area]</span>
+</div>
+</div>
+<!-- Widget 2: Engagement (Line Chart) -->
+<div class="col-span-1 relative bg-white/20 backdrop-blur-[40px] border border-white/15 rounded-xl p-stack-md shadow-[inset_0_0_8px_1px_rgba(0,219,231,0.1)] overflow-hidden group flex flex-col">
+<div class="absolute -top-8 -right-8 w-24 h-24 bg-primary-container/20 rounded-full blur-[30px] opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+<div class="flex justify-between items-start relative z-10 mb-stack-md">
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold tracking-wide">Engagement Rate</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Weekly active users</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex-1 relative z-10 flex flex-col justify-end pb-4 pt-8">
+<div class="font-kpi-value text-kpi-value text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed to-secondary-container mb-auto drop-shadow-[0_0_12px_rgba(0,219,231,0.3)]">68.4%</div>
+<!-- Mock Line -->
+<div class="h-24 w-full relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path class="drop-shadow-[0_8px_8px_rgba(0,219,231,0.4)]" d="M0,30 Q10,10 20,25 T40,15 T60,35 T80,5 T100,20" fill="none" stroke="url(#lineGrad)" stroke-width="2"></path>
+<defs>
+<lineargradient id="lineGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#00dbe7"></stop>
+<stop offset="100%" stop-color="#7000ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

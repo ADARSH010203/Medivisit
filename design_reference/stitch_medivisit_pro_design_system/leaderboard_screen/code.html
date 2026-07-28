@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>MediVisit Pro - Leaderboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-background": "#151c27",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae1ff",
+                        "surface-container-highest": "#dce2f3",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-primary-fixed": "#001849",
+                        "tertiary-fixed": "#dde1ff",
+                        "surface-tint": "#0055d5",
+                        "on-surface-variant": "#424655",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "primary": "#0053d3",
+                        "inverse-primary": "#b3c5ff",
+                        "surface-dim": "#d3daea",
+                        "outline-variant": "#c2c6d8",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "tertiary": "#575c76",
+                        "on-tertiary-container": "#fffeff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#007261",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#68fadd",
+                        "tertiary-container": "#707490",
+                        "on-tertiary-fixed": "#151a31",
+                        "surface-variant": "#dce2f3",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2e8f8",
+                        "primary-container": "#1a6bff",
+                        "inverse-surface": "#2a313d",
+                        "surface": "#f9f9ff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-secondary-fixed": "#00201a",
+                        "secondary-fixed": "#68fadd",
+                        "on-surface": "#151c27",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "outline": "#727687",
+                        "secondary": "#006b5c",
+                        "background": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        // Custom gradients for medals
+                        "gold-start": "#FFD700",
+                        "gold-end": "#FFA500",
+                        "silver-start": "#E0E0E0",
+                        "silver-end": "#BDBDBD",
+                        "bronze-start": "#CD7F32",
+                        "bronze-end": "#8B4513"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "card-padding": "16px",
+                        "stack-md": "16px",
+                        "edge": "20px",
+                        "base": "4px",
+                        "safe": "env(safe-area-inset-bottom, 20px)"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md-mobile": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "stats-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "21px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Podium glows */
+        .glow-gold { box-shadow: 0 0 24px rgba(255, 215, 0, 0.4); }
+        .glow-silver { box-shadow: 0 0 20px rgba(224, 224, 224, 0.5); }
+        .glow-bronze { box-shadow: 0 0 20px rgba(205, 127, 50, 0.4); }
+        
+        /* Subtle page background */
+        body {
+            background-color: #F7F9FC;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(26, 107, 255, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 83, 211, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center px-edge h-16 z-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/30">
+<img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="A professional headshot of a female medical sales representative in her 30s. She is smiling confidently, wearing a modern dark blue blazer over a crisp white shirt. The background is a brightly lit, out-of-focus modern clinic hallway with cool, clinical lighting. The image has a clean, corporate, high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ9c3bvMp13UkVGrk_29KwzPJCnaVIZSMxcMD78ZsafHtPmVXoGvUuf-4UMzRjHBh9Xb6HPKP-bOlA4zDCjZPfEL27sp-q7Ij5KPnM01ZpJZ0m0t5iMVopxiXcK_98x3NLiZR043NXhil8bWS-33rA2LgCvKdT-CSWXSSAGUnsTtOKosoL7ui1ATFZvvyWrMCbVYyekNyCa42FseWmm9BLrLIQbSfwdULYvQ4FM47h1Jqe8FnDdW0IaLj1ww0dydhfU41WPFmABYWJ"/>
+</div>
+<h1 class="font-display text-headline-md-mobile text-primary tracking-tight">UMAKIND Pharma</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-24 px-4 max-w-[1200px] mx-auto w-full flex flex-col items-center">
+<!-- Header & Toggle -->
+<div class="w-full text-center mb-8 flex flex-col items-center">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-6">Performance Leaderboard</h2>
+<div class="glass-pill rounded-full p-1 flex items-center w-64 relative">
+<!-- Toggle Slider -->
+<div class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-transform duration-300 transform translate-x-0" id="period-slider"></div>
+<button class="relative z-10 flex-1 py-2 font-label-sm text-label-sm text-primary text-center rounded-full" onclick="togglePeriod('weekly')">Weekly</button>
+<button class="relative z-10 flex-1 py-2 font-label-sm text-label-sm text-on-surface-variant text-center rounded-full" onclick="togglePeriod('monthly')">Monthly</button>
+</div>
+</div>
+<!-- PODIUM SECTION -->
+<div class="relative w-full max-w-md h-64 mb-12 flex items-end justify-center gap-2 px-2">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center relative w-1/3 z-10 pb-4">
+<div class="relative mb-3">
+<div class="w-16 h-16 rounded-full p-[3px] bg-gradient-to-tr from-silver-start to-silver-end shadow-sm">
+<img alt="2nd Place" class="w-full h-full rounded-full object-cover border-2 border-white" data-alt="A portrait of an Asian male medical representative in his 40s. He wears rimless glasses and a tailored grey suit. The background is a soft, light-grey gradient. The lighting is clean and professional, emphasizing a modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtpFsxc-O_dPz2ycs2Jpn9M6D4qVMA5keCAM87hVg1RLhdVGN0UjXDGv67G9OsyPWhtzqnVXM2anSpgh6nV8siNK02NXxxbf_T8g9RxGmULJuYwQ_BmymTbXvAt78xK32puomFKkaqJyR83_089_kDO402-X86368SQhILvJyJ1GkC50jBLQG6RPgYrIintpWloP7jcPIBQtp3VqJw16uN1H5YogVwWbohQ7kcHaoSyLUxk3IEgASIWLNwWxVn-8jfoBqc7POG4EJx"/>
+</div>
+<div class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-surface shadow-sm border border-outline-variant flex items-center justify-center font-label-sm text-label-sm text-on-surface-variant">2</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full text-center">Chen W.</span>
+<span class="font-body-md text-[10px] text-on-surface-variant mb-2">North Region</span>
+<span class="font-stats-lg text-[20px] text-on-background font-bold">142</span>
+<!-- 2nd Place Stand -->
+<div class="w-full h-24 mt-2 rounded-t-lg bg-gradient-to-b from-white/60 to-surface-variant/30 backdrop-blur-md border border-white/50 border-b-0 glow-silver flex items-start justify-center pt-4">
+<span class="material-symbols-outlined text-outline-variant opacity-50" style="font-size: 32px;">military_tech</span>
+</div>
+</div>
+<!-- 1st Place (Center, Elevated) -->
+<div class="flex flex-col items-center relative w-[38%] z-20">
+<div class="absolute -top-10 text-gold-start drop-shadow-md animate-pulse">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 36px;">workspace_premium</span>
+</div>
+<div class="relative mb-3 mt-4">
+<div class="w-20 h-20 rounded-full p-[4px] bg-gradient-to-tr from-gold-start to-gold-end glow-gold">
+<img alt="1st Place" class="w-full h-full rounded-full object-cover border-2 border-white" data-alt="A confident African American female medical sales director. She is wearing a sharp black turtleneck and a subtle gold necklace. The background is a clean, bright, modern clinical setting with soft white light. Professional, high-contrast, premium corporate portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUnoOXV8HyNJ-f2wnXhSyg8bp8RAR7hGEaBHchlOeEwgcUfaX9cO5oNv1lGGc55gCuo8nlgz6M3YwCcueZOZ9D-3chqZbMU_QegQNrDi8uwoN_jMrI-iFFn-uusNNmlMh0mX07MiGPmwlx9RDDCdtzpaIJjmKcQDTJ_-bXnRojA5K-19m79gd1XiHPaaA7Orfh_EVcKF1a6lQuWK4-bc9nbn4Jpqn8mNnK7nBHPj-YrszTQHTG0ZPxkAvuqPvi67BKTxVqkamguT7-"/>
+</div>
+<div class="absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-primary text-white shadow-md border border-white flex items-center justify-center font-label-sm text-label-sm font-bold">1</div>
+</div>
+<span class="font-label-sm text-[14px] font-bold text-on-surface truncate w-full text-center">Sarah J.</span>
+<span class="font-body-md text-[11px] text-primary mb-2">East Region</span>
+<span class="font-stats-lg text-stats-lg text-primary font-bold drop-shadow-sm">189</span>
+<!-- 1st Place Stand -->
+<div class="w-full h-32 mt-2 rounded-t-xl bg-gradient-to-b from-white/80 to-primary-container/20 backdrop-blur-xl border border-white/60 border-b-0 glow-gold flex items-start justify-center pt-4 shadow-[0_-4px_16px_rgba(255,215,0,0.15)]">
+<span class="material-symbols-outlined text-gold-end opacity-70" style="font-variation-settings: 'FILL' 1; font-size: 40px;">star</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center relative w-1/3 z-10 pb-4">
+<div class="relative mb-3">
+<div class="w-16 h-16 rounded-full p-[3px] bg-gradient-to-tr from-bronze-start to-bronze-end shadow-sm">
+<img alt="3rd Place" class="w-full h-full rounded-full object-cover border-2 border-white" data-alt="A portrait of a Caucasian male in his 20s, looking approachable and energetic. He wears a light blue dress shirt, no tie. Clean, bright background with subtle gradients. Modern medical sales professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKR80ge1FdXbqNFGr6P_6ZszTT9oNlnJ3umxNrVrUHKL19vdpa7OgxFX623UzVaCKarijTY1xP9JiovbJ5-iSFhoSGnw-AlxZX8N5-j9GK17t0U88j8yrAvdHAtG5fqBabdCQHQw8yowchoZuKhsBFkXOwRoNgXJv90FeqAs8OZgNiwwygWSuLPG7RyRzTS70MMcM2gEzmMYPyQu8TV0SZNmWcwmKiFfPvBDG0d7VeBsWPwmzMILMi_KfPXaWjEeGaC5ShPk2KVoR4"/>
+</div>
+<div class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-surface shadow-sm border border-outline-variant flex items-center justify-center font-label-sm text-label-sm text-on-surface-variant">3</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate w-full text-center">Mark T.</span>
+<span class="font-body-md text-[10px] text-on-surface-variant mb-2">West Region</span>
+<span class="font-stats-lg text-[20px] text-on-background font-bold">128</span>
+<!-- 3rd Place Stand -->
+<div class="w-full h-20 mt-2 rounded-t-lg bg-gradient-to-b from-white/60 to-surface-variant/30 backdrop-blur-md border border-white/50 border-b-0 glow-bronze flex items-start justify-center pt-3">
+<span class="material-symbols-outlined text-bronze-start opacity-50" style="font-size: 28px;">military_tech</span>
+</div>
+</div>
+</div>
+<!-- RANKED LIST -->
+<div class="w-full max-w-lg flex flex-col gap-2 relative z-20">
+<!-- List Item 4 -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-4 hover:bg-white/80 transition-colors">
+<div class="w-8 font-label-sm text-label-sm text-outline text-center">4</div>
+<img alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="Headshot of a Hispanic female medical rep. Professional attire, warm smile, clean white background with soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlQB9EIuEI3nvOPJ2alWFKyOga9kA91CjoJvZpPgrrZdB3ggUtMWAasc8nUg16eyRDILU_WmaFGoUha3vguCxTNSECL5_BN1DKXIudgmzh9pmXMVllUCxeydr4Q9FRNXjs8vfuGPLH69uJGiJphD8Hk_KdQxUfWwrQupWv-FZabUj39raUJjv0zn8WJLR8cv0UUgXxok7kLt_tyQ0z47tRTVSQ4AXUONX_4gNLjC9SG0iFC21zCtKNg89MsZlvYpwHydmSkj1Lzsz-"/>
+<div class="flex-grow flex flex-col">
+<span class="font-headline-md text-[14px] text-on-surface">Elena R.</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">South Region</span>
+</div>
+<span class="font-stats-lg text-[18px] text-on-background">115</span>
+</div>
+<!-- List Item 5 -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-4 hover:bg-white/80 transition-colors">
+<div class="w-8 font-label-sm text-label-sm text-outline text-center">5</div>
+<img alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="Headshot of a middle-aged Caucasian male medical rep. Serious but professional expression, wearing a navy suit. Bright clinical background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvtyPJBJzZVXkfOpGtMvLbNz8NnrCvJQNIoeTVKaoxwQdsXIWuPx6RDT3TdZ8ZvW7CGnwyCksMHxxxMO62L1Nk45cm2Cbquw3TD22bDCYXqq_uoP42e1WdB73ixsgXoxY2unG22jAROO_8KK3C4ijdUvsWYgx3424-M17U9uIQTeyPDzT0SehOk4oCqrJSAFUpdj2u1kri2-k_lAZ78piyC9tJqzaY7vjbaH6dA9IOWzGrtuXebojBy48d2gKj4g1DtTb4cgPwRJRp"/>
+<div class="flex-grow flex flex-col">
+<span class="font-headline-md text-[14px] text-on-surface">David M.</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">Central Region</span>
+</div>
+<span class="font-stats-lg text-[18px] text-on-background">102</span>
+</div>
+<!-- List Item 6 -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-4 hover:bg-white/80 transition-colors">
+<div class="w-8 font-label-sm text-label-sm text-outline text-center">6</div>
+<img alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="Headshot of a young Asian female medical rep. Smiling, wearing a light grey blazer. Soft gradient background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CuvfgLdNKomWBysVEZB_7nITIY_AtuYZ07rXwgggQqQRaYoolaIKDNqNv-GKEJgMciMiDdAnxl6UYu7Ux8mFr92Jnuf3zPz19Oq2tAzcHAy3t-zcfG-6lBpHKvW0kyAiYozs6dTMz-q4ffDQ3oqLdexvAtAJe5JlIciqE4_hTJ9I-3BzYVpTVdlnjeHu8PbQzUKnpTXR5BRD65cYLpZTJAv3i28dc8gNIYWKvA3BHJCq8FcZBjp53Xd-jbQHpuWaFK91xE6k0c6l"/>
+<div class="flex-grow flex flex-col">
+<span class="font-headline-md text-[14px] text-on-surface">Lin P.</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">East Region</span>
+</div>
+<span class="font-stats-lg text-[18px] text-on-background">98</span>
+</div>
+<!-- Current User Item (Highlighted) -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-4 border-[1.5px] border-primary/50 bg-primary-fixed/30 shadow-[0_4px_20px_rgba(26,107,255,0.15)] relative overflow-hidden my-1">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="w-8 font-label-sm text-label-sm text-primary font-bold text-center">7</div>
+<img alt="Your Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary" data-alt="A professional headshot of a female medical sales representative in her 30s. She is smiling confidently, wearing a modern dark blue blazer over a crisp white shirt. The background is a brightly lit, out-of-focus modern clinic hallway with cool, clinical lighting. The image has a clean, corporate, high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADatNzolDhEO8b8Ss7nnxH7JQIJaXUM-Qg0XueK1luvTWo1bYDAe-gTsjkZofHhngMnjGxzkY0joxMa6rFgtDa42BuWx_2jZDIFLmvcLBV4rOJOkokYI4KcQWJTNGEV7zqTQJRWsCc1he7S4JHBfHWDoVvIwEHGC0ER1L4wRm2POpEtk6HDFwA4GX9kgmNZxm9a0nuQrT0C1g5DkosReMlqs6f8QDdafrhwySxD8aeYAqW0YHQuixqZasI1hph3_RV0ojqVdeX_-Yw"/>
+<div class="flex-grow flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-[14px] text-on-surface font-bold">You</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Current</span>
+</div>
+<span class="font-body-md text-[12px] text-on-surface-variant">Midwest Region</span>
+</div>
+<span class="font-stats-lg text-[18px] text-primary font-bold">85</span>
+</div>
+<!-- List Item 8 -->
+<div class="glass-panel rounded-xl p-3 flex items-center gap-4 hover:bg-white/80 transition-colors opacity-80">
+<div class="w-8 font-label-sm text-label-sm text-outline text-center">8</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-label-sm text-label-sm">JS</div>
+<div class="flex-grow flex flex-col">
+<span class="font-headline-md text-[14px] text-on-surface">James S.</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">North Region</span>
+</div>
+<span class="font-stats-lg text-[18px] text-on-background">76</span>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Card: Your Rank -->
+<div class="fixed bottom-[80px] left-0 w-full px-4 z-40 flex justify-center pointer-events-none">
+<div class="glass-panel rounded-2xl p-4 w-full max-w-sm flex items-center justify-between shadow-[0_8px_32px_rgba(0,83,211,0.12)] border-t border-white/60 pointer-events-auto">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current Standing</span>
+<span class="font-headline-md text-headline-md text-on-surface">Rank <span class="text-primary font-bold">#7</span> of 24</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-[10px] text-tertiary uppercase tracking-wider mb-1">To Next Rank</span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_upward</span>
+<span class="font-stats-lg text-[16px] font-bold">14</span>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container/70 dark:bg-surface-container-low/70 backdrop-blur-xl border-t border-outline-variant/30" style="box-shadow: 0px -2px 8px rgba(0,0,0,0.06);">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:bg-primary-container/20 transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-size: 24px;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:bg-primary-container/20 transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-size: 24px;">calendar_today</span>
+<span class="font-label-sm text-label-sm">Visits</span>
+</button>
+<!-- Highlighted Active Navigation: Insights fits Leaderboard intent best -->
+<button class="flex flex-col items-center justify-center bg-primary-container/40 dark:bg-primary-container/20 text-on-primary-container dark:text-primary-fixed-dim rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1; font-size: 24px;">query_stats</span>
+<span class="font-label-sm text-label-sm">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1.5 hover:bg-primary-container/20 transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" style="font-size: 24px;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        function togglePeriod(period) {
+            const slider = document.getElementById('period-slider');
+            const btns = document.querySelectorAll('.glass-pill button');
+            
+            if (period === 'weekly') {
+                slider.style.transform = 'translateX(0)';
+                btns[0].classList.replace('text-on-surface-variant', 'text-primary');
+                btns[1].classList.replace('text-primary', 'text-on-surface-variant');
+            } else {
+                slider.style.transform = 'translateX(100%)';
+                slider.style.marginLeft = '4px'; // accounting for gap
+                btns[1].classList.replace('text-on-surface-variant', 'text-primary');
+                btns[0].classList.replace('text-primary', 'text-on-surface-variant');
+            }
+        }
+    </script>
+</body></html>

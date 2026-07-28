@@ -1,0 +1,18 @@
+# MediVisit Pro Admin Console - Product Requirements Document
+
+## Overview
+A premium, enterprise-grade web dashboard for regional managers and administrators to oversee Medical Representative (MR) field operations, doctor engagement, product distribution, and performance analytics.
+
+## Design Language: "Clinical Futurism Web"
+- **Surfaces**: Glassmorphism (multi-layered frosted glass) over subtle mesh gradient backgrounds.
+- **Accents**: High-vibrancy glows, duotone icons, and gradient-text headings.
+- **Consistency**: Status badges, active-state highlights, and iconography must match the mobile MR app exactly.
+
+## Screen Inventory
+1. **Admin Login**: Split-screen with dramatic mesh gradient and floating mockup.
+2. **Dashboard (Overview)**: KPI cards, performance charts, and top-visited doctors.
+3. **MR Management**: Complete directory of field staff with status tracking.
+4. **Verification Queue**: Onboarding workflow for new MR accounts.
+5. **MR Detail & Tracking**: Individual performance deep-dive with territory map.
+6. **Doctor Management**: Physician database with engagement metrics.
+- ...and more (Product, Leave, Analytics, Live Tracking, Notifications).

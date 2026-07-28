@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rate Your Visit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#707490",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#68fadd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "primary": "#0053d3",
+                        "on-secondary-fixed": "#00201a",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary": "#575c76",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "surface-variant": "#dce2f3",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#c2c6d8",
+                        "on-background": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#fffeff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary": "#006b5c",
+                        "on-secondary-container": "#007261",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-container-high": "#e2e8f8",
+                        "on-surface-variant": "#424655",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-surface": "#151c27",
+                        "inverse-surface": "#2a313d",
+                        "on-primary": "#ffffff",
+                        "outline": "#727687"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "16px",
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.06), 0px 8px 24px rgba(0,0,0,0.04);
+        }
+        
+        .star-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 0px 8px rgba(255, 165, 0, 0.4));
+        }
+        
+        .pill-active-green {
+            background: rgba(0, 107, 92, 0.1);
+            border: 1px solid rgba(0, 107, 92, 0.3);
+            color: #006b5c;
+        }
+        
+        .pill-inactive {
+            background: rgba(220, 226, 243, 0.3);
+            border: 1px solid rgba(220, 226, 243, 0.6);
+            color: #424655;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #0053d3 0%, #1a6bff 100%);
+            box-shadow: 0px 4px 16px rgba(26, 107, 255, 0.3);
+        }
+        
+        .input-focus-glow:focus {
+            outline: none;
+            border-color: #1a6bff;
+            box-shadow: 0 0 0 2px rgba(26, 107, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-edge antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm flex justify-between items-center px-edge h-16 max-w-[1200px] mx-auto hidden md:flex">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female doctor in her 40s wearing a white coat and stethoscope, set against a bright, modern clinic background with soft, natural light and a clean, clinical aesthetic. The lighting is high-key and flattering, emphasizing a trustworthy and competent demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFmTf8SjOOLxlp_TIjAyCKE6ElIALQ-vxE0v2ZumKTmjzYECmKl9_aL_rEiO_hHdMpJkq8fa1dfFfp0_-46VUEGI4WGffRcEKvJ4FTOxKfAajR83ziKsXmYxRSGICSLY3SIAXAsjFWogLBVymLlJOqy21yRxCZ7Ip_v7AgYoQw-OaXQfUSv9saKrMpTej7hdnllHtYcZuLqlSGogEEcml2-kViukljwfxnklTlNaXwnFUlvMp-_9Bcb6MhcZo51qDRM7aif7_Dy3rd"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-on-surface">MediVisit Pro</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+</header>
+<main class="w-full max-w-md mx-auto pt-stack-lg pb-stack-lg md:pt-24 md:pb-24 flex-grow flex flex-col justify-center">
+<!-- Header Section -->
+<div class="text-center mb-stack-lg">
+<h1 class="text-display font-display text-on-background mb-stack-sm">Rate Your Visit</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant flex items-center justify-center gap-2">
+                with Dr. Sharma
+                <img class="w-6 h-6 rounded-full object-cover border border-outline-variant inline-block" data-alt="A small circular avatar placeholder image for Dr. Sharma, depicting a professional male doctor in a modern clinical setting with soft natural lighting and a clean, bright background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3W5offnnhLjBbazqETQkZ6jfAFxZ5_UGd5TZq-ScwGIyZFCJuSIH9zCSyXM1nldxfpBQ9rjYJaZ8azhGtC7U9h3jtd5bzS1gVlyahEmWy1S6g1t5jwqogY6hSFfuoujwWS_o_AELAu3k0u68VclSuz6v7or-1p6lNfS5Y_pRQ68jUfx_Hx7Rg-ZrcG6WOONOwxF_xEGEQIt05OND1CG4sQLV3OxkFRNGG1Ccf422IAo2YqYjLodcG6LVJ7v6SGeTC7FQA_kx3hce"/>
+</p>
+</div>
+<!-- Glass Rating Card -->
+<div class="glass-card rounded-xl p-stack-lg mb-stack-lg flex flex-col items-center">
+<!-- Stars -->
+<div class="flex justify-center items-center gap-2 mb-stack-lg w-full">
+<button class="material-symbols-outlined text-[48px] star-gradient transition-transform hover:scale-110 focus:outline-none" style="font-variation-settings: 'FILL' 1;">star</button>
+<button class="material-symbols-outlined text-[48px] star-gradient transition-transform hover:scale-110 focus:outline-none" style="font-variation-settings: 'FILL' 1;">star</button>
+<button class="material-symbols-outlined text-[48px] star-gradient transition-transform hover:scale-110 focus:outline-none" style="font-variation-settings: 'FILL' 1;">star</button>
+<button class="material-symbols-outlined text-[56px] star-gradient transition-transform hover:scale-110 focus:outline-none -translate-y-1" style="font-variation-settings: 'FILL' 1;">star</button>
+<button class="material-symbols-outlined text-[48px] text-surface-variant transition-transform hover:scale-110 focus:outline-none" style="font-variation-settings: 'FILL' 0;">star</button>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant text-center mb-stack-md w-full">Tap a star to rate</p>
+<div class="w-full h-[1px] bg-outline-variant/30 mb-stack-lg"></div>
+<!-- Receptiveness -->
+<div class="w-full mb-stack-lg">
+<h3 class="text-body-md font-body-md font-semibold text-on-surface mb-stack-sm">Receptiveness</h3>
+<div class="flex gap-2 flex-wrap">
+<button class="flex-1 min-w-[100px] py-2 px-3 rounded-full pill-active-green text-label-sm font-label-sm flex items-center justify-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">sentiment_very_satisfied</span>
+                        Very Receptive
+                    </button>
+<button class="flex-1 min-w-[100px] py-2 px-3 rounded-full pill-inactive text-label-sm font-label-sm flex items-center justify-center gap-1 transition-colors hover:bg-surface-variant/50">
+<span class="material-symbols-outlined text-[16px]">sentiment_neutral</span>
+                        Neutral
+                    </button>
+<button class="flex-1 min-w-[100px] py-2 px-3 rounded-full pill-inactive text-label-sm font-label-sm flex items-center justify-center gap-1 transition-colors hover:bg-surface-variant/50">
+<span class="material-symbols-outlined text-[16px]">sentiment_dissatisfied</span>
+                        Not Receptive
+                    </button>
+</div>
+</div>
+<!-- Quick Tags -->
+<div class="w-full mb-stack-lg">
+<h3 class="text-body-md font-body-md font-semibold text-on-surface mb-stack-sm">Quick Feedback</h3>
+<div class="flex gap-2 flex-wrap">
+<button class="py-1.5 px-4 rounded-full border border-primary/30 bg-primary/5 text-primary text-label-sm font-label-sm transition-all hover:bg-primary/10">Clear communication</button>
+<button class="py-1.5 px-4 rounded-full border border-outline-variant bg-surface-lowest text-on-surface-variant text-label-sm font-label-sm transition-all hover:bg-surface-variant/30">Punctual</button>
+<button class="py-1.5 px-4 rounded-full border border-primary/30 bg-primary/5 text-primary text-label-sm font-label-sm transition-all hover:bg-primary/10">Attentive</button>
+<button class="py-1.5 px-4 rounded-full border border-outline-variant bg-surface-lowest text-on-surface-variant text-label-sm font-label-sm transition-all hover:bg-surface-variant/30">Needs follow-up</button>
+</div>
+</div>
+<!-- Text Area -->
+<div class="w-full">
+<label class="block text-label-sm font-label-sm text-on-surface mb-base" for="feedback-notes">Additional Notes (Optional)</label>
+<textarea class="w-full rounded-lg border border-outline-variant bg-white/50 p-3 text-body-md font-body-md text-on-surface placeholder:text-outline input-focus-glow transition-all resize-none" id="feedback-notes" placeholder="Share more details about the visit..." rows="3"></textarea>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-stack-sm w-full">
+<button class="w-full h-12 rounded-lg btn-gradient text-on-primary text-body-md font-body-md font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                Submit Feedback
+                <span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="w-full h-12 rounded-lg text-primary text-body-md font-body-md font-semibold hover:bg-surface-variant/50 transition-colors">
+                Skip for now
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-full mx-edge mb-6 h-20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+<!-- Assuming Home/Dashboard context is inactive since this is a transactional screen, suppressing nav items conceptually, but keeping structure per JSON for demonstration, though prompt logic says suppress linear flows. Suppressing content per rules. -->
+<div class="flex w-full justify-around items-center opacity-50 pointer-events-none">
+<div class="flex flex-col items-center justify-center text-on-surface/60">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</div>
+<!-- ... other items would go here, but this is a transactional screen so ideally it would be hidden entirely, showing muted to satisfy structural constraints if forced -->
+</div>
+</nav>
+<script>
+        // Suppress bottom nav on this transactional screen as per The Filter rules.
+        document.querySelector('nav').style.display = 'none';
+    </script>
+</body></html>

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "1074883789696",
+    "project_id": "umakindpharma-10001",
+    "storage_bucket": "umakindpharma-10001.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074883789696:android:3d46e867a77fece5b73765",
+        "android_client_info": {
+          "package_name": "com.example.admin_web"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074883789696-hm6bm7l7sbbjgaqufkbls19p3p2ls9i0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ8-RHeUnGMsvsruEEHKvnLEw8gbZPx3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074883789696-hm6bm7l7sbbjgaqufkbls19p3p2ls9i0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074883789696-34gp0bpp60pu0437rt0tn7u45gih5p6u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.adminWeb"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074883789696:android:f801b6e06a7a50a4b73765",
+        "android_client_info": {
+          "package_name": "com.example.mr_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074883789696-hm6bm7l7sbbjgaqufkbls19p3p2ls9i0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ8-RHeUnGMsvsruEEHKvnLEw8gbZPx3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074883789696-hm6bm7l7sbbjgaqufkbls19p3p2ls9i0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074883789696-34gp0bpp60pu0437rt0tn7u45gih5p6u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.adminWeb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

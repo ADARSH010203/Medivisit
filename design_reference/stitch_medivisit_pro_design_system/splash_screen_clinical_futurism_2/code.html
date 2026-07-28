@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f2ecf4",
+                        "outline-variant": "#cbc4d2",
+                        "tertiary-container": "#c9a74d",
+                        "on-surface-variant": "#494551",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-surface": "#1d1b20",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#322f35",
+                        "secondary": "#63597c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ded8e0",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece6ee",
+                        "secondary-container": "#e1d4fd",
+                        "primary-fixed": "#e9ddff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "surface-variant": "#e6e0e9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#765b00",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "inverse-primary": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "surface-container-low": "#f8f2fa",
+                        "on-primary-fixed": "#22005d",
+                        "primary": "#4f378a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom Splash Background */
+        body {
+            background-color: #0A0E1A; /* Requested Dark Navy Override */
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Ambient Blobs */
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 0;
+            animation: float-blob 10s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: #1A6BFF;
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: #00BFA5;
+            bottom: -200px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 40px) scale(1.1); }
+        }
+
+        /* Logo Animation */
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fade-in-up 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .logo-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            box-shadow: 0 16px 48px rgba(0, 191, 165, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 24px;
+            object-fit: contain;
+            animation: pulse-glow 3s infinite ease-in-out;
+            position: relative;
+        }
+
+        .logo-pedestal {
+            position: absolute;
+            bottom: -20px;
+            width: 200px;
+            height: 40px;
+            background: radial-gradient(ellipse at center, rgba(0, 191, 165, 0.3) 0%, rgba(26, 107, 255, 0) 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+            z-index: -1;
+            animation: pulse-shadow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 16px 48px rgba(0, 191, 165, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.1); transform: scale(1); }
+            50% { box-shadow: 0 24px 64px rgba(26, 107, 255, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2); transform: scale(1.02); }
+        }
+        
+        @keyframes pulse-shadow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes fade-in-up {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography Override for Splash */
+        .splash-title {
+            background: linear-gradient(135deg, #ffffff 0%, #a3c2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 40px;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .splash-subtitle {
+            color: #8da2c0; /* Muted gray-blue */
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            text-align: center;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 240px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #1A6BFF, #00BFA5);
+            border-radius: 4px;
+            box-shadow: 0 0 12px rgba(0, 191, 165, 0.6);
+            animation: load-progress 2.5s ease-out forwards;
+        }
+
+        @keyframes load-progress {
+            0% { width: 0%; }
+            40% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+        
+        /* Layout constraint for mobile preview centering if needed */
+        .splash-canvas {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            max-height: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div class="splash-canvas">
+<!-- Ambient Background Gradients -->
+<div class="ambient-blob blob-1"></div>
+<div class="ambient-blob blob-2"></div>
+<!-- Main Content -->
+<div class="logo-container">
+<div class="relative">
+<img alt="MediVisit Pro Logo" class="logo-image object-cover bg-white/5 backdrop-blur-xl border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-gVrD5_lLrY5bwBS_V2ch4zu-afnLKQanr0KDygqJ_U1CuoLq-3nXP9L1rUzOW9mzUBSgYdx7g4ygZs6aF5KuJHF6nXNPoTwrfTpUb5tEsaVNJVaJAqWZm96bbhGyO74d5I9Gn6kfBGLPcOWFG_uyT7bcTvGC0Q-AlklqMM2F_jMvfcAz_PkX8cmYGvDuX7ZxHvyrx6W4RQD50aPiU2ufuuqcSo8-TVDjW12JD9HpInA7ZoqEnSwaNd7zPlBACeUeOEiP_dkIVpur"/>
+<div class="logo-pedestal"></div>
+</div>
+<h1 class="splash-title">MediVisit Pro</h1>
+<p class="splash-subtitle">Field Excellence, Simplified</p>
+</div>
+<!-- Loading Indicator -->
+<div class="progress-container">
+<div class="progress-bar"></div>
+</div>
+</div>
+<script>
+        // Optional JS for transition away from splash screen
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.addEventListener('animationend', () => {
+                // In a real app, this would route to the main dashboard or login
+                // setTimeout(() => {
+                //     window.location.href = '/dashboard';
+                // }, 500);
+                
+                // Add a gentle fade out effect to the whole container for demo purposes
+                document.querySelector('.splash-canvas').style.transition = 'opacity 0.5s ease';
+                document.querySelector('.splash-canvas').style.opacity = '0.8';
+            });
+        });
+    </script>
+</body></html>

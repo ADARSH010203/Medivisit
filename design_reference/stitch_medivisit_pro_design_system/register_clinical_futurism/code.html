@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f2ecf4",
+                        "outline-variant": "#cbc4d2",
+                        "tertiary-container": "#c9a74d",
+                        "on-surface-variant": "#494551",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-surface": "#1d1b20",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#322f35",
+                        "secondary": "#63597c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ded8e0",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece6ee",
+                        "secondary-container": "#e1d4fd",
+                        "primary-fixed": "#e9ddff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "surface-variant": "#e6e0e9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#765b00",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "inverse-primary": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "surface-container-low": "#f8f2fa",
+                        "on-primary-fixed": "#22005d",
+                        "primary": "#4f378a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        
+        .glass-input {
+            background: rgba(241, 245, 249, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            border-color: #4f378a;
+            box-shadow: 0 0 0 4px rgba(79, 55, 138, 0.15);
+            outline: none;
+        }
+
+        .glass-card-amber {
+            background: rgba(201, 167, 77, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(201, 167, 77, 0.3);
+        }
+
+        .duotone-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .duotone-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: rgba(79, 55, 138, 0.15);
+            filter: blur(4px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .bg-mesh {
+            background-color: #fdf7ff;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(264,61%,82%,0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(264,43%,65%,0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(264,61%,82%,0.4) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .custom-checkbox {
+            appearance: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 1px solid #cbc4d2;
+            border-radius: 0.25em;
+            display: grid;
+            place-content: center;
+        }
+
+        .custom-checkbox::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em white;
+            background-color: transparent;
+            transform-origin: bottom left;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        .custom-checkbox:checked {
+            background: linear-gradient(135deg, #4f378a, #c9a74d);
+            border-color: transparent;
+        }
+
+        .custom-checkbox:checked::before {
+            transform: scale(1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-mesh min-h-screen text-on-surface antialiased font-body-lg flex flex-col justify-center items-center p-margin-mobile md:p-margin-desktop">
+<!-- Main Registration Container -->
+<main class="w-full max-w-2xl relative z-10">
+<!-- Header Section -->
+<header class="text-center mb-8">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Create Your Account</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Join the MediVisit Pro network.</p>
+</header>
+<!-- Amber Info Card -->
+<div class="glass-card-amber rounded-xl p-4 mb-8 flex items-start gap-4">
+<div class="duotone-icon text-tertiary-container flex-shrink-0 mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Please ensure your Employee ID and contact information exactly match your hospital registry records to expedite the verification process.
+            </p>
+</div>
+<!-- Registration Form Panel -->
+<div class="glass-panel rounded-2xl p-6 md:p-8 shadow-[0_16px_48px_rgba(0,0,0,0.08)] relative overflow-hidden border-t border-l border-white/60">
+<form action="#" class="space-y-6" method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Full Name -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="fullName">Full Name</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-3 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="fullName" name="fullName" placeholder="Dr. Jane Doe" required="" type="text"/>
+</div>
+</div>
+<!-- Employee ID -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="empId">Employee ID</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-3 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="empId" name="empId" placeholder="MED-12345" required="" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="md:col-span-2">
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="email">Professional Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-3 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="email" name="email" placeholder="jane.doe@hospital.org" required="" type="email"/>
+</div>
+</div>
+<!-- Phone -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="phone">Contact Number</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-3 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="phone" name="phone" placeholder="+1 (555) 000-0000" required="" type="tel"/>
+</div>
+</div>
+<!-- Territory Dropdown -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="territory">Assigned Territory</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">map</span>
+</div>
+<select class="glass-input block w-full pl-10 pr-10 py-3 rounded-lg font-body-lg text-body-lg text-on-surface focus:ring-0 appearance-none" id="territory" name="territory" required="">
+<option disabled="" selected="" value="">Select Region</option>
+<option value="north">North District</option>
+<option value="south">South District</option>
+<option value="east">East Metro</option>
+<option value="west">West Metro</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Password -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="password">Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-10 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-primary opacity-70 hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password -->
+<div>
+<label class="block font-label-caps text-label-caps text-primary mb-2" for="confirmPassword">Confirm Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary opacity-70">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</div>
+<input class="glass-input block w-full pl-10 pr-3 py-3 rounded-lg font-body-lg text-body-lg text-on-surface placeholder-outline-variant focus:ring-0" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 mt-4">
+<div class="flex items-center h-6">
+<input class="custom-checkbox mt-1" id="terms" name="terms" required="" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="terms">
+                        I confirm that the information provided is accurate and I agree to the <a class="text-primary hover:underline font-semibold" href="#">Terms of Service</a> and <a class="text-primary hover:underline font-semibold" href="#">Privacy Policy</a> governing medical data handling.
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full relative group overflow-hidden rounded-xl mt-8" type="submit">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-[#8A6AD6] transition-transform duration-300 group-hover:scale-105"></div>
+<div class="relative py-4 px-6 flex items-center justify-center gap-2">
+<span class="font-title-md text-title-md text-white">Register Account</span>
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</div>
+</button>
+<div class="text-center mt-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Already have an account? <a class="text-primary font-semibold hover:underline" href="#">Log in here</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Bottom Banner -->
+<div class="glass-card-amber rounded-xl p-4 mt-6 flex items-center justify-center gap-3">
+<div class="duotone-icon text-tertiary-container flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+                Admin approval required before system access is granted.
+            </p>
+</div>
+</main>
+<script>
+        // Simple password toggle interaction
+        const togglePasswordButtons = document.querySelectorAll('button[type="button"]');
+        togglePasswordButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const icon = this.querySelector('span');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.textContent = 'visibility';
+                } else {
+                    input.type = 'password';
+                    icon.textContent = 'visibility_off';
+                }
+            });
+        });
+    </script>
+</body></html>

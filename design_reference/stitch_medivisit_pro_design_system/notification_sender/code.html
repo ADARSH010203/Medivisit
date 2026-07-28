@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Notification Sender</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#323443",
+                      "surface-dim": "#101221",
+                      "secondary-container": "#7000ff",
+                      "on-surface": "#e1e1f6",
+                      "error-container": "#93000a",
+                      "on-surface-variant": "#b9cacb",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#272938",
+                      "inverse-primary": "#00696f",
+                      "tertiary-container": "#ffcfd8",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#3f0019",
+                      "on-secondary": "#3c0090",
+                      "outline-variant": "#3a494b",
+                      "tertiary-fixed-dim": "#ffb1c3",
+                      "on-tertiary": "#66002c",
+                      "surface-bright": "#363848",
+                      "surface-container": "#1d1f2d",
+                      "on-secondary-container": "#ddcdff",
+                      "tertiary": "#fff5f6",
+                      "on-primary": "#00363a",
+                      "inverse-surface": "#e1e1f6",
+                      "on-background": "#e1e1f6",
+                      "primary-container": "#00f2ff",
+                      "primary-fixed-dim": "#00dbe7",
+                      "on-secondary-fixed-variant": "#5700c9",
+                      "on-secondary-fixed": "#23005b",
+                      "surface": "#101221",
+                      "on-primary-fixed": "#002022",
+                      "surface-container-lowest": "#0b0d1b",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#d1bcff",
+                      "primary": "#e1fdff",
+                      "surface-container-low": "#191b29",
+                      "on-tertiary-fixed-variant": "#8f0041",
+                      "on-primary-container": "#006a71",
+                      "inverse-on-surface": "#2e2f3f",
+                      "secondary": "#d1bcff",
+                      "primary-fixed": "#74f5ff",
+                      "secondary-fixed": "#e9ddff",
+                      "surface-container-highest": "#323443",
+                      "on-primary-fixed-variant": "#004f54",
+                      "background": "#101221",
+                      "tertiary-fixed": "#ffd9e0",
+                      "surface-tint": "#00dbe7",
+                      "on-tertiary-container": "#be0059",
+                      "outline": "#849495"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sidebar-width": "280px",
+                      "stack-lg": "32px",
+                      "margin-page": "40px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "kpi-value": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-xl": ["Inter"]
+              },
+              "fontSize": {
+                      "kpi-value": ["40px", { "lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Base Glass Settings & Custom Scrollbar */
+        body {
+            background-color: #03040A; /* Deeper than surface for contrast */
+            color: #e1e1f6;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        /* Level 2 Glass Card Override based on guidance */
+        .glass-level-2 {
+            background-color: rgba(255, 255, 255, 0.05); /* Adjusted from 20% for pure dark mode legibility, kept blur */
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 8px 1px rgba(0, 219, 231, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ambient Mesh Glows */
+        .ambient-mesh-1 {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
+        }
+        .ambient-mesh-2 {
+            background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05) 0%, transparent 60%);
+        }
+
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: transparent;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background: linear-gradient(to right, #00dbe7, #7000ff);
+        }
+        
+        /* Clinical Input Glow */
+        .clinical-input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid transparent;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .clinical-input:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.2);
+            border-bottom-color: #00f2ff;
+            box-shadow: inset 0 -1px 0 0 #00f2ff, 0 4px 12px rgba(0, 242, 255, 0.1);
+            background: rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary-container relative overflow-x-hidden">
+<!-- Ambient Background Meshes (Level 0) -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] ambient-mesh-1 blur-[100px] rounded-full"></div>
+<div class="absolute top-[40%] -right-[20%] w-[1000px] h-[1000px] ambient-mesh-2 blur-[120px] rounded-full"></div>
+</div>
+<!-- SideNavBar (from JSON) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl flex flex-col gap-stack-md py-margin-page z-50">
+<!-- Header -->
+<div class="px-gutter mb-stack-lg flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-white/20 shadow-sm shrink-0">
+<img alt="MediVisit Pro Logo" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a clinical administrator in a futuristic, high-tech medical facility. The lighting is crisp and cool, featuring subtle neon cyan and deep purple accents reflecting off a glass surface. The mood is focused and authoritative, fitting a sleek dark-mode medical software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9iH_ai8FIF-NRe9ww6io9uHGhIfsVduldZ-MYkZNy-oX8Qt1w8PjhETXyQSZS3ZkHBqLuEG3XdHKa1So5ZmW6EADflNqcckhs1BBqvM1V1EG2YHjJWzKfK9pSgFVbWXDP4PN1u-YmLKflDgdDYpNsUxJcS6ZoH7nycmNZMx_xpH7MpzD2ShzAXPeTXbpH9XfHnblmVho4h7PFpIrdAcKU5WknNpvqkeWZoyPiXE8n8yFvGfnhCdppfCQxeZm1Ap1MCz0INmBDCygX"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)] leading-tight">MediVisit Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Clinical Admin Console</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-2 px-2">
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-r-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-r-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">group</span>
+<span>Patients</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-r-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">calendar_today</span>
+<span>Schedules</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-r-xl group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed transition-colors">analytics</span>
+<span>Clinical Data</span>
+</a>
+<!-- Active Tab (System Config is closest intent for Notification Sending) -->
+<a class="flex items-center gap-4 bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-semibold">System Config</span>
+</a>
+</nav>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-[280px] w-[calc(100%-280px)] min-h-screen flex flex-col relative z-10">
+<!-- TopNavBar (from JSON) -->
+<header class="sticky top-0 w-full bg-white/10 backdrop-blur-[20px] border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40">
+<div class="flex items-center gap-stack-lg flex-1">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest hidden lg:block">System / Notifications</div>
+<!-- Search Bar on Left -->
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all placeholder:text-on-surface-variant/50 backdrop-blur-md" placeholder="Search systems..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/20 ml-2">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A small, crisp avatar image showing a highly detailed, professional headshot of a clinical administrator in a futuristic, high-tech medical facility with cool neon lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3SQELM87eG8BueYtEwECxvOBA9XoMqj-EL2fupo9x2qAHZPmJcy0LlZVFHNVzyc0Lk-ebjh_EpxeFqYaMSRSY9lUYabs3qu8QoLuQkBtvKSI_jQcndffXe7JiFM9J-UIZxiJLE7Yo_gkBJ_hP8kavoB1rBIAOgzEaoqrTnNIXbZoQKb6dM_h_neFj-MzyTZzBJFqpGgiSK4sr0JmzC3WagOohgc-zuIS8JcCLFz3bup-r-8x8xIdTD2gROa9e2ouaiPRB5nzpD4iG"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 p-margin-page max-w-container-max mx-auto w-full flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Broadcast Center</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Configure and dispatch systemic notifications to clinical staff or patient devices.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Left: Composer (Level 2 Glass Card) -->
+<div class="lg:col-span-7 glass-level-2 rounded-2xl p-stack-lg flex flex-col gap-stack-lg relative overflow-hidden">
+<!-- Subtle inner top glow -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-container/20 to-transparent"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed">edit_square</span>
+                        Compose Message
+                    </h3>
+<div class="flex flex-col gap-stack-md">
+<!-- Recipient Pills -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Target Audience</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded-full bg-primary-container/10 border border-primary-container/30 text-primary-fixed font-label-sm text-label-sm hover:bg-primary-container/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">group</span>
+                                    All Active Patients
+                                </button>
+<button class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant font-label-sm text-label-sm hover:bg-white/10 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">medical_services</span>
+                                    Clinical Staff
+                                </button>
+<button class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-on-surface-variant font-label-sm text-label-sm hover:bg-white/10 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                                    Custom Segment
+                                </button>
+</div>
+</div>
+<!-- Title Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="notif-title">Notification Title</label>
+<input class="clinical-input w-full px-4 py-3 rounded-t-lg text-on-surface font-body-md placeholder:text-on-surface-variant/40" id="notif-title" placeholder="e.g., System Maintenance Window" type="text"/>
+</div>
+<!-- Message Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="notif-message">Message Body</label>
+<textarea class="clinical-input w-full px-4 py-3 rounded-t-lg text-on-surface font-body-md placeholder:text-on-surface-variant/40 resize-none" id="notif-message" placeholder="Enter detailed message context here..." rows="4"></textarea>
+</div>
+<!-- Action Bar (Toggle & Button) -->
+<div class="flex items-center justify-between mt-4 pt-stack-md border-t border-white/10">
+<!-- Gradient Toggle -->
+<div class="flex items-center gap-3">
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface-variant appearance-none cursor-pointer z-10 top-0 left-0 transition-transform duration-300 ease-in-out" id="schedule-toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-black/40 cursor-pointer border border-white/10" for="schedule-toggle"></label>
+</div>
+<label class="font-label-sm text-label-sm text-on-surface cursor-pointer" for="schedule-toggle">Schedule Delivery</label>
+</div>
+<!-- Gradient Button -->
+<button class="bg-gradient-to-r from-primary-fixed to-secondary-container text-white px-8 py-3 rounded-lg font-label-sm text-label-sm tracking-wider uppercase hover:shadow-[0_0_20px_rgba(112,0,255,0.4)] transition-shadow duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                                Send Notification
+                            </button>
+</div>
+</div>
+</div>
+<!-- Right: Live Preview (Level 2 Glass Card) -->
+<div class="lg:col-span-5 glass-level-2 rounded-2xl p-stack-lg flex flex-col items-center justify-center relative">
+<h3 class="absolute top-stack-lg left-stack-lg font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                        Live Preview
+                    </h3>
+<!-- Phone Mockup Container -->
+<div class="mt-8 w-[280px] h-[580px] border-[6px] border-surface-variant/50 rounded-[3rem] relative shadow-2xl bg-surface-container-highest/20 backdrop-blur-md overflow-hidden flex flex-col pt-12 px-4 pb-4">
+<!-- Notch -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-surface-variant/50 rounded-b-2xl"></div>
+<!-- Simulated App Content -->
+<div class="flex-1 bg-surface/50 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col gap-4 p-4 opacity-50">
+<div class="w-full h-12 bg-white/5 rounded-lg"></div>
+<div class="w-3/4 h-8 bg-white/5 rounded-lg"></div>
+<div class="w-full h-24 bg-white/5 rounded-lg"></div>
+</div>
+<!-- Notification Toast (Floating over content) -->
+<div class="absolute top-16 left-4 right-4 bg-surface-bright/90 backdrop-blur-xl border border-white/10 rounded-xl p-4 shadow-xl translate-y-0 transition-transform flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed text-[18px]">info</span>
+</div>
+<div class="flex flex-col gap-1 overflow-hidden">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold truncate">System Maintenance</span>
+<span class="font-label-sm text-[10px] leading-tight text-on-surface-variant line-clamp-2">The MediVisit clinical portal will undergo scheduled maintenance at 0200h UTC. Please save active records.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom: Sent History Table (Level 2 Glass Card) -->
+<div class="lg:col-span-12 glass-level-2 rounded-2xl p-stack-lg flex flex-col gap-stack-md overflow-hidden">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+                        Dispatch History
+                    </h3>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10">
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Timestamp</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Title</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Target</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">Today, 09:41 AM</td>
+<td class="py-4 px-4 font-medium">Daily Ward Round Reminder</td>
+<td class="py-4 px-4 text-on-surface-variant">Clinical Staff</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                            Delivered
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]">content_copy</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">Yesterday, 14:00 PM</td>
+<td class="py-4 px-4 font-medium">Lab Results Available - Batch A</td>
+<td class="py-4 px-4 text-on-surface-variant">Specific Schedule</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                            Delivered
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]">content_copy</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-transparent hover:bg-white/5 transition-colors group">
+<td class="py-4 px-4 whitespace-nowrap">Oct 24, 08:00 AM</td>
+<td class="py-4 px-4 font-medium">System Update v2.4 Release Notes</td>
+<td class="py-4 px-4 text-on-surface-variant">All Active Patients</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/20 text-secondary border border-secondary-container/30">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                            Scheduled
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right opacity-0 group-hover:opacity-100 transition-opacity flex justify-end gap-2">
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[20px]">cancel</span></button>
+<button class="text-on-surface-variant hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple interactivity for the toggle switch gradient effect mapping
+        const toggle = document.getElementById('schedule-toggle');
+        const toggleLabel = document.querySelector('.toggle-label');
+        
+        toggle.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                // Background handles via CSS
+            }
+        });
+
+        // Live Preview Title update
+        const titleInput = document.getElementById('notif-title');
+        const previewTitle = document.querySelector('.font-label-sm.text-on-surface.font-semibold.truncate');
+        
+        titleInput.addEventListener('input', (e) => {
+            if(e.target.value.trim() === '') {
+                previewTitle.textContent = 'System Notification';
+            } else {
+                previewTitle.textContent = e.target.value;
+            }
+        });
+
+        // Live Preview Message update
+        const msgInput = document.getElementById('notif-message');
+        const previewMsg = document.querySelector('.line-clamp-2');
+        
+        msgInput.addEventListener('input', (e) => {
+            if(e.target.value.trim() === '') {
+                previewMsg.textContent = 'Notification content will appear here...';
+            } else {
+                previewMsg.textContent = e.target.value;
+            }
+        });
+    </script>
+</body></html>

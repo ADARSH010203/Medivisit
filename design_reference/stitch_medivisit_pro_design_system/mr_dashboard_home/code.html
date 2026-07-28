@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                "on-surface": "#151c27",
+                "secondary-fixed-dim": "#44ddc1",
+                "surface-variant": "#dce2f3",
+                "background": "#f9f9ff",
+                "tertiary-container": "#707490",
+                "inverse-surface": "#2a313d",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#dde1ff",
+                "surface-container-high": "#e2e8f8",
+                "secondary-fixed": "#68fadd",
+                "primary-container": "#1a6bff",
+                "surface-container": "#e7eefe",
+                "outline-variant": "#c2c6d8",
+                "inverse-on-surface": "#ebf1ff",
+                "on-tertiary-fixed-variant": "#41455f",
+                "surface-dim": "#d3daea",
+                "primary-fixed": "#dae1ff",
+                "on-secondary-fixed-variant": "#005145",
+                "surface-tint": "#0055d5",
+                "on-surface-variant": "#424655",
+                "secondary-container": "#68fadd",
+                "error-container": "#ffdad6",
+                "inverse-primary": "#b3c5ff",
+                "on-primary-fixed": "#001849",
+                "on-secondary-fixed": "#00201a",
+                "tertiary-fixed-dim": "#c1c5e3",
+                "surface-bright": "#f9f9ff",
+                "on-primary-container": "#fffeff",
+                "on-secondary-container": "#007261",
+                "surface-container-low": "#f0f3ff",
+                "surface-container-highest": "#dce2f3",
+                "on-tertiary-container": "#fffeff",
+                "surface": "#f9f9ff",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#727687",
+                "on-tertiary-fixed": "#151a31",
+                "on-primary-fixed-variant": "#003fa4",
+                "on-error": "#ffffff",
+                "tertiary": "#575c76",
+                "on-secondary": "#ffffff",
+                "on-background": "#151c27",
+                "primary-fixed-dim": "#b3c5ff",
+                "error": "#ba1a1a",
+                "primary": "#0053d3",
+                "secondary": "#006b5c",
+                "on-tertiary": "#ffffff",
+                "on-error-container": "#93000a"
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            spacing: {
+                "stack-sm": "8px",
+                "card-padding": "16px",
+                "base": "4px",
+                "stack-md": "16px",
+                "stack-lg": "24px",
+                "edge": "20px"
+            },
+            fontFamily: {
+                "label-sm": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "display": ["Inter"],
+                "headline-md": ["Inter"],
+                "stats-lg": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            fontSize: {
+                "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,0.03) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,0.03) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,0.03) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        .hero-mesh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 350px;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(26, 107, 255, 0.15), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(104, 250, 221, 0.15), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(112, 116, 144, 0.1), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .glass-pill-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .smart-pulse-bg {
+            background: linear-gradient(135deg, rgba(26, 107, 255, 0.9) 0%, rgba(104, 250, 221, 0.8) 100%);
+            box-shadow: 0 12px 32px rgba(26, 107, 255, 0.25);
+        }
+
+        .circular-progress {
+            transform: rotate(-90deg);
+        }
+        .circular-progress circle {
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        
+        .glow-shadow-primary { box-shadow: 0 0 20px rgba(26, 107, 255, 0.4); }
+        .glow-shadow-teal { box-shadow: 0 0 15px rgba(104, 250, 221, 0.4); }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md antialiased min-h-screen relative pb-32">
+<!-- Ambient Hero Mesh -->
+<div class="hero-mesh"></div>
+<!-- Top App Bar (Shared Component) -->
+<header class="flex justify-between items-center px-edge h-16 w-full sticky top-0 z-40 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-primary to-secondary-fixed">
+<img alt="User Profile" class="w-full h-full rounded-full border-2 border-white object-cover" data-alt="A professional headshot of a diverse male medical representative with a warm smile, well-lit against a neutral clean background, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrZrhqCcv6-I6sENfsOZhnWkLa3K4k35d-cMSrQhEpnE-iVC257n6VcycNOBTl0y7M8L3O8gVnxdHsK201IJAkdh5g5gWRizHs3ogWXK8YztdR9Fzqp5Z48DpQVgeXVxpRcpt6GIJDWNIQEHhC9UDqswVliUZ1rFn2qb7wj2SjIqjJQwLwmrajrSKdqaVvcM3Q0cX19X33WsCsGwMSiOZqx16KtsOP1sFoKTn7oxee1OuEDIcAaHHNlLUQf8i-kRS7bFSWwOksiwpj"/>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md text-on-surface">Hi, Rahul 👋</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Good morning</span>
+</div>
+</div>
+<button class="relative p-2 rounded-full hover:bg-surface-variant/50 transition-colors glass-card border-none bg-white/40">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2.5 h-2.5 bg-error rounded-full border-2 border-surface glow-shadow-primary"></span>
+</button>
+</header>
+<main class="px-edge max-w-screen-md mx-auto mt-stack-md flex flex-col gap-stack-lg relative z-10">
+<!-- Smart Pulse Banner -->
+<section class="rounded-xl p-card-padding smart-pulse-bg text-white relative overflow-hidden flex items-center justify-between border border-white/20">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+<div class="flex flex-col gap-1 z-10 w-2/3">
+<h2 class="text-headline-md font-headline-md font-bold leading-tight">You have 5 doctor visits planned today.</h2>
+<p class="text-label-sm font-label-sm text-white/90">2 already completed!</p>
+</div>
+<div class="relative w-16 h-16 z-10 flex-shrink-0">
+<svg class="circular-progress w-full h-full" viewbox="0 0 36 36">
+<path class="text-white/20 stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-white stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="100, 100" stroke-dashoffset="60" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-label-sm font-label-sm font-bold">2/5</div>
+</div>
+</section>
+<!-- Today's Summary (Bento Mini) -->
+<section class="grid grid-cols-3 gap-stack-sm">
+<div class="glass-card rounded-lg p-3 flex flex-col items-center justify-center text-center gap-1">
+<span class="material-symbols-outlined text-primary mb-1">calendar_today</span>
+<span class="text-stats-lg font-stats-lg text-transparent bg-clip-text bg-gradient-to-r from-primary to-surface-tint">2/5</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider">Visits Today</span>
+</div>
+<div class="glass-card rounded-lg p-3 flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-secondary-fixed/10 glow-shadow-teal opacity-50"></div>
+<span class="material-symbols-outlined text-secondary z-10 mb-1">how_to_reg</span>
+<span class="text-stats-lg font-stats-lg text-secondary z-10">✓</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider z-10">Attendance</span>
+</div>
+<div class="glass-card rounded-lg p-3 flex flex-col items-center justify-center text-center gap-1">
+<span class="material-symbols-outlined text-tertiary mb-1">trending_up</span>
+<span class="text-stats-lg font-stats-lg text-tertiary">18</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider">This Week</span>
+</div>
+</section>
+<!-- Module Grid -->
+<section class="grid grid-cols-2 gap-stack-md">
+<button class="glass-card rounded-xl p-card-padding flex flex-col gap-3 items-start hover:-translate-y-1 transition-transform group text-left">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:glow-shadow-primary transition-shadow">
+<span class="material-symbols-outlined text-primary">stethoscope</span>
+</div>
+<span class="text-body-lg font-body-lg font-semibold text-on-surface">Doctor Visits</span>
+</button>
+<button class="glass-card rounded-xl p-card-padding flex flex-col gap-3 items-start hover:-translate-y-1 transition-transform group text-left">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(87,92,118,0.4)] transition-shadow">
+<span class="material-symbols-outlined text-tertiary">medication</span>
+</div>
+<span class="text-body-lg font-body-lg font-semibold text-on-surface">Products</span>
+</button>
+<button class="glass-card rounded-xl p-card-padding flex flex-col gap-3 items-start hover:-translate-y-1 transition-transform group text-left">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center group-hover:glow-shadow-teal transition-shadow">
+<span class="material-symbols-outlined text-secondary">fact_check</span>
+</div>
+<span class="text-body-lg font-body-lg font-semibold text-on-surface">Attendance</span>
+</button>
+<button class="glass-card rounded-xl p-card-padding flex flex-col gap-3 items-start hover:-translate-y-1 transition-transform group text-left">
+<div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-shadow">
+<span class="material-symbols-outlined text-amber-600">event_busy</span>
+</div>
+<span class="text-body-lg font-body-lg font-semibold text-on-surface">Leave</span>
+</button>
+</section>
+<!-- Recent Activity -->
+<section class="flex flex-col gap-stack-sm mb-10">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-2">Recent Activity</h3>
+<div class="glass-card rounded-lg p-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="text-body-md font-body-md text-on-surface">Visit completed: Dr. Sharma</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-normal">Cardiology Dept</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">10:30 AM</span>
+</div>
+<div class="glass-card rounded-lg p-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[18px]">add_location</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="text-body-md font-body-md text-on-surface">Check-in: City Hospital</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-normal">Location verified</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">09:15 AM</span>
+</div>
+<div class="glass-card rounded-lg p-3 flex items-center gap-3 opacity-70">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">login</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="text-body-md font-body-md text-on-surface">Morning Attendance</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-normal">Marked present</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">08:45 AM</span>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Shell & FAB (Shared Component translated logic) -->
+<div class="fixed bottom-0 left-0 w-full z-50 px-4 pb-4 md:hidden pointer-events-none flex flex-col items-center">
+<!-- Floating FAB -->
+<button class="pointer-events-auto w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary-fixed text-white shadow-[0_8px_32px_rgba(26,107,255,0.5)] flex items-center justify-center mb-[-28px] z-20 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px] filled">add</span>
+</button>
+<!-- Glass Pill Nav -->
+<nav class="pointer-events-auto w-full glass-pill-nav rounded-full h-16 flex justify-around items-center px-2 z-10 relative">
+<button class="flex flex-col items-center justify-center p-2 rounded-full bg-primary/10 text-primary w-16">
+<span class="material-symbols-outlined filled">grid_view</span>
+<span class="text-[10px] font-label-sm mt-0.5">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:text-primary transition-colors w-16 mr-6">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-label-sm mt-0.5">Insights</span>
+</button>
+<!-- Spacer for FAB -->
+<div class="w-8"></div>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:text-primary transition-colors w-16 ml-6">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-label-sm mt-0.5">Patients</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-sm mt-0.5">Profile</span>
+</button>
+</nav>
+</div>
+</body></html>

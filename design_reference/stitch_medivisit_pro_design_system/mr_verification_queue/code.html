@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - MR Verification Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-variant": "#323443",
+                            "surface-dim": "#101221",
+                            "secondary-container": "#7000ff",
+                            "on-surface": "#e1e1f6",
+                            "error-container": "#93000a",
+                            "on-surface-variant": "#b9cacb",
+                            "error": "#ffb4ab",
+                            "surface-container-high": "#272938",
+                            "inverse-primary": "#00696f",
+                            "tertiary-container": "#ffcfd8",
+                            "on-error": "#690005",
+                            "on-tertiary-fixed": "#3f0019",
+                            "on-secondary": "#3c0090",
+                            "outline-variant": "#3a494b",
+                            "tertiary-fixed-dim": "#ffb1c3",
+                            "on-tertiary": "#66002c",
+                            "surface-bright": "#363848",
+                            "surface-container": "#1d1f2d",
+                            "on-secondary-container": "#ddcdff",
+                            "tertiary": "#fff5f6",
+                            "on-primary": "#00363a",
+                            "inverse-surface": "#e1e1f6",
+                            "on-background": "#e1e1f6",
+                            "primary-container": "#00f2ff",
+                            "primary-fixed-dim": "#00dbe7",
+                            "on-secondary-fixed-variant": "#5700c9",
+                            "on-secondary-fixed": "#23005b",
+                            "surface": "#101221",
+                            "on-primary-fixed": "#002022",
+                            "surface-container-lowest": "#0b0d1b",
+                            "on-error-container": "#ffdad6",
+                            "secondary-fixed-dim": "#d1bcff",
+                            "primary": "#e1fdff",
+                            "surface-container-low": "#191b29",
+                            "on-tertiary-fixed-variant": "#8f0041",
+                            "on-primary-container": "#006a71",
+                            "inverse-on-surface": "#2e2f3f",
+                            "secondary": "#d1bcff",
+                            "primary-fixed": "#74f5ff",
+                            "secondary-fixed": "#e9ddff",
+                            "surface-container-highest": "#323443",
+                            "on-primary-fixed-variant": "#004f54",
+                            "background": "#101221",
+                            "tertiary-fixed": "#ffd9e0",
+                            "surface-tint": "#00dbe7",
+                            "on-tertiary-container": "#be0059",
+                            "outline": "#849495"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "gutter": "24px",
+                            "sidebar-width": "280px",
+                            "stack-lg": "32px",
+                            "margin-page": "40px",
+                            "stack-md": "16px",
+                            "stack-sm": "8px",
+                            "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                            "kpi-value": [
+                                    "Inter"
+                            ],
+                            "headline-lg": [
+                                    "Inter"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "label-sm": [
+                                    "Geist"
+                            ],
+                            "headline-md": [
+                                    "Inter"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "display-xl": [
+                                    "Inter"
+                            ]
+                    },
+                    "fontSize": {
+                            "kpi-value": [
+                                    "40px",
+                                    {
+                                            "lineHeight": "1",
+                                            "letterSpacing": "-0.03em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-sm": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "1.3",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.5",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-xl": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<style>
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: #03040A;
+            overflow: hidden;
+        }
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.05;
+        }
+        .blob-1 {
+            top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: #00dbe7;
+        }
+        .blob-2 {
+            bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+            background: #7000ff;
+        }
+        
+        .glass-panel-level-1 {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .glass-panel-level-2 {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 8px 1px rgba(0, 219, 231, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #00dbe7, #d1bcff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #00696f, #3c0090);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(0, 219, 231, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .btn-reject {
+            background: rgba(255, 180, 171, 0.05);
+            border: 1px solid rgba(255, 180, 171, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .btn-reject:hover {
+            background: rgba(255, 180, 171, 0.15);
+            border-color: rgba(255, 180, 171, 0.6);
+            box-shadow: 0 0 10px rgba(255, 180, 171, 0.2);
+        }
+
+        .duotone-icon {
+            position: relative;
+            display: inline-flex;
+        }
+        .duotone-icon::before {
+            content: attr(data-icon);
+            font-family: 'Material Symbols Outlined';
+            position: absolute;
+            color: #00dbe7;
+            opacity: 0.3;
+            filter: drop-shadow(0 0 4px rgba(0, 219, 231, 0.5));
+            transform: translate(1px, 1px);
+        }
+
+        .avatar-ring {
+            background: linear-gradient(45deg, #00dbe7, #7000ff);
+            padding: 2px;
+            border-radius: 50%;
+        }
+
+        /* Modal specific */
+        .modal-overlay {
+            background: rgba(3, 4, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden min-h-screen">
+<div class="mesh-bg">
+<div class="mesh-blob blob-1"></div>
+<div class="mesh-blob blob-2"></div>
+</div>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] font-body-md text-body-md border-r border-white/10 shadow-2xl flex flex-col gap-stack-md py-margin-page z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+<p class="text-on-surface-variant text-sm mt-1">Clinical Admin Console</p>
+</div>
+<div class="flex flex-col gap-2 w-full">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 transition-all duration-300 ease-in-out mr-4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+                Patients
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="calendar_today">calendar_today</span>
+                Schedules
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="analytics">analytics</span>
+                Clinical Data
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined duotone-icon" data-icon="settings">settings</span>
+                System Config
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="sticky top-0 ml-[280px] w-[calc(100%-280px)] bg-white/10 backdrop-blur-[20px] font-label-sm text-label-sm border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40 transition-all duration-150">
+<div class="flex items-center">
+<!-- Search placeholder -->
+<div class="bg-white/15 rounded-full px-4 py-2 flex items-center border border-white/10 focus-within:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" style="font-size: 18px;">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface placeholder-on-surface-variant text-sm w-64 focus:ring-0" placeholder="Search records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 text-primary-fixed">
+<button class="hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full shadow-[0_0_5px_rgba(255,180,171,0.8)]"></span>
+</button>
+<button class="hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="hover:text-primary transition-colors active:scale-95 duration-150 p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="ml-4 h-10 w-10 rounded-full border border-primary/30 overflow-hidden shadow-[0_0_10px_rgba(0,219,231,0.2)]">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A futuristic, hyper-clean medical administrator avatar, styled with sleek metallic and teal accents against a dark clinical background, conveying professional authority in a high-tech lab setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqQn4lu2iICqe3EwXrOPr_jySxK_SQ0BJv-xNVwHFrjvMhGHHsqJ52VmZ6vaIyCKENezLFlePs_Se7nQyy3zMiVC3IIIpWUmvT8nDHb2rrthUMVsxrqL7ZjNzBhpKWpuihu-eDZcaAgZyJXDdbsuiDP7jU8oJyZEnuLAreF7Upe_mEhOJ-LcnlYBnzyMAJOkhybb0cykIZQ-Hx7eCtmSpsadlkOujDrMCe3Elol5nzQfI11alm90KR5lF-tQtwbkuJU476y6iZG3JI"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] p-margin-page min-h-[calc(100vh-80px)]">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-display-xl text-display-xl text-gradient mb-2">Pending Verifications (6)</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Review and adjudicate incoming Medical Representative applications.</p>
+</div>
+<div class="flex gap-3">
+<button class="glass-panel-level-2 px-4 py-2 rounded-lg font-label-sm text-label-sm text-on-surface hover:bg-white/30 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">filter_list</span>
+                        Filter
+                    </button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg">
+<!-- Applicant Card 1 -->
+<article class="glass-panel-level-2 rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-surface-variant/50 text-on-surface-variant px-2 py-1 rounded text-xs font-label-sm uppercase tracking-wider">Priority</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="avatar-ring w-16 h-16 shrink-0">
+<div class="w-full h-full rounded-full overflow-hidden border-2 border-[#03040A]">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young professional medical representative looking confident, illuminated by soft cool teal and purple studio lights against a deep dark, modern clinical background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo4mdRxctO60YLVH3pyHOysZN5D9Y-xH6h_qxe41V0mk4wekp_fQq4F3WcKI-YoIEHm2-AdQKSvPO3Aa87N9neiKBm5KOhRXPf-LxwKQPt5rQAC0-7dhaFDqRSCN1ey68lKKpGIBscpJP-Fi--AnyOfLw5dNW75cnwpJ-KzrvO4fEyWq27YC5hIvYqoJie0n72lyiPawvF7elt4godOeEUXP4hFb9FpDUIkIoZ6T1pa7MHQXyXysdm75nSJmcBIN2x_4ajfyeVY3gz"/>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface m-0">Dr. Sarah Jenkins</h3>
+<p class="text-primary-fixed-dim text-sm font-label-sm mt-1">ID: MR-8492-X</p>
+</div>
+</div>
+<div class="space-y-3 mt-2 border-t border-white/5 pt-4 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="business_center" style="font-size: 20px;">business_center</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Sponsor</p>
+<p class="text-sm">NeuroTech BioSciences</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="shield_person" style="font-size: 20px;">shield_person</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Clearance Level</p>
+<p class="text-sm text-secondary-fixed-dim">Level 4 - Surgical Suite</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-white/5">
+<button class="flex-1 btn-reject text-error font-label-sm py-2 rounded-lg flex justify-center items-center gap-2" onclick="openModal()">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                            Reject
+                        </button>
+<button class="flex-1 btn-primary text-white font-label-sm py-2 rounded-lg flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+                            Approve
+                        </button>
+</div>
+</article>
+<!-- Applicant Card 2 -->
+<article class="glass-panel-level-2 rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<div class="flex items-center gap-4">
+<div class="avatar-ring w-16 h-16 shrink-0">
+<div class="w-full h-full rounded-full overflow-hidden border-2 border-[#03040A]">
+<img class="w-full h-full object-cover" data-alt="Portrait of an experienced male medical liaison in a sleek dark suit, sharp focus, cinematic lighting with a subtle neon cyan rim light in a futuristic medical facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-mxiPK4PXd1XHwn6ktw3adF1dez01Xjeg5VHy8CM4So0Fdr4fzcFHyiVsZi-AqWg_FNVxAnP2yhHeQDaoF3kw1Ac5Y8El_VrpwA4uQhcmpiB1VzeN3-Uf7g7bDXQe2Eyn3LUq4-LEgpvXiZN88EOHV9uvoUU-htdXWW-FB0BJ5XRzvS4GWYLPt-krU5Rpr9EQ-ySH73QLI2SHIj4_jjk4APIlcTu_tDXhb2f8CsU_zTjIEvx8EneI_nO73aGQCaJ-XLYkxIDRDz8C"/>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface m-0">Michael Chen</h3>
+<p class="text-primary-fixed-dim text-sm font-label-sm mt-1">ID: MR-7731-A</p>
+</div>
+</div>
+<div class="space-y-3 mt-2 border-t border-white/5 pt-4 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="business_center" style="font-size: 20px;">business_center</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Sponsor</p>
+<p class="text-sm">Apex Cardio Systems</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="shield_person" style="font-size: 20px;">shield_person</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Clearance Level</p>
+<p class="text-sm text-secondary-fixed-dim">Level 2 - General Wards</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-white/5">
+<button class="flex-1 btn-reject text-error font-label-sm py-2 rounded-lg flex justify-center items-center gap-2" onclick="openModal()">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                            Reject
+                        </button>
+<button class="flex-1 btn-primary text-white font-label-sm py-2 rounded-lg flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+                            Approve
+                        </button>
+</div>
+</article>
+<!-- Applicant Card 3 -->
+<article class="glass-panel-level-2 rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<div class="flex items-center gap-4">
+<div class="avatar-ring w-16 h-16 shrink-0">
+<div class="w-full h-full rounded-full overflow-hidden border-2 border-[#03040A]">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a female medical device representative wearing smart glasses, standing in a dark modern clinic corridor lit by sparse, futuristic purple and teal LED strips." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe36ISNRyw1PgB8HlN5XalAOmQ0vX8yvNIAyMLGd-B7P1pKW46sxmrNA_2tGlkOLlqaM2QGrFx-ts0kwi8mjAKg0bTLfOIpSEcmskdzAr8ZUaLwPG1rPoMrlS35yh0gGeq9nLC5kwxS7DPC2s3l2xPlmT14S7ws4LY4tTfgJLluurIUjRRMXHASaJQef-ZwSvEOmGV4QPwoTKcxiNxJV65f6351NN7nTgRYeUrE2dibbbYY8ER2zweLsKxds2ma15t9l1toawN3wMl"/>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface m-0">Elena Rostova</h3>
+<p class="text-primary-fixed-dim text-sm font-label-sm mt-1">ID: MR-9012-V</p>
+</div>
+</div>
+<div class="space-y-3 mt-2 border-t border-white/5 pt-4 flex-grow">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="business_center" style="font-size: 20px;">business_center</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Sponsor</p>
+<p class="text-sm">Vanguard Orthopedics</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined duotone-icon text-on-surface-variant mt-0.5" data-icon="warning" style="font-size: 20px;">warning</span>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase">Flagged Status</p>
+<p class="text-sm text-error">Missing Credential Docs</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-white/5">
+<button class="flex-1 btn-reject text-error font-label-sm py-2 rounded-lg flex justify-center items-center gap-2" onclick="openModal()">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                            Reject
+                        </button>
+<button class="flex-1 btn-primary text-white font-label-sm py-2 rounded-lg flex justify-center items-center gap-2 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+                            Approve
+                        </button>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- Rejection Modal Overlay -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center modal-overlay opacity-0 transition-opacity duration-300" id="rejectionModal">
+<div class="glass-panel-level-2 w-full max-w-md rounded-xl p-8 transform scale-95 transition-transform duration-300 shadow-2xl relative" id="modalContent">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-white transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h3 class="font-headline-md text-headline-md text-error mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">block</span>
+                Confirm Rejection
+            </h3>
+<p class="text-on-surface-variant text-sm mb-6">Please specify the reason for rejecting this verification request. This will be logged in the audit trail.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-label-sm text-on-surface-variant uppercase mb-2">Reason Code</label>
+<select class="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-on-surface focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none transition-colors appearance-none">
+<option class="bg-surface-dim" value="docs">Incomplete Documentation</option>
+<option class="bg-surface-dim" value="expired">Expired Credentials</option>
+<option class="bg-surface-dim" value="sponsor">Unverified Sponsor</option>
+<option class="bg-surface-dim" value="other">Other (Specify below)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-label-sm text-on-surface-variant uppercase mb-2">Additional Notes</label>
+<textarea class="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-on-surface focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none transition-colors h-24 resize-none placeholder-on-surface-variant/50" placeholder="Enter detailed reason..."></textarea>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8 pt-4 border-t border-white/10">
+<button class="px-5 py-2 rounded-lg font-label-sm text-on-surface-variant hover:text-white hover:bg-white/5 transition-colors" onclick="closeModal()">Cancel</button>
+<button class="btn-reject text-error px-6 py-2 rounded-lg font-label-sm font-semibold flex items-center gap-2" onclick="closeModal()">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete_forever</span>
+                    Submit Rejection
+                </button>
+</div>
+</div>
+</div>
+<script>
+        const modal = document.getElementById('rejectionModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body></html>

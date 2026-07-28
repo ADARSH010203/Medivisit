@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirm Visit - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#707490",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#68fadd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "primary": "#0053d3",
+                        "on-secondary-fixed": "#00201a",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary": "#575c76",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "surface-variant": "#dce2f3",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#c2c6d8",
+                        "on-background": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#fffeff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary": "#006b5c",
+                        "on-secondary-container": "#007261",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-container-high": "#e2e8f8",
+                        "on-surface-variant": "#424655",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-surface": "#151c27",
+                        "inverse-surface": "#2a313d",
+                        "on-primary": "#ffffff",
+                        "outline": "#727687"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "16px",
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            80%, 100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .chip-selected {
+            background: linear-gradient(135deg, theme('colors.secondary'), theme('colors.secondary-container'));
+            color: theme('colors.on-secondary');
+            border-color: transparent;
+        }
+
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(0, 107, 92, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
+<!-- Top Navigation Placeholder (Hidden for linear flow) -->
+<main class="w-full max-w-[480px] mx-auto px-edge pt-stack-lg pb-32 flex flex-col gap-stack-lg">
+<!-- Header: Doctor Info Glass Card -->
+<div class="glass-card rounded-xl p-card-padding flex items-center gap-stack-md">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm" data-alt="Professional headshot portrait of a confident male doctor in his 40s wearing a clean white lab coat over a blue shirt, standing in a bright modern medical clinic. The lighting is soft and professional, highlighting his approachable expression. Shot with shallow depth of field to blur the clinical background slightly. Corporate modern medical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW3kKybcYKJpaaeL238w_uUkodIw3HROSA1zxtoBx0WQmm755811RUtrtcNjoSVXNZwJTrr49XAMjIaXNXWVfWqVWYr-gSB5bakmkcw6lmAEXQ-FiiOlzFdcGMIjYAZx6rS2fo_wI61j-dtyNXzL-P0YcNWUn8WxlP8aoa3FV6B3hmkQSLwjqVyeOWyuB6OU-7Sw_LW7Ac43AJVVW7elFszldsBHP76oYsYkjqss62DYyaiyhjzw-sQNDx2CsYteUSZFvVQTH7MNVy"/>
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface">Dr. A. Sharma</h1>
+<p class="text-body-md font-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">domain</span> Cardiology Dept, City Hospital
+                </p>
+</div>
+</div>
+<!-- Map Preview & Status -->
+<div class="flex flex-col gap-stack-sm items-center w-full">
+<div class="relative w-full h-[200px] rounded-xl overflow-hidden glass-card shadow-md border-outline-variant">
+<!-- Map Background Placeholder -->
+<div class="absolute inset-0 bg-surface-container-high" data-alt="A modern, high-tech stylized satellite map view of a city area. The map uses a light, clean color palette consistent with modern SaaS fintech or medical applications, primarily soft whites, light greys, and subtle blue/teal accents for roads and parks. The viewpoint is directly top-down, showing urban blocks and streets clearly but abstractly. Corporate modern professional aesthetic." data-location="City Map" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg')"></div>
+<!-- GPS Pin Overlay -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-8 h-8 bg-secondary/30 rounded-full pulse-ring"></div>
+<div class="absolute w-4 h-4 bg-secondary rounded-full shadow-sm border-2 border-white"></div>
+</div>
+</div>
+</div>
+<!-- Location Status Pill -->
+<div class="bg-secondary/10 text-secondary border border-secondary/20 rounded-full px-4 py-2 flex flex-col items-center gap-1 w-max mx-auto shadow-sm backdrop-blur-sm mt-stack-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Location Captured</span>
+</div>
+<span class="text-[10px] opacity-80 font-body-md">Accuracy: 12m</span>
+</div>
+</div>
+<!-- Confirmation Form -->
+<div class="flex flex-col gap-stack-md mt-stack-sm">
+<h2 class="text-headline-md font-headline-md text-center text-on-background">Did you visit Dr. Sharma today?</h2>
+<!-- Quick Tags -->
+<div class="flex flex-col gap-stack-sm mt-stack-sm">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Quick Tags</span>
+<div class="flex flex-wrap gap-2">
+<button class="chip glass-card rounded-full px-4 py-2 text-body-md font-body-md text-on-surface hover:bg-surface-variant/50 transition-colors border-outline-variant chip-selected" onclick="this.classList.toggle('chip-selected')">
+                        Discussed new product
+                    </button>
+<button class="chip glass-card rounded-full px-4 py-2 text-body-md font-body-md text-on-surface hover:bg-surface-variant/50 transition-colors border-outline-variant" onclick="this.classList.toggle('chip-selected')">
+                        Sample given
+                    </button>
+<button class="chip glass-card rounded-full px-4 py-2 text-body-md font-body-md text-on-surface hover:bg-surface-variant/50 transition-colors border-outline-variant" onclick="this.classList.toggle('chip-selected')">
+                        Follow-up needed
+                    </button>
+<button class="chip glass-card rounded-full px-4 py-2 text-body-md font-body-md text-on-surface hover:bg-surface-variant/50 transition-colors border-outline-variant" onclick="this.classList.toggle('chip-selected')">
+                        KOL engaged
+                    </button>
+</div>
+</div>
+<!-- Notes Field -->
+<div class="flex flex-col gap-stack-sm mt-stack-sm">
+<label class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider" for="visit-notes">Visit Notes (Optional)</label>
+<textarea class="w-full bg-surface/50 border border-outline-variant rounded-lg p-3 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-inner resize-none backdrop-blur-sm" id="visit-notes" placeholder="Add specific details about the interaction..." rows="3"></textarea>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-xl border-t border-surface-variant px-edge py-4 pb-8 flex flex-col gap-4 shadow-[0_-4px_24px_rgba(0,0,0,0.05)] z-50">
+<button class="w-full h-12 rounded-lg bg-gradient-to-r from-secondary to-secondary-container text-on-secondary text-body-md font-label-sm flex items-center justify-center gap-2 btn-glow hover:scale-[1.02] transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span>
+            Confirm Visit
+        </button>
+<button class="w-full text-center text-body-md font-body-md text-outline hover:text-on-surface transition-colors">
+            Cancel
+        </button>
+</div>
+</body></html>

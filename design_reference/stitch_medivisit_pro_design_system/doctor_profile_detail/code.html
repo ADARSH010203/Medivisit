@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Doctor Profile - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#707490",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#68fadd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "primary": "#0053d3",
+                        "on-secondary-fixed": "#00201a",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary": "#575c76",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "surface-variant": "#dce2f3",
+                        "surface": "#f9f9ff",
+                        "outline-variant": "#c2c6d8",
+                        "on-background": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#fffeff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary": "#006b5c",
+                        "on-secondary-container": "#007261",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-container-high": "#e2e8f8",
+                        "on-surface-variant": "#424655",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-secondary-fixed-variant": "#005145",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed": "#151a31",
+                        "on-surface": "#151c27",
+                        "inverse-surface": "#2a313d",
+                        "on-primary": "#ffffff",
+                        "outline": "#727687"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "card-padding": "16px",
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "stats-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }],
+                        "body-md": ["14px", { lineHeight: "21px", fontWeight: "400" }],
+                        "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "stats-lg": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .gradient-ring {
+            background: linear-gradient(135deg, #1a6bff, #68fadd);
+            padding: 4px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .gradient-ring::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: linear-gradient(135deg, rgba(26,107,255,0.4), rgba(104,250,221,0.4));
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(10px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0053d3, #006b5c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #1a6bff, #68fadd);
+            border-radius: 3px 3px 0 0;
+        }
+        .timeline-connector {
+            background: linear-gradient(to bottom, #1a6bff 0%, rgba(26,107,255,0) 100%);
+        }
+        /* Hide scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32 md:pb-24 antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-on-surface/80 backdrop-blur-xl docked full-width top-0 sticky no hard borders, soft glassmorphism shadow-sm flex justify-between items-center px-edge h-16 w-full z-40">
+<div class="flex items-center gap-stack-sm cursor-pointer hover:bg-surface-variant/50 p-2 rounded-full transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface dark:text-inverse-on-surface">MediVisit Pro</h1>
+<div class="flex items-center gap-stack-sm hover:bg-surface-variant/50 p-2 rounded-full transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-edge pt-stack-lg md:grid md:grid-cols-12 md:gap-stack-lg items-start">
+<!-- Left Column: Profile Header & Info -->
+<div class="md:col-span-4 lg:col-span-4 flex flex-col gap-stack-lg sticky top-[88px]">
+<!-- Profile Header -->
+<div class="flex flex-col items-center text-center">
+<div class="gradient-ring mb-stack-md w-[108px] h-[108px] flex-shrink-0">
+<img alt="Dr. Sarah Jenkins" class="w-[100px] h-[100px] rounded-full object-cover border-4 border-surface-container-lowest" data-alt="A professional headshot of a mature female doctor with short silver hair and a warm smile, wearing a white lab coat over a light blue blouse, set against a bright, modern clinic background with soft, high-key lighting and a clinical yet approachable mood, high resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Fa6dOkwdDt0zDwhvUlPbbCS8HU7d6vgjsgO6ZncDJ1pINka7wwVOgC0GnL0Pj7JZbvGPSVv5mzf9rV9LMft-WaHpoKCjqqKDFU0G0HjS32MR2bGESf9JaeNBR2nJeXPFHT5OZFYm9iaOHtsCkEHYOPvrKolxOB5uSlTrfYT-jGMYKLY7a0pf4rku6UeH82G3azww-v65CIvXszPGfgagbvueCsTrwsjJuRKaBpHmw3ZxxV-G9ZFd8XtYQB_Qnw_HWiM27mi6Qz3q"/>
+</div>
+<h2 class="text-display font-display text-on-background mb-1">Dr. S. Jenkins</h2>
+<p class="text-body-lg font-body-lg text-tertiary">Cardiology Specialist</p>
+<!-- Streak Widget -->
+<div class="mt-stack-md inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full border border-secondary-fixed/30 shadow-[0_2px_12px_rgba(104,250,221,0.15)]">
+<span class="material-symbols-outlined text-gradient" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-label-sm font-label-sm text-secondary">12 Week Visit Streak</span>
+</div>
+</div>
+<!-- Info Glass Card -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col">
+<div class="flex items-center gap-stack-md py-stack-sm border-b border-surface-container-high/50">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">location_on</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Primary Clinic</p>
+<p class="text-body-md font-body-md text-on-background">Northwestern Memorial Hosp.</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md py-stack-sm border-b border-surface-container-high/50">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">phone</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Direct Line</p>
+<p class="text-body-md font-body-md text-on-background">(312) 555-0198</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md py-stack-sm border-b border-surface-container-high/50">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">schedule</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Best Visiting Hours</p>
+<p class="text-body-md font-body-md text-on-background">Tue/Thu 1:00 PM - 3:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md py-stack-sm pt-stack-sm">
+<div class="w-10 h-10 rounded-full bg-error-container/50 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Prescribing Volume</p>
+<p class="text-body-md font-body-md text-on-background font-semibold">Tier 1 - High (Statins)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Tabs & Content -->
+<div class="md:col-span-8 lg:col-span-8 mt-stack-lg md:mt-0">
+<!-- Tabs -->
+<div class="flex overflow-x-auto no-scrollbar border-b border-outline-variant/30 mb-stack-md relative">
+<button class="px-4 py-3 text-label-sm font-label-sm text-primary font-bold relative tab-active whitespace-nowrap">History</button>
+<button class="px-4 py-3 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/50 transition-colors whitespace-nowrap">Notes</button>
+<button class="px-4 py-3 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/50 transition-colors whitespace-nowrap">Products Discussed</button>
+</div>
+<!-- History Timeline -->
+<div class="relative pl-6 py-4">
+<!-- Vertical Line -->
+<div class="absolute left-[11px] top-8 bottom-8 w-0.5 timeline-connector rounded-full"></div>
+<!-- Timeline Item 1 -->
+<div class="relative mb-stack-lg">
+<div class="absolute -left-6 w-6 h-6 rounded-full bg-surface border-2 border-primary flex items-center justify-center z-10 shadow-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="glass-card p-card-padding rounded-lg ml-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-label-sm font-label-sm text-tertiary">Oct 12, 2023 • 2:15 PM</p>
+<h4 class="text-headline-md font-headline-md text-on-background">Lunch &amp; Learn Presentation</h4>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded-full border border-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-[#FFB800]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">5.0</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Discussed new clinical trial data for LipoStat. Doctor showed high interest in the updated safety profile for elderly patients.</p>
+<div class="mt-3 flex gap-2 flex-wrap">
+<span class="px-2 py-1 bg-primary-fixed-dim/30 text-on-primary-fixed text-label-sm font-label-sm rounded">LipoStat</span>
+<span class="px-2 py-1 bg-secondary-fixed/30 text-on-secondary-fixed text-label-sm font-label-sm rounded">Samples Left</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative mb-stack-lg">
+<div class="absolute -left-6 w-6 h-6 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center z-10">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div class="glass-card p-card-padding rounded-lg ml-4 opacity-80">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-label-sm font-label-sm text-tertiary">Sep 28, 2023 • 9:30 AM</p>
+<h4 class="text-body-lg font-body-lg font-semibold text-on-background">Quick Drop-off</h4>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Brief interaction. Dropped off updated brochures and 2 boxes of samples. Doctor was busy but receptive.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Sticky) -->
+<div class="fixed bottom-0 left-0 w-full glass-card border-t border-white/20 p-4 pb-6 z-40 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] flex gap-4 md:justify-center">
+<button class="flex-1 md:flex-none md:w-64 h-12 rounded-lg bg-primary text-on-primary text-body-lg font-body-lg font-semibold shadow-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Mark as Visited
+        </button>
+<button class="flex-1 md:flex-none md:w-48 h-12 rounded-lg border border-outline text-on-surface text-body-lg font-body-lg font-semibold hover:bg-surface-variant/30 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+            Call Doctor
+        </button>
+</div>
+</body></html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#323443",
+                        "surface-dim": "#101221",
+                        "secondary-container": "#7000ff",
+                        "on-surface": "#e1e1f6",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#272938",
+                        "inverse-primary": "#00696f",
+                        "tertiary-container": "#ffcfd8",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#3f0019",
+                        "on-secondary": "#3c0090",
+                        "outline-variant": "#3a494b",
+                        "tertiary-fixed-dim": "#ffb1c3",
+                        "on-tertiary": "#66002c",
+                        "surface-bright": "#363848",
+                        "surface-container": "#1d1f2d",
+                        "on-secondary-container": "#ddcdff",
+                        "tertiary": "#fff5f6",
+                        "on-primary": "#00363a",
+                        "inverse-surface": "#e1e1f6",
+                        "on-background": "#e1e1f6",
+                        "primary-container": "#00f2ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "on-secondary-fixed": "#23005b",
+                        "surface": "#101221",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0b0d1b",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#e1fdff",
+                        "surface-container-low": "#191b29",
+                        "on-tertiary-fixed-variant": "#8f0041",
+                        "on-primary-container": "#006a71",
+                        "inverse-on-surface": "#2e2f3f",
+                        "secondary": "#d1bcff",
+                        "primary-fixed": "#74f5ff",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#323443",
+                        "on-primary-fixed-variant": "#004f54",
+                        "background": "#101221",
+                        "tertiary-fixed": "#ffd9e0",
+                        "surface-tint": "#00dbe7",
+                        "on-tertiary-container": "#be0059",
+                        "outline": "#849495"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "stack-lg": "32px",
+                        "margin-page": "40px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "kpi-value": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "kpi-value": ["40px", { "lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .mesh-bg {
+            background-color: #03040A;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 242, 255, 0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(112, 0, 255, 0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 219, 231, 0.3) 0px, transparent 50%);
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 8px 1px rgba(0, 219, 231, 0.1);
+        }
+        
+        .glass-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            outline: none;
+            border-bottom-color: theme('colors.primary-container');
+            box-shadow: 0 4px 12px -4px rgba(0, 242, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, theme('colors.primary-fixed-dim'), theme('colors.secondary-container'));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn-gradient:hover::before {
+            left: 200%;
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 0 20px rgba(0, 219, 231, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* Abstract geometric shapes for the left side */
+        .floating-shape {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex h-screen w-full relative">
+<!-- Global background mesh blob -->
+<div class="absolute inset-0 pointer-events-none z-0 opacity-5">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-screen filter blur-[100px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container rounded-full mix-blend-screen filter blur-[100px]"></div>
+</div>
+<!-- Left Side: Brand & Visuals -->
+<div class="hidden lg:flex lg:w-[55%] mesh-bg relative flex-col justify-center items-center p-12 overflow-hidden z-10">
+<!-- Glassmorphic Mockup Illustration -->
+<div class="relative w-full max-w-2xl aspect-[4/3] floating-shape z-20">
+<div class="absolute inset-0 glass-panel rounded-xl shadow-2xl p-6 flex flex-col gap-4">
+<!-- Faux Top Bar -->
+<div class="flex justify-between items-center border-b border-white/10 pb-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed text-sm">dashboard</span>
+</div>
+<div class="h-4 w-24 bg-white/20 rounded"></div>
+</div>
+<div class="flex gap-2">
+<div class="h-6 w-16 bg-white/10 rounded-full"></div>
+<div class="h-6 w-6 rounded-full bg-white/10"></div>
+</div>
+</div>
+<!-- Faux Content Area -->
+<div class="flex gap-4 flex-1">
+<!-- Faux Sidebar -->
+<div class="w-1/4 border-r border-white/10 flex flex-col gap-3 pr-4">
+<div class="h-3 w-full bg-white/10 rounded"></div>
+<div class="h-3 w-3/4 bg-white/5 rounded"></div>
+<div class="h-3 w-5/6 bg-white/5 rounded"></div>
+<div class="h-3 w-full bg-white/5 rounded mt-4"></div>
+</div>
+<!-- Faux Main Content -->
+<div class="flex-1 flex flex-col gap-4">
+<div class="flex gap-4">
+<div class="flex-1 h-20 bg-gradient-to-br from-white/10 to-transparent rounded-lg border border-white/5 p-3 flex flex-col justify-between">
+<div class="h-2 w-12 bg-white/20 rounded"></div>
+<div class="h-6 w-20 bg-primary-fixed-dim/40 rounded"></div>
+</div>
+<div class="flex-1 h-20 bg-gradient-to-br from-white/10 to-transparent rounded-lg border border-white/5 p-3 flex flex-col justify-between">
+<div class="h-2 w-12 bg-white/20 rounded"></div>
+<div class="h-6 w-16 bg-secondary-container/40 rounded"></div>
+</div>
+</div>
+<div class="flex-1 bg-white/5 rounded-lg border border-white/5 relative overflow-hidden">
+<!-- Abstract Chart Line -->
+<svg class="absolute bottom-0 w-full h-1/2" preserveaspectratio="none" viewbox="0 0 100 50">
+<path d="M0 50 Q 25 30 50 40 T 100 10 L 100 50 Z" fill="url(#chartGrad)" opacity="0.3"></path>
+<path d="M0 50 Q 25 30 50 40 T 100 10" fill="none" stroke="url(#lineGrad)" stroke-width="2"></path>
+<defs>
+<lineargradient id="chartGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00dbe7"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+<lineargradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#00dbe7"></stop>
+<stop offset="100%" stop-color="#7000ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative blurred orbs behind mockup -->
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-primary-fixed-dim/30 rounded-full blur-[40px] -z-10"></div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary-container/30 rounded-full blur-[50px] -z-10"></div>
+</div>
+<div class="absolute bottom-12 left-12 z-20">
+<h1 class="font-display-xl text-display-xl text-white drop-shadow-[0_0_15px_rgba(0,219,231,0.6)] mb-2">MediVisit Pro</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Control the Future of Field Excellence. Enterprise-grade clinical administration workspace.</p>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full lg:w-[45%] flex items-center justify-center p-8 bg-surface-dim z-10 relative">
+<div class="w-full max-w-md flex flex-col gap-8 glass-panel rounded-2xl p-10 relative z-20">
+<!-- Mobile Logo (hidden on desktop) -->
+<div class="lg:hidden mb-4 flex flex-col items-center text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary-fixed font-bold drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+</div>
+<div class="flex flex-col gap-2 text-center lg:text-left">
+<h2 class="font-headline-md text-headline-md text-on-surface">System Access</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Authenticate to access the clinical console.</p>
+</div>
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">person</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-t-lg glass-input text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md" placeholder="Administrator ID" required="" type="email"/>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">lock</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-t-lg glass-input text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md" placeholder="Security Clearance Key" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative flex items-center justify-center w-4 h-4">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-4 h-4 border border-outline-variant rounded bg-white/5 peer-checked:bg-primary-container peer-checked:border-primary-container transition-all"></div>
+<span class="material-symbols-outlined absolute text-[12px] text-on-primary-container opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Remember Session</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary-fixed hover:text-primary-fixed-dim transition-colors" href="#">Recover Access</a>
+</div>
+<button class="h-12 w-full rounded-lg btn-gradient font-body-md text-body-md font-semibold text-on-primary flex items-center justify-center gap-2 mt-4" type="submit">
+                        Initialize Session
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</form>
+<div class="mt-4 pt-6 border-t border-white/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                        Authorized personnel only. Sub-system version 4.2.1
+                    </p>
+</div>
+</div>
+<!-- Right side ambient light -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-[80px] pointer-events-none"></div>
+</div>
+</div>
+</body></html>

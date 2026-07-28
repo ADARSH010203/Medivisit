@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Live Tracking</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#323443",
+                        "surface-dim": "#101221",
+                        "secondary-container": "#7000ff",
+                        "on-surface": "#e1e1f6",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#272938",
+                        "inverse-primary": "#00696f",
+                        "tertiary-container": "#ffcfd8",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#3f0019",
+                        "on-secondary": "#3c0090",
+                        "outline-variant": "#3a494b",
+                        "tertiary-fixed-dim": "#ffb1c3",
+                        "on-tertiary": "#66002c",
+                        "surface-bright": "#363848",
+                        "surface-container": "#1d1f2d",
+                        "on-secondary-container": "#ddcdff",
+                        "tertiary": "#fff5f6",
+                        "on-primary": "#00363a",
+                        "inverse-surface": "#e1e1f6",
+                        "on-background": "#e1e1f6",
+                        "primary-container": "#00f2ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "on-secondary-fixed": "#23005b",
+                        "surface": "#101221",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#0b0d1b",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#e1fdff",
+                        "surface-container-low": "#191b29",
+                        "on-tertiary-fixed-variant": "#8f0041",
+                        "on-primary-container": "#006a71",
+                        "inverse-on-surface": "#2e2f3f",
+                        "secondary": "#d1bcff",
+                        "primary-fixed": "#74f5ff",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#323443",
+                        "on-primary-fixed-variant": "#004f54",
+                        "background": "#101221",
+                        "tertiary-fixed": "#ffd9e0",
+                        "surface-tint": "#00dbe7",
+                        "on-tertiary-container": "#be0059",
+                        "outline": "#849495"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "sidebar-width": "280px",
+                        "stack-lg": "32px",
+                        "margin-page": "40px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "kpi-value": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    fontSize: {
+                        "kpi-value": ["40px", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "display-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .bg-mesh-base {
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(112, 0, 255, 0.05), transparent 25%);
+        }
+        
+        .map-tint {
+            filter: grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.6) contrast(1.2);
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden flex bg-mesh-base font-body-md">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface-dim/80 backdrop-blur-[30px] border-r border-white/10 shadow-2xl flex flex-col gap-stack-md py-margin-page z-50">
+<div class="px-6 mb-8 flex flex-col gap-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed drop-shadow-[0_0_8px_rgba(0,219,231,0.5)]">MediVisit Pro</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Clinical Admin Console</span>
+</div>
+<div class="flex-1 px-4 flex flex-col gap-2">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-4 bg-white/10 backdrop-blur-md text-primary-fixed border-l-4 border-primary shadow-[inset_0_0_12px_rgba(0,242,255,0.2)] rounded-r-xl py-3 px-4 transition-all duration-300 ease-in-out group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-xl" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Patients</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-xl" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-md text-body-md">Schedules</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-xl" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Clinical Data</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface py-3 px-4 transition-all duration-300 ease-in-out hover:bg-white/5 rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">System Config</span>
+</a>
+</div>
+<div class="mt-auto px-6 pt-6 border-t border-white/5">
+<div class="flex items-center gap-4 opacity-70">
+<img alt="MediVisit Pro Logo" class="w-8 h-8 rounded-full border border-primary-fixed/30" data-alt="A small circular avatar showing a highly stylized, futuristic medical cross insignia in glowing cyan against a dark obsidian background. Clean, precise, minimalist graphic design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqdqddBjZL604hKh6VMkMIE_MfHXG9NDSPuGlBx-d985IuAAIaP6QU_efDiuz0-UDN3yarnsCtKIWYdb98TqvcmO03a7al5ja8uEvXNKV3n2_806mYI6n8x3LrJrBmFHhSCR2MwZByvlj_BNdQv26dbg1eX43jIiASZc7C9cS-0hxTsmyNp_kFJk778TvXnhL1y6n9PVs0SD8ZnAKqQ-UjURev0MnNyEOqzSDAazS1yALzuW91hXH58c5ooP7VK2eIrdke2FRLKSE1"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">v2.4.0</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">System Online</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col ml-[280px] h-full relative">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 w-full bg-white/10 backdrop-blur-[20px] border-b border-white/10 shadow-sm flex justify-between items-center px-gutter h-20 z-40">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg pointer-events-none">search</span>
+<input class="w-full bg-black/20 border border-white/10 rounded-full py-2 pl-10 pr-4 font-label-sm text-label-sm text-on-surface focus:outline-none focus:border-primary-fixed focus:shadow-[0_0_10px_rgba(0,219,231,0.3)] transition-all" placeholder="Search deployments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full shadow-[0_0_5px_rgba(255,180,171,0.8)]"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="h-8 w-px bg-white/10 mx-2"></div>
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border border-white/20 hover:border-primary-fixed transition-colors cursor-pointer object-cover" data-alt="A portrait of a male medical administrator in his 40s with a clean-cut look, wearing a dark turtleneck and a subtle earpiece. The lighting is moody, with a cyan rim light. High resolution, futuristic corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf9e8Ymvo-GtmmXnL0PaYgr1REjiHtGTVnxRqkIJMMxJ3_8LdmGVa3C_a6V5sQIQ_axpdu7yus2LfMcmfp2uDymKN8VLDQ6h0GfnLPxJgTB2-hjpDQXdGLerPZEXMKR8thFPunTpp5pGr59F9X2EEzuxWqMnzvWz7qRIhjKglBzYfumo0AnSfwwA8-tc9TBMPiKJV03t0_fgQcelV3w2arccKtxJkVlzLZclxM-TRXikGz5Mn9ak6thks9Zpul4O8JiMMxh_BniFX9"/>
+</div>
+</header>
+<!-- Full Screen Map Canvas -->
+<main class="flex-1 relative overflow-hidden bg-[#0a0c16]">
+<!-- Map Layer -->
+<div class="absolute inset-0 bg-cover bg-center map-tint opacity-80" data-alt="A highly detailed, top-down satellite view of a dense metropolitan city grid, stylized as a high-tech tactical map interface. The color palette is restricted to deep blacks, dark charcoals, and muted cyans. Arterial roads glow faintly. The overall look is sterile, analytical, and reminiscent of an advanced military or biotech tracking system." data-location="Chicago" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAinQuXFiottDstP_-qCHedWVuIfqoNUgX7hniFmzirvdd9Hp6VB87gRp5kpXM-ZfcWqevI5STpAARPgoP1VdyzdQHKeNLh4wcHYJoS5wADcznUPRWMn_GyisBcweNZkHZlcoFSMDonvHrXpmv26XYB_Pt3pb72nrbHJZILSdMcnK_cK_IUnOiZJo2Ob6-9uzmTyWC0lXp8Cu6uDYy6bCmEPTdPdJB_L7b1UZvgerS8Wslripk_Y-urh_BtnwZuE9hWlduQoieDpLfK')"></div>
+<!-- Map Gradient Overlay for Depth -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-dim/90 via-transparent to-surface-dim/90 pointer-events-none"></div>
+<!-- Pulsing "Live" Badge -->
+<div class="absolute top-6 left-6 z-10 flex items-center gap-3 bg-surface-dim/60 backdrop-blur-md border border-white/10 rounded-full py-2 px-5 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="relative flex items-center justify-center w-3 h-3">
+<div class="absolute inset-0 bg-[#00ff66] rounded-full pulse-ring"></div>
+<div class="relative w-2 h-2 bg-[#00ff66] rounded-full shadow-[0_0_10px_#00ff66]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest text-[#00ff66] font-bold">Live</span>
+</div>
+<!-- Map Pins (MR Avatars) -->
+<!-- Active Pin 1 -->
+<div class="absolute top-[30%] left-[45%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer z-20">
+<div class="relative p-1 bg-surface-dim/80 backdrop-blur-md rounded-full border border-[#00ff66]/40 shadow-[0_0_20px_rgba(0,255,102,0.3)] transition-transform group-hover:scale-110 duration-300">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A headshot of a female medical field representative wearing sterile clinical techwear with a glowing blue collar accent. Shot against a dark background, cool studio lighting, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd061Sh1CNdmy-RybTFJdNNQ9KWGmr_uo7xFONwQKYamVod1jKh7DKHllpb3QV3USn3zjsVchzOK3Gni6mQ2PM4ugWl07SCwOXuyp2Dojs_bxZqHIz98bCsGcNpqzM1gQWoVvur3V4qSa-KXopeRbKTt6vB95JnPOaSHUJ7Sg4gQS-1RlIZbMqTguQzgdGX7vaEY6eU0e8HyEXDowJY61BHzsCvmd6q8OkXictXRd_SJmB4KBXdWQVnDTK8d6AXuYlv3BqSeZHuRAZ"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#00ff66] rounded-full border-2 border-surface-dim shadow-[0_0_10px_#00ff66]"></div>
+</div>
+<div class="mt-2 px-3 py-1 bg-surface-dim/90 backdrop-blur-md border border-white/10 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<span class="font-label-sm text-label-sm text-on-surface whitespace-nowrap">Sarah J. - On Site</span>
+</div>
+</div>
+<!-- Idle Pin -->
+<div class="absolute top-[60%] left-[25%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer z-20">
+<div class="relative p-1 bg-surface-dim/80 backdrop-blur-md rounded-full border border-white/20 shadow-lg transition-transform group-hover:scale-110 duration-300 opacity-60">
+<img class="w-10 h-10 rounded-full object-cover grayscale" data-alt="A portrait of a male medical operative in a dark grey tactical scrub uniform. The image is desaturated and slightly shadowed to indicate an idle or off-duty status. Clinical futurism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCe8MFxUGv9X4cQruhufJyFL5tCbzmXqFs3Hd9f9-74rSuORbMg4UKYCkzg4XPuTc8Hyp7SsYxnTUXY1ey0BGllFMROV_RydQIKeBRhgmxLUX0Vh8WgurVrRSPPKcSelewmtb_MrcRgGGXnEnEUlfDl8yEsepoencpeLtHAZk9sJThVw74COCFhzdO6ug00Qc48iyJiMuz7Fke4h2QfeYgYFXNdJIoLuAtqp9koAz-a-5wRsj806N9Wfl_4ItBYm0_w02NggU-3yuW"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-outline rounded-full border-2 border-surface-dim"></div>
+</div>
+</div>
+<!-- Warning Pin -->
+<div class="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer z-20">
+<div class="relative p-1 bg-surface-dim/80 backdrop-blur-md rounded-full border border-[#ffaa00]/50 shadow-[0_0_20px_rgba(255,170,0,0.4)] transition-transform group-hover:scale-110 duration-300">
+<div class="absolute -inset-2 rounded-full border border-[#ffaa00]/30 animate-ping opacity-50"></div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A tense portrait of a female medical logistics coordinator wearing an augmented reality headset over one eye. Lighting features harsh amber and yellow tones indicating an alert status. Dark background, high-tech vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAorTW28yzzwmJewnscqhNRSS-eifQEwrtCsidz8WdiRYWltgNEnn7lnCrM-vtWPVDfihNN_MhcYW2OaXHqLAJPTmSfe8ObgAh9R6DHnWAC2Gy-kgtqDTPiSfhjLQ4ea7taWvp8VNyYZCVJNiNFtlbbbOvvtA4OPaJU3M9QxP5fHNdz-Wxd3d-KIL91PHb-ByW58WKeryc5vabJN8ApJrAhUFUojqjSlMmF1VFOfoWpz6xMeLCEVqF-q3ni2j4H4A3wVubAPiD8vRB1"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#ffaa00] rounded-full border-2 border-surface-dim shadow-[0_0_10px_#ffaa00]"></div>
+</div>
+<div class="mt-2 px-3 py-1 bg-[#ffaa00]/10 backdrop-blur-md border border-[#ffaa00]/30 rounded-md opacity-100 pointer-events-none shadow-[0_0_10px_rgba(255,170,0,0.2)]">
+<span class="font-label-sm text-label-sm text-[#ffaa00] whitespace-nowrap font-bold">Delay Alert</span>
+</div>
+</div>
+<!-- Legend Card -->
+<div class="absolute bottom-6 left-6 z-10 w-48 bg-surface-dim/80 backdrop-blur-[30px] border border-white/10 rounded-xl p-5 shadow-2xl">
+<h3 class="font-label-sm text-[10px] text-on-surface-variant mb-4 uppercase tracking-widest border-b border-white/5 pb-2">Status Legend</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#00ff66] shadow-[0_0_8px_#00ff66]"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Active Deploy</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#ffaa00] shadow-[0_0_8px_#ffaa00]"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Route Warning</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-outline"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Idle / Standby</span>
+</div>
+</div>
+</div>
+<!-- Right Collapsible Panel (MR List) -->
+<aside class="absolute top-0 right-0 h-full w-[380px] bg-surface-dim/70 backdrop-blur-[40px] border-l border-white/10 shadow-[-20px_0_40px_rgba(0,0,0,0.6)] flex flex-col z-30 transition-transform duration-300">
+<!-- Header -->
+<div class="p-6 border-b border-white/5 flex justify-between items-center bg-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed">radar</span>
+<h2 class="font-headline-md text-[18px] text-on-surface">Active Field Units</h2>
+</div>
+<button class="text-on-surface-variant hover:text-white transition-colors bg-white/5 p-1 rounded-md border border-white/10">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Stats summary -->
+<div class="grid grid-cols-3 gap-px bg-white/5 border-b border-white/5">
+<div class="p-4 flex flex-col items-center justify-center bg-surface-dim/50">
+<span class="font-kpi-value text-[24px] text-[#00ff66]">12</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">Active</span>
+</div>
+<div class="p-4 flex flex-col items-center justify-center bg-surface-dim/50">
+<span class="font-kpi-value text-[24px] text-[#ffaa00]">2</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">Warn</span>
+</div>
+<div class="p-4 flex flex-col items-center justify-center bg-surface-dim/50">
+<span class="font-kpi-value text-[24px] text-on-surface">8</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">Idle</span>
+</div>
+</div>
+<!-- List Content -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+<!-- Item: Active -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-4 hover:bg-white/10 transition-all cursor-pointer group relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00ff66] shadow-[0_0_10px_#00ff66]"></div>
+<div class="relative mt-1">
+<img class="w-10 h-10 rounded-full border border-[#00ff66]/30 object-cover" data-alt="Close up profile picture of a young male clinical field agent with short hair. Wearing a sleek, dark grey uniform. Cool blue lighting reflecting on his face. High tech, professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw-HkFVVeP8gfzFuE5aY-WEqasVzsHXceuERb35uC8X9JOzDq4MRbzM9Qjenbi3f0a2muMx-msz0Xw5b3DshRvjA4IR3wgMrPWTbsDG_tbRKRrGmBj6Y0lQ4DUeEXpxSdfUsVr9Xjl0GATtwGPKDY_0UsSH2oaLyYk6NXDWoePRNMndlrCTZ-sOWqq4ehy_dyCcq4wsZADO6wJjOOkQgdI-IYGSslDNUmkQZpyTDVIsvsly7yIdzBZgA1PiMNl7UutWtg26Jyg0TZA"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-sm text-[13px] text-on-surface font-semibold">Dr. Sarah Jenkins</div>
+<span class="font-label-sm text-[10px] text-[#00ff66] bg-[#00ff66]/10 px-2 py-0.5 rounded-full border border-[#00ff66]/20">ETA 4m</span>
+</div>
+<div class="font-body-md text-[13px] text-on-surface-variant leading-tight">En route to MedCenter Beta for urgent sample retrieval.</div>
+<div class="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed">near_me</span>
+<span class="font-label-sm text-[10px] text-primary-fixed">Focus Camera</span>
+</div>
+</div>
+</div>
+<!-- Item: Warning -->
+<div class="p-4 rounded-xl bg-[#ffaa00]/5 border border-[#ffaa00]/20 flex items-start gap-4 hover:bg-[#ffaa00]/10 transition-all cursor-pointer group relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#ffaa00] shadow-[0_0_10px_#ffaa00]"></div>
+<div class="relative mt-1">
+<img class="w-10 h-10 rounded-full border border-[#ffaa00]/50 object-cover" data-alt="A portrait of a male medical operative looking concerned. The lighting is dominated by a warning amber hue. He wears a dark, specialized medical uniform with faint glowing insignias." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG9LzL_MXFKVl46ErZ5nrRNal7yJM3eCTxGQh-ilSXq0e4jfEM0ZIF02s3sHoehVNmsgBwXQlgg9QHq5j3RjazJ8TMigNW6cXdwV_ZypRrCP8OIKefde_KFdh6-GHjdSnndVt9HD5QkMRvO1ilJPC146oFl12n6pVn3X2fEdmlvnIbFm5i19G3TmmKJruxb3ltSEx4mP2ajpmILfieSgwrSwRgTVDkMXlPGE8jMLBXRZA-tjzIvf869NH5VveoLzcYy2HbjPaIrkeq"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-sm text-[13px] text-on-surface font-semibold">M. Rodriguez (MR-09)</div>
+<span class="font-label-sm text-[10px] text-[#ffaa00] bg-[#ffaa00]/10 px-2 py-0.5 rounded-full border border-[#ffaa00]/20">Traffic</span>
+</div>
+<div class="font-body-md text-[13px] text-on-surface-variant leading-tight">Rerouting due to sector 4 closure. Delivery delayed by 15m.</div>
+<div class="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed">near_me</span>
+<span class="font-label-sm text-[10px] text-primary-fixed">Focus Camera</span>
+</div>
+</div>
+</div>
+<!-- Item: Idle -->
+<div class="p-4 rounded-xl bg-white/5 border border-transparent flex items-start gap-4 hover:bg-white/10 transition-all cursor-pointer group opacity-70 hover:opacity-100">
+<div class="relative mt-1">
+<img class="w-10 h-10 rounded-full border border-white/20 object-cover grayscale" data-alt="A calm, static portrait of a female medical technician in standby mode. Desaturated tones, soft white and grey lighting. Sterile laboratory background out of focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWZJF40E4z7T8Y5Bf-lWa0rrw8pf33Ssi-Kwg7EaeBEACcG4YUIh9bZGQpziYO8nkAFks3JSIrJsu37x77u-VnsrK_rn12lxrVAuEa0ULNZjDWNj88lnxrs8xG214UyaM_w3Z0_4mxP-mOUpb5JtyQA9EULVhK8VQ3UIRPTMOXHFyJzAKmYe7dNvg2_9_wcMCIzUk13wEXZyslvujlsr0hwUQ4kvtjhR0rzcjZEO4lDT14wVVsMF25_elqCjYXk7ns846tUKpvV2qt"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-sm text-[13px] text-on-surface font-semibold">Unit Alpha-3</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant bg-white/5 px-2 py-0.5 rounded-full border border-white/10">Standby</span>
+</div>
+<div class="font-body-md text-[13px] text-on-surface-variant leading-tight">Awaiting next assignment at Hub Central.</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

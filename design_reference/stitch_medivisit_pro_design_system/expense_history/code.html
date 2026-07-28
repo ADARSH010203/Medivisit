@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Expense History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f3",
+                        "primary-fixed": "#dae1ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "on-secondary-fixed-variant": "#005145",
+                        "tertiary-fixed": "#dde1ff",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "tertiary": "#575c76",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "outline-variant": "#c2c6d8",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "inverse-primary": "#b3c5ff",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "on-surface-variant": "#424655",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#007261",
+                        "on-primary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dce2f3",
+                        "tertiary-container": "#707490",
+                        "on-tertiary-fixed": "#151a31",
+                        "secondary-container": "#68fadd",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#1a6bff",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-container": "#e7eefe",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-surface": "#151c27",
+                        "on-secondary-fixed": "#00201a",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "secondary": "#006b5c",
+                        "outline": "#727687"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.03), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Subtle atmospheric mesh gradient background for Clinical Futurism */
+        body {
+            background-color: #f9f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(224,100%,96%,1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(168,100%,95%,1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(230,50%,96%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(200,80%,96%,1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md min-h-screen flex flex-col relative selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl border-b border-white/20 dark:border-outline-variant/10 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex justify-between items-center px-edge py-4 w-full z-50 sticky top-0 transition-transform duration-200" id="top-app-bar">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female medical sales representative. She is wearing a modern, tailored navy blue blazer over a crisp white shirt. The lighting is bright and even, casting a subtle soft glow characteristic of a high-end corporate or clinical environment. Her expression is confident and approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqh89zwdwb6oleLtyPJBdBPwNjNNcbuqCQ8PW3YKkf_LJJFB4rznflU9qfBR2SFdEht8XS8F9tDBMnrZ3z-RAgct8RWl0DPcFHGX69xHsd1306uPrs8Rt_vat-6-MWV3YoL0BK7XcGrND7f8e2pHmca_1_qYwYAxwOfJAbvSFWaZOfzIWEqv_zR8E6A0jB66fxfgvx0DAFu3zsA4XVb1BBDXTYHd3WVqA_AI7X1AoznuB0MDbHXTiO2_vstk5vOkt9Lpq12S1PMn-w"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary-fixed-dim tracking-tight">MediVisit Pro</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 hover:bg-white border border-white/60 shadow-sm text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-all hover:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-6xl mx-auto px-edge py-stack-lg pb-32 flex flex-col gap-stack-lg relative z-10">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+<div>
+<h2 class="font-display text-display text-on-background tracking-tight">Expense History</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Review and manage your clinical disbursement logs.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container h-12 px-6 rounded-full font-label-sm text-label-sm flex items-center justify-center gap-2 hover:opacity-90 hover:shadow-md transition-all active:scale-95 duration-200 shrink-0 shadow-[0_4px_12px_rgba(26,107,255,0.2)]">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                Log New Expense
+            </button>
+</div>
+<!-- Summary Cards Row (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- This Month Card -->
+<div class="glass-panel rounded-xl p-card-padding relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<!-- Blue Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/30 transition-colors duration-500"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">This Month</p>
+<span class="material-symbols-outlined text-primary/60">calendar_month</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-transparent bg-clip-text bg-gradient-to-br from-primary to-surface-tint tracking-tight">$4,250.00</span>
+</div>
+<div class="mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">trending_up</span>
+<span class="font-body-md text-body-md text-secondary">+12.5%</span>
+<span class="font-body-md text-body-md text-outline-variant text-[12px] ml-1">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Pending Card -->
+<div class="glass-panel rounded-xl p-card-padding relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<!-- Amber Glow Proxy (Using Theme Error/Tertiary blend to simulate warmth) -->
+<div class="absolute -bottom-12 -right-12 w-40 h-40 bg-error/10 rounded-full blur-3xl group-hover:bg-error/15 transition-colors duration-500"></div>
+<div class="absolute -top-10 left-10 w-24 h-24 bg-tertiary/10 rounded-full blur-2xl"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Pending</p>
+<span class="material-symbols-outlined text-tertiary/60">hourglass_empty</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-transparent bg-clip-text bg-gradient-to-br from-tertiary to-error tracking-tight">$850.00</span>
+</div>
+<div class="mt-2 font-body-md text-body-md text-on-surface-variant text-[13px]">
+                        3 items awaiting approval
+                    </div>
+</div>
+</div>
+<!-- Approved Card -->
+<div class="glass-panel rounded-xl p-card-padding relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+<!-- Teal Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors duration-500"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Approved</p>
+<span class="material-symbols-outlined text-secondary/60">check_circle</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-transparent bg-clip-text bg-gradient-to-br from-secondary to-on-secondary-container tracking-tight">$3,400.00</span>
+</div>
+<div class="mt-2 font-body-md text-body-md text-on-surface-variant text-[13px]">
+                        Cleared for reimbursement
+                    </div>
+</div>
+</div>
+</div>
+<!-- Filter Tabs (Glass Pills) -->
+<div class="flex gap-2 overflow-x-auto pb-2 pt-2 scrollbar-hide -mx-edge px-edge md:mx-0 md:px-0">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-[0_2px_8px_rgba(0,83,211,0.25)] border border-primary/20 shrink-0 transition-all">All Expenses</button>
+<button class="px-5 py-2 rounded-full glass-panel text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-white/80 hover:text-on-background transition-all shrink-0">Pending</button>
+<button class="px-5 py-2 rounded-full glass-panel text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-white/80 hover:text-on-background transition-all shrink-0">Approved</button>
+<button class="px-5 py-2 rounded-full glass-panel text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-white/80 hover:text-on-background transition-all shrink-0">Rejected</button>
+</div>
+<!-- Expense Entries List -->
+<div class="flex flex-col gap-stack-sm">
+<!-- Entry Card: Approved -->
+<div class="glass-panel rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-y-0 left-0 w-1 bg-secondary rounded-l-xl opacity-80"></div>
+<div class="flex items-center gap-4 flex-1 w-full">
+<!-- Receipt Thumbnail -->
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest border border-white/60 overflow-hidden shrink-0 relative group-hover:scale-105 transition-transform duration-300">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-90" data-alt="A close-up, high-resolution photo of a crisp, printed paper receipt from a medical supply vendor. The receipt rests on a flawless, light grey matte surface. The lighting is clinical, bright, and evenly diffused, highlighting the typography on the receipt while maintaining a pristine, modern, high-tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR4JdWpkNzIcHfIPlCG2bhcVohLerF73n_h8WhUL3Msy0rKYXW4m6X8P2fVnBElpHB1eADZDlqNagqrojf9gtdG0T1czpWvoWwllRkZCsi32k3pPWgHSMMw48RQbT56UZ5-li_QWps1fjwZ8dGZacYvIxw3gQuNZM783QK5zQ0aVVDhb0cVzxB01q7DeuB8-_ujmMT8gesHBUc76dbEC3yMN_0H7Vxj0S4-VSO2H9C119cPkoJL_Lug5r6zFs_SUxxgQTEs14ObTgi"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-background truncate pr-4">MedTech Supplies Inc.</h3>
+<span class="font-stats-lg text-stats-lg text-on-background shrink-0 hidden sm:block">$1,250.00</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-white/50 px-2.5 py-1 rounded-md border border-white/80 backdrop-blur-sm">Equipment</span>
+<span class="font-body-md text-body-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 24, 2023
+                            </span>
+</div>
+</div>
+</div>
+<!-- Mobile Amount & Status row -->
+<div class="flex justify-between items-center sm:flex-col sm:items-end sm:justify-center shrink-0 border-t border-white/40 sm:border-t-0 pt-3 sm:pt-0 mt-1 sm:mt-0">
+<span class="font-stats-lg text-stats-lg text-on-background sm:hidden">$1,250.00</span>
+<!-- Status Pill with glowing dot -->
+<div class="flex items-center gap-2 bg-secondary/10 px-3 py-1.5 rounded-full border border-secondary/20 backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(0,107,92,0.8)] animate-[pulse_3s_ease-in-out_infinite]"></div>
+<span class="font-label-sm text-label-sm text-secondary">Approved</span>
+</div>
+</div>
+</div>
+<!-- Entry Card: Pending -->
+<div class="glass-panel rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-y-0 left-0 w-1 bg-tertiary rounded-l-xl opacity-80"></div>
+<div class="flex items-center gap-4 flex-1 w-full">
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest border border-white/60 overflow-hidden shrink-0 relative group-hover:scale-105 transition-transform duration-300">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-90" data-alt="A top-down architectural photograph of an upscale business lunch spread on a stark white marble table. A sleek, modern tablet displays a digital invoice beside a black ceramic coffee cup. The environment is flooded with crisp, daylight-mimicking light, establishing a highly professional, clinical corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoGAvO_IyOIAvxcuC2ozlW6nhNEmqO2Ji5IHfbjzrbMuPL22YsiARB6FYEpT9rLECWcl2iLF-T-p3pJyB7ucwiwMIVtyr-V_oyYlH2RtlzpkTON1IvSsI-UxdvogIAQqk6IS4VBYu5lwyunZk8pfFgZQhXr_qpywJExDB_ZU5lYkxksxmc_eDAQHTl1JfSO4ktB1yAI6eXSXlsjhPUbWVV0YEHXZHOBGKz58LzIvvlo9a2HppbSt5MhcuGvhSyCeuLxmEDFD4arV3C"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-background truncate pr-4">Dr. Smith Consultation Lunch</h3>
+<span class="font-stats-lg text-stats-lg text-on-background shrink-0 hidden sm:block">$320.50</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-white/50 px-2.5 py-1 rounded-md border border-white/80 backdrop-blur-sm">Client Meal</span>
+<span class="font-body-md text-body-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 22, 2023
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center sm:flex-col sm:items-end sm:justify-center shrink-0 border-t border-white/40 sm:border-t-0 pt-3 sm:pt-0 mt-1 sm:mt-0">
+<span class="font-stats-lg text-stats-lg text-on-background sm:hidden">$320.50</span>
+<div class="flex items-center gap-2 bg-tertiary/10 px-3 py-1.5 rounded-full border border-tertiary/20 backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(87,92,118,0.8)]"></div>
+<span class="font-label-sm text-label-sm text-tertiary">Pending</span>
+</div>
+</div>
+</div>
+<!-- Entry Card: Approved (Icon Fallback) -->
+<div class="glass-panel rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-y-0 left-0 w-1 bg-secondary rounded-l-xl opacity-80"></div>
+<div class="flex items-center gap-4 flex-1 w-full">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-white/60 overflow-hidden shrink-0 relative flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[32px] text-primary/70">flight</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-background truncate pr-4">Delta Airlines - Symposium</h3>
+<span class="font-stats-lg text-stats-lg text-on-background shrink-0 hidden sm:block">$850.00</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-white/50 px-2.5 py-1 rounded-md border border-white/80 backdrop-blur-sm">Travel</span>
+<span class="font-body-md text-body-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 15, 2023
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center sm:flex-col sm:items-end sm:justify-center shrink-0 border-t border-white/40 sm:border-t-0 pt-3 sm:pt-0 mt-1 sm:mt-0">
+<span class="font-stats-lg text-stats-lg text-on-background sm:hidden">$850.00</span>
+<div class="flex items-center gap-2 bg-secondary/10 px-3 py-1.5 rounded-full border border-secondary/20 backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(0,107,92,0.8)]"></div>
+<span class="font-label-sm text-label-sm text-secondary">Approved</span>
+</div>
+</div>
+</div>
+<!-- Entry Card: Rejected -->
+<div class="glass-panel rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer relative overflow-hidden group opacity-80 grayscale-[20%]">
+<div class="absolute inset-y-0 left-0 w-1 bg-error rounded-l-xl opacity-80"></div>
+<div class="flex items-center gap-4 flex-1 w-full">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-white/60 overflow-hidden shrink-0 relative flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-error/60">local_cafe</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-background truncate pr-4 line-through decoration-error/30">Starbucks Coffee</h3>
+<span class="font-stats-lg text-stats-lg text-on-background shrink-0 hidden sm:block">$12.50</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-white/50 px-2.5 py-1 rounded-md border border-white/80 backdrop-blur-sm">Personal</span>
+<span class="font-body-md text-body-md text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 12, 2023
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center sm:flex-col sm:items-end sm:justify-center shrink-0 border-t border-white/40 sm:border-t-0 pt-3 sm:pt-0 mt-1 sm:mt-0">
+<span class="font-stats-lg text-stats-lg text-on-background sm:hidden">$12.50</span>
+<div class="flex items-center gap-2 bg-error/10 px-3 py-1.5 rounded-full border border-error/20 backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-sm text-label-sm text-error">Rejected</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only Shell) -->
+<!-- Note: Suppressed active states entirely because "Expense History" is a deep-dive task, 
+         prioritizing the Canvas as per "Semantic Shell Mandate". Kept component visible for mobile structural completeness. -->
+<div class="fixed bottom-4 left-0 w-full z-50 md:hidden flex justify-center px-4 pointer-events-none">
+<nav class="bg-white/70 dark:bg-surface-container/70 backdrop-blur-[30px] rounded-full w-full max-w-md mx-auto border border-white/40 dark:border-outline-variant/20 shadow-[0_16px_48px_rgba(0,0,0,0.08)] flex justify-around items-center px-6 py-3 pointer-events-auto">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-200">dashboard</span>
+<span class="font-label-sm text-label-sm text-[10px] uppercase tracking-wider">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-200">medical_services</span>
+<span class="font-label-sm text-label-sm text-[10px] uppercase tracking-wider">Visits</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-200">group</span>
+<span class="font-label-sm text-label-sm text-[10px] uppercase tracking-wider">Patients</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant opacity-60 hover:opacity-100 transition-all group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 duration-200">settings</span>
+<span class="font-label-sm text-label-sm text-[10px] uppercase tracking-wider">Settings</span>
+</button>
+</nav>
+</div>
+<!-- Micro-interaction script for TopAppBar shrink on scroll -->
+<script>
+        const topAppBar = document.getElementById('top-app-bar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                topAppBar.classList.add('py-2', 'shadow-md');
+                topAppBar.classList.remove('py-4');
+            } else {
+                topAppBar.classList.remove('py-2', 'shadow-md');
+                topAppBar.classList.add('py-4');
+            }
+        });
+    </script>
+</body></html>

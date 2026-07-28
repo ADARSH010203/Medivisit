@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediVisit Pro - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f2ecf4",
+                        "outline-variant": "#cbc4d2",
+                        "tertiary-container": "#c9a74d",
+                        "on-surface-variant": "#494551",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-surface": "#1d1b20",
+                        "inverse-on-surface": "#f5eff7",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#322f35",
+                        "secondary": "#63597c",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ded8e0",
+                        "on-primary-container": "#e0d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece6ee",
+                        "secondary-container": "#e1d4fd",
+                        "primary-fixed": "#e9ddff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed": "#1f1635",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fdf7ff",
+                        "on-secondary-container": "#645a7d",
+                        "surface-variant": "#e6e0e9",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#765b00",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "inverse-primary": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "surface-container-low": "#f8f2fa",
+                        "on-primary-fixed": "#22005d",
+                        "primary": "#4f378a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+        }
+        
+        .mesh-gradient {
+            background-color: #fdf7ff;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(263, 60%, 94%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189, 100%, 96%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(263, 60%, 94%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(340, 100%, 96%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(22, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(242, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(263, 60%, 94%, 1) 0px, transparent 50%);
+        }
+
+        .glass-input {
+            background: rgba(241, 245, 249, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input:focus-within {
+            border-color: #4f378a;
+            box-shadow: 0 0 0 4px rgba(79, 55, 138, 0.1);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #4f378a 0%, #008080 100%);
+            box-shadow: 0 8px 24px rgba(79, 55, 138, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
+        }
+
+        .btn-gradient:hover::after {
+            left: 150%;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #4f378a 0%, #008080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .duotone-icon {
+            color: #4f378a;
+            position: relative;
+        }
+        
+        .duotone-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: radial-gradient(circle, rgba(0,128,128,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen mesh-gradient flex items-center justify-center p-margin-mobile md:p-margin-desktop font-body-lg text-on-background">
+<div class="w-full max-w-[440px]">
+<!-- Top Section -->
+<div class="text-center mb-8 flex flex-col items-center">
+<img alt="UMAKIND Logo" class="w-16 h-16 rounded-xl object-cover mb-6 shadow-[0_8px_32px_rgba(0,0,0,0.08)] ring-1 ring-white/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-gVrD5_lLrY5bwBS_V2ch4zu-afnLKQanr0KDygqJ_U1CuoLq-3nXP9L1rUzOW9mzUBSgYdx7g4ygZs6aF5KuJHF6nXNPoTwrfTpUb5tEsaVNJVaJAqWZm96bbhGyO74d5I9Gn6kfBGLPcOWFG_uyT7bcTvGC0Q-AlklqMM2F_jMvfcAz_PkX8cmYGvDuX7ZxHvyrx6W4RQD50aPiU2ufuuqcSo8-TVDjW12JD9HpInA7ZoqEnSwaNd7zPlBACeUeOEiP_dkIVpur"/>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-2 tracking-tight">Welcome back</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Sign in to MediVisit Pro to manage your schedule and patients.</p>
+</div>
+<!-- Main Form Card -->
+<div class="glass-panel rounded-[24px] p-6 md:p-8 mb-6 relative z-10 before:absolute before:inset-0 before:rounded-[24px] before:border-t before:border-l before:border-white/60 before:pointer-events-none">
+<form action="#" class="space-y-5" method="POST">
+<!-- Email Input -->
+<div>
+<label class="sr-only" for="email">Email address</label>
+<div class="glass-input flex items-center rounded-xl p-1">
+<div class="pl-4 pr-3 flex items-center justify-center">
+<span class="material-symbols-outlined duotone-icon text-[24px]">mail</span>
+</div>
+<input autocomplete="email" class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-background placeholder:text-outline py-3 px-2 rounded-r-xl" id="email" name="email" placeholder="Professional Email" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div>
+<label class="sr-only" for="password">Password</label>
+<div class="glass-input flex items-center rounded-xl p-1">
+<div class="pl-4 pr-3 flex items-center justify-center">
+<span class="material-symbols-outlined duotone-icon text-[24px]">lock</span>
+</div>
+<input autocomplete="current-password" class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-background placeholder:text-outline py-3 px-2" id="password" name="password" placeholder="Password" required="" type="password"/>
+<div class="pr-4 flex items-center justify-center">
+<button class="text-outline-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Forgot Password -->
+<div class="flex items-center justify-end">
+<a class="font-label-caps text-label-caps text-gradient hover:opacity-80 transition-opacity" href="#">Forgot Password?</a>
+</div>
+<!-- Sign In Button -->
+<button class="w-full btn-gradient text-on-primary font-title-md text-title-md py-3.5 rounded-xl transition-transform active:scale-[0.98]" type="submit">
+                    Sign In
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gradient-to-r from-transparent via-outline-variant/30 to-transparent"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-4 bg-[#fdf7ff]/80 backdrop-blur-sm text-outline font-label-caps text-label-caps">OR</span>
+</div>
+</div>
+<!-- Register Link -->
+<div class="text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    New Employee? <a class="text-gradient font-title-md text-body-sm ml-1 hover:underline decoration-primary/50 underline-offset-4" href="#">Register here</a>
+</p>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="flex justify-center">
+<div class="glass-panel rounded-full px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined duotone-icon text-[18px]">verified_user</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Secure company login</span>
+</div>
+</div>
+</div>
+</body></html>

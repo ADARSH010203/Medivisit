@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sample Tracking - MediVisit Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce2f3",
+                        "primary-fixed": "#dae1ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "on-secondary-fixed-variant": "#005145",
+                        "tertiary-fixed": "#dde1ff",
+                        "surface-tint": "#0055d5",
+                        "on-primary-fixed": "#001849",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "tertiary": "#575c76",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-dim": "#d3daea",
+                        "outline-variant": "#c2c6d8",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "inverse-primary": "#b3c5ff",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "on-surface-variant": "#424655",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#007261",
+                        "on-primary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dce2f3",
+                        "tertiary-container": "#707490",
+                        "on-tertiary-fixed": "#151a31",
+                        "secondary-container": "#68fadd",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#1a6bff",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-container": "#e7eefe",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#68fadd",
+                        "on-surface": "#151c27",
+                        "on-secondary-fixed": "#00201a",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9ff",
+                        "secondary": "#006b5c",
+                        "outline": "#727687"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "edge": "20px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0053d3 0%, #006b5c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bar-glow {
+            box-shadow: 4px 0 12px rgba(104, 250, 221, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c2c6d8;
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen pb-32">
+<!-- TopAppBar JSON Blueprint -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] px-edge py-4 flex justify-between items-center h-[72px]">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A professional headshot of a female medical sales representative with a warm smile, wearing a dark blue blazer. The background is a clean, modern clinical setting with soft natural lighting and a hint of a modern light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe0SkUvDpFrsfaKVgiayAGBTWsoZO4VBvgofkdixaubs79kFb-b_jNQ2QsRx3nAYlMJM8wsdrGGCDUDXBoblkbSdLL1ERDKhAipP3P7N7zVtdg4VJIULMqxrmwEhkb4zq3YM3sBzH5WdWF5ScUvZNKwjyz37RBv1FoSUp-oxf-Sey8zTLLj3RilqtqZhzNllL5oI2RXBMsbceNH7oHL8AqFJNzv52ZoIPZdw1QDun1QPXkNydCnwi0zAmMfBoB2k-PDbQ-lEHmg8XD"/>
+<span class="font-headline-md text-headline-md bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary-fixed-dim">MediVisit Pro</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+</header>
+<main class="pt-[96px] px-edge max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<!-- Left Column: Inventory & Logging -->
+<div class="md:col-span-7 flex flex-col gap-stack-lg">
+<!-- Stock Summary Card -->
+<div class="glass-card rounded-xl p-card-padding flex items-center justify-between relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div>
+<div class="flex flex-col relative z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Inventory</span>
+<h2 class="font-display text-display gradient-text">45 <span class="font-headline-md text-headline-md text-on-surface-variant">units</span></h2>
+</div>
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+</div>
+<!-- Log New Sample Form -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-stack-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary">add_circle</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Log New Sample</h3>
+</div>
+<!-- Product Selection -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Product</label>
+<div class="relative">
+<select class="w-full h-12 bg-white/50 border border-outline-variant/50 rounded-lg px-4 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none transition-all">
+<option disabled="" selected="" value="">Select a product...</option>
+<option value="cardio-plus">CardioPlus Stent - 12mm</option>
+<option value="neuro-flex">NeuroFlex Guide Wire</option>
+<option value="ortho-pin">OrthoPin Titanium - Set A</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Doctor Selection -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Recipient Doctor</label>
+<div class="relative">
+<select class="w-full h-12 bg-white/50 border border-outline-variant/50 rounded-lg px-4 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none transition-all">
+<option disabled="" selected="" value="">Select a doctor...</option>
+<option value="dr-smith">Dr. Sarah Smith (Cardiology)</option>
+<option value="dr-jones">Dr. Michael Jones (Neurology)</option>
+<option value="dr-lee">Dr. Anna Lee (Orthopedics)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Quantity Stepper -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Quantity</label>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-white/50 border border-outline-variant/50 rounded-full p-1 shadow-sm">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface-variant" onclick="document.getElementById('qty').value = Math.max(1, parseInt(document.getElementById('qty').value) - 1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<input class="w-16 text-center bg-transparent border-none font-stats-lg text-stats-lg text-on-surface focus:ring-0 appearance-none" id="qty" min="1" readonly="" type="number" value="1"/>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface-variant" onclick="document.getElementById('qty').value = parseInt(document.getElementById('qty').value) + 1">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">units available in car</span>
+</div>
+</div>
+<!-- Submit Action -->
+<button class="w-full h-12 mt-4 bg-primary-container text-on-primary-container font-headline-md text-[16px] rounded-lg shadow-[0_4px_12px_rgba(26,107,255,0.2)] hover:shadow-[0_6px_16px_rgba(26,107,255,0.3)] hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                    Log Sample Drop
+                </button>
+</div>
+</div>
+<!-- Right Column: Analytics & History -->
+<div class="md:col-span-5 flex flex-col gap-stack-lg">
+<!-- Mini Bar Chart -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-stack-sm">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Top Distributed</h3>
+<span class="material-symbols-outlined text-outline text-[18px]">bar_chart</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Bar 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-body-md text-body-md text-on-surface text-[13px]">
+<span>CardioPlus Stent</span>
+<span class="font-semibold text-primary">24 units</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary-fixed-dim rounded-full w-[80%] bar-glow relative"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-body-md text-body-md text-on-surface text-[13px]">
+<span>NeuroFlex Wire</span>
+<span class="font-semibold text-primary">15 units</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary-fixed-dim rounded-full w-[50%] bar-glow relative"></div>
+</div>
+</div>
+<!-- Bar 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-body-md text-body-md text-on-surface text-[13px]">
+<span>OrthoPin Titanium</span>
+<span class="font-semibold text-primary">6 units</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary-fixed-dim rounded-full w-[20%] bar-glow relative"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Distribution List -->
+<div class="glass-card rounded-xl flex flex-col overflow-hidden">
+<div class="p-4 border-b border-outline-variant/20 flex items-center justify-between bg-white/30">
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px]">Recent Drops</h3>
+<button class="font-label-sm text-label-sm text-primary hover:underline">View All</button>
+</div>
+<div class="flex flex-col">
+<!-- Item 1 -->
+<div class="p-4 border-b border-outline-variant/20 flex items-center gap-4 hover:bg-surface-container-lowest/50 transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Dr. Sarah Smith</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">CardioPlus Stent • 2 units</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">2h ago</span>
+</div>
+<!-- Item 2 -->
+<div class="p-4 border-b border-outline-variant/20 flex items-center gap-4 hover:bg-surface-container-lowest/50 transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Dr. Michael Jones</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">NeuroFlex Wire • 5 units</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Yesterday</span>
+</div>
+<!-- Item 3 -->
+<div class="p-4 flex items-center gap-4 hover:bg-surface-container-lowest/50 transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Dr. Anna Lee</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">OrthoPin Set A • 1 unit</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Mon</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar JSON Blueprint (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-4 left-0 w-full z-50 flex justify-around items-center px-6 py-3 bg-white/70 backdrop-blur-[30px] border border-white/40 shadow-[0_16px_48px_rgba(0,0,0,0.08)] rounded-full max-w-md mx-auto" style="left: 16px; right: 16px; width: auto;">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all gap-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px]">Dashboard</span>
+</button>
+<!-- Active Tab: Conceptually Maps to "Visits/Activity" but we'll highlight 'Dashboard' as the default main view or 'Visits' for field action. Let's make "Visits" active as they are logging a visit sample. -->
+<button class="flex flex-col items-center justify-center text-primary relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-primary after:rounded-full after:shadow-[0_0_8px_#4f378a] scale-110 duration-300 ease-out gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<span class="font-label-sm text-[10px]">Visits</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all gap-1">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-[10px]">Patients</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all gap-1">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-[10px]">Settings</span>
+</button>
+</nav>
+</body></html>

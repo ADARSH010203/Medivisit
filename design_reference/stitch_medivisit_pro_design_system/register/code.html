@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - PulseConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#575c76",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#00201a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-fixed": "#dde1ff",
+                        "outline-variant": "#c2c6d8",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary-container": "#fffeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed": "#dae1ff",
+                        "on-primary-container": "#fffeff",
+                        "outline": "#727687",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006b5c",
+                        "on-secondary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001849",
+                        "background": "#f9f9ff",
+                        "secondary-container": "#68fadd",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#424655",
+                        "on-surface": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#44ddc1",
+                        "primary-container": "#1a6bff",
+                        "on-tertiary-fixed-variant": "#41455f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary-container": "#707490",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed": "#68fadd",
+                        "primary": "#0053d3",
+                        "tertiary-fixed-dim": "#c1c5e3",
+                        "surface-variant": "#dce2f3",
+                        "surface-tint": "#0055d5",
+                        "inverse-surface": "#2a313d",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-highest": "#dce2f3",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#151a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "card-padding": "16px",
+                        "stack-lg": "24px",
+                        "edge": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "stats-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "stats-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F9FC;
+        }
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(26, 107, 255, 0.2);
+            border-color: #1A6BFF;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center py-12 px-edge md:px-0">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl p-card-padding md:p-[32px] shadow-[0px_2px_8px_rgba(0,0,0,0.06)] relative overflow-hidden">
+<!-- Decorative Header Pattern -->
+<div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
+<!-- Header -->
+<div class="text-center mb-stack-lg mt-stack-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Create Your Account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your account will be reviewed by your admin before activation.</p>
+</div>
+<!-- Info Banner -->
+<div class="bg-[#F59E0B]/10 border border-[#F59E0B]/20 rounded-lg p-stack-md flex items-start gap-stack-sm mb-stack-lg">
+<span class="material-symbols-outlined text-[#F59E0B]" data-icon="info">info</span>
+<div>
+<p class="font-body-md text-body-md text-[#B45309] font-medium">Admin approval required</p>
+<p class="font-body-md text-body-md text-[#B45309]/80 text-sm">You'll be notified once verified.</p>
+</div>
+</div>
+<!-- Form -->
+<form class="space-y-stack-md">
+<!-- Full Name -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="fullName">Full Name</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="person">person</span>
+</span>
+<input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="fullName" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<!-- Employee ID (Optional) -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="employeeId">Employee ID <span class="text-tertiary font-normal">(Optional)</span></label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="badge">badge</span>
+</span>
+<input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="employeeId" placeholder="EMP-12345" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="email">Email</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="mail">mail</span>
+</span>
+<input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="email" placeholder="john.doe@pulseconnect.com" type="email"/>
+</div>
+</div>
+<!-- Phone Number -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="phone">Phone Number</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="phone">phone</span>
+</span>
+<input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Territory/Region (Optional) -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="territory">Select Territory/Region <span class="text-tertiary font-normal">(Optional)</span></label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="map">map</span>
+</span>
+<select class="w-full pl-10 pr-10 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all appearance-none cursor-pointer" id="territory">
+<option disabled="" selected="" value="">Select Region...</option>
+<option value="na">North America</option>
+<option value="emea">EMEA</option>
+<option value="apac">APAC</option>
+<option value="latam">LATAM</option>
+</select>
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant" data-icon="expand_more">expand_more</span>
+</span>
+</div>
+</div>
+<!-- Password -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="password">Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="lock">lock</span>
+</span>
+<input class="w-full pl-10 pr-10 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 text-outline-variant hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-stack-sm" for="confirmPassword">Confirm Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline-variant" data-icon="lock_reset">lock_reset</span>
+</span>
+<input class="w-full pl-10 pr-10 py-3 border border-outline-variant rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none input-glow transition-all" id="confirmPassword" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 text-outline-variant hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Agreement -->
+<div class="flex items-start gap-3 pt-stack-sm">
+<div class="flex items-center h-5 mt-0.5">
+<input class="w-4 h-4 text-primary bg-surface border-outline-variant rounded focus:ring-primary focus:ring-2 cursor-pointer transition-all" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-md text-body-md text-on-surface-variant cursor-pointer" for="terms">
+                    I agree to company <a class="text-primary hover:text-primary-container font-semibold transition-colors underline decoration-primary/30 underline-offset-2" href="#">policies</a> and terms of service.
+                </label>
+</div>
+<!-- Register Action -->
+<div class="pt-stack-lg">
+<button class="w-full h-12 bg-primary-container text-on-primary-container font-body-lg text-body-lg font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm active:scale-[0.98]" type="submit">
+<span>Register Account</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Sign In Link -->
+<div class="mt-stack-lg text-center border-t border-outline-variant/30 pt-stack-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Already have an account? <a class="text-primary font-bold hover:underline underline-offset-4 transition-all" href="#">Sign In</a>
+</p>
+</div>
+</div>
+</body></html>
