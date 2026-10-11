@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:core/core.dart';
+import 'package:core/services/csv_export_service.dart';
+import 'package:core/services/pdf_export_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
