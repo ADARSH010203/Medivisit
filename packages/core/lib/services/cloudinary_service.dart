@@ -19,16 +19,21 @@ class CloudinaryService {
 
       if (onProgress != null) onProgress(0.15);
 
-      final signature = signatureData['signature'];
-      final timestamp = signatureData['timestamp'];
-      final apiKey = signatureData['api_key'];
+      final signature = signatureData['signature']?.toString();
+      final timestamp = signatureData['timestamp']?.toString();
+      final apiKey = signatureData['api_key']?.toString();
+
+      if (signature == null || timestamp == null || apiKey == null) {
+        debugPrint('Cloudinary upload error: Invalid signature data');
+        return null;
+      }
 
       // 2. Upload to Cloudinary using http multipart request
       final uri = Uri.parse('https://api.cloudinary.com/v1_1/$_cloudName/image/upload');
       final request = http.MultipartRequest('POST', uri);
 
       request.fields['folder'] = 'medivisit/$folder';
-      request.fields['timestamp'] = timestamp.toString();
+      request.fields['timestamp'] = timestamp;
       request.fields['signature'] = signature;
       request.fields['api_key'] = apiKey;
 
@@ -50,7 +55,8 @@ class CloudinaryService {
         ),
       );
 
-      final multipartFile = http.MultipartFile('file', stream, length, filename: filePath.split('/').last);
+      final filename = filePath.split(RegExp(r'[/\\]')).last;
+      final multipartFile = http.MultipartFile('file', stream, length, filename: filename);
       request.files.add(multipartFile);
 
       final response = await request.send();

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:core/core.dart';
@@ -70,7 +71,7 @@ class LocationTrackerService extends GetxService {
         );
       }
     } catch (e) {
-      print('LocationTrackerService error: $e');
+      debugPrint('LocationTrackerService error: $e');
     }
   }
   

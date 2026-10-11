@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
@@ -108,7 +109,7 @@ class DiscoveryMapScreen extends StatelessWidget {
               bottom: 32,
               right: 16,
               child: GlassCard(
-                level: 1,
+                level: 2,
                 padding: EdgeInsets.zero,
                 child: IconButton(
                   icon: PhosphorIcon(PhosphorIcons.stack(), color: AppColors.primary, size: 28),
@@ -207,67 +208,141 @@ class DiscoveryMapScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
-        return Container(
-          decoration: BoxDecoration(
-            color: isDark ? AppColors.adminSurface : Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          ),
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: AppColors.primary.withOpacity(0.1),
-                    child: PhosphorIcon(PhosphorIcons.user(), color: AppColors.primary),
+        final surfaceColor = isDark ? const Color(0xFF151C27) : Colors.white;
+
+        return ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+            child: Container(
+              decoration: BoxDecoration(
+                color: surfaceColor.withOpacity(0.75),
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.white.withOpacity(isDark ? 0.1 : 0.4),
+                    width: 1.5,
                   ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          doc.name,
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Drag handle
+                  Center(
+                    child: Container(
+                      width: 40,
+                      height: 4,
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: isDark ? Colors.white24 : Colors.grey[300],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              AppColors.primary.withOpacity(0.2),
+                              AppColors.secondary.withOpacity(0.15),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
                         ),
-                        Text(
-                          doc.specialty,
-                          style: const TextStyle(color: AppColors.textSecondary),
+                        child: Center(
+                          child: PhosphorIcon(
+                            PhosphorIcons.user(PhosphorIconsStyle.duotone),
+                            color: AppColors.primary,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              doc.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: isDark ? Colors.white : const Color(0xFF1D1B20),
+                              ),
+                            ),
+                            Text(
+                              doc.specialty,
+                              style: TextStyle(
+                                color: isDark ? Colors.white60 : const Color(0xFF494551),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  // Info rows inside a GlassCard
+                  GlassCard(
+                    level: 1,
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            PhosphorIcon(PhosphorIcons.star(PhosphorIconsStyle.fill), color: AppColors.warning, size: 20),
+                            const SizedBox(width: 8),
+                            Text(
+                              '${doc.engagementRating.toStringAsFixed(1)} Engagement Rating',
+                              style: TextStyle(
+                                color: isDark ? Colors.white : const Color(0xFF1D1B20),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Row(
+                          children: [
+                            PhosphorIcon(
+                              PhosphorIcons.mapPin(PhosphorIconsStyle.duotone),
+                              color: isDark ? Colors.white54 : const Color(0xFF494551),
+                              size: 20,
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                doc.clinicAddress,
+                                style: TextStyle(
+                                  color: isDark ? Colors.white54 : const Color(0xFF494551),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
+                  const SizedBox(height: 20),
+                  GradientButton(
+                    text: 'View Full Profile',
+                    onPressed: () {
+                      Get.back();
+                      // TODO: Navigate to Doctor Profile
+                    },
+                  ),
+                  const SizedBox(height: 24),
                 ],
               ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  PhosphorIcon(PhosphorIcons.star(PhosphorIconsStyle.fill), color: AppColors.warning, size: 20),
-                  const SizedBox(width: 8),
-                  Text('${doc.engagementRating.toStringAsFixed(1)} Engagement Rating'),
-                ],
-              ),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  PhosphorIcon(PhosphorIcons.mapPin(), color: AppColors.textSecondary, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(child: Text(doc.clinicAddress, style: const TextStyle(color: AppColors.textSecondary))),
-                ],
-              ),
-              const SizedBox(height: 24),
-              GradientButton(
-                text: 'View Full Profile',
-                onPressed: () {
-                  Get.back();
-                  // TODO: Navigate to Doctor Profile
-                },
-              ),
-              const SizedBox(height: 24),
-            ],
+            ),
           ),
         );
       },

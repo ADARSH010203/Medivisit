@@ -11,21 +11,21 @@ class FirebaseExpenseRepository implements ExpenseRepository {
   FirebaseExpenseRepository() {
     if (Get.isRegistered<OfflineSyncService>()) {
       Get.find<OfflineSyncService>().registerHandler('submit_expense', (payload) async {
-        final id = payload.remove('_doc_id');
+        final id = payload.remove('_doc_id') as String?;
+        if (id == null || id.isEmpty) return;
         
         // Intercept local image upload
         if (payload['receipt_image_url'] != null) {
           final imageUrl = payload['receipt_image_url'] as String;
-          if (imageUrl.startsWith('/') || imageUrl.startsWith('C:') || imageUrl.startsWith('file://')) {
+          final isLocal = !imageUrl.startsWith('http://') && !imageUrl.startsWith('https://');
+          if (isLocal) {
             final syncService = Get.find<OfflineSyncService>();
             
             final secureUrl = await CloudinaryService.uploadImage(
               imageUrl, 
               'expenses',
               onProgress: (progress) {
-                if (id != null) {
-                  syncService.updateImageProgress(id, progress);
-                }
+                syncService.updateImageProgress(id, progress);
               },
             );
             

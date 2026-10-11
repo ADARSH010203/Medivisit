@@ -14,7 +14,7 @@ class ProductCatalogController extends GetxController {
   ].obs;
 
   List<String> get categories =>
-      ['All', ...allProducts.map((p) => p['category'] as String).toSet().toList()];
+      ['All', ...allProducts.map((p) => p['category'] as String).toSet()];
 
   List<Map<String, dynamic>> get products => selectedCategory.value == 'All'
       ? allProducts

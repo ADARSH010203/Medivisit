@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:core/core.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import '../controllers/doctor_quick_log_controller.dart';
 
 class DoctorQuickLogScreen extends StatelessWidget {
@@ -36,9 +35,9 @@ class DoctorQuickLogScreen extends StatelessWidget {
                   ),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 8)),
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  sliver: const SliverToBoxAdapter(
+                const SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  sliver: SliverToBoxAdapter(
                     child: Text(
                       'Search for an existing doctor or add a new one.',
                       style: TextStyle(color: AppColors.textSecondary, fontSize: 16),

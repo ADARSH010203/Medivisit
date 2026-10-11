@@ -11,7 +11,8 @@ class FirebaseLeaveRepository implements LeaveRepository {
   FirebaseLeaveRepository() {
     if (Get.isRegistered<OfflineSyncService>()) {
       Get.find<OfflineSyncService>().registerHandler('submit_leave', (payload) async {
-        final id = payload.remove('id');
+        final id = payload.remove('_doc_id') as String?;
+        if (id == null || id.isEmpty) return;
         await _firestore.collection('leave_requests').doc(id).set(payload);
       });
     }
@@ -33,7 +34,7 @@ class FirebaseLeaveRepository implements LeaveRepository {
     
     if (Get.isRegistered<OfflineSyncService>()) {
       final payload = newRequest.toJson();
-      payload['id'] = docRef.id;
+      payload['_doc_id'] = docRef.id;
       await Get.find<OfflineSyncService>().queueAction('submit_leave', payload);
     } else {
       await docRef.set(newRequest.toJson());

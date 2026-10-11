@@ -148,11 +148,11 @@ class SecuritySettingsScreen extends StatelessWidget {
                       children: [
                         PhosphorIcon(
                           PhosphorIcons.info(PhosphorIconsStyle.duotone),
-                          color: Color(0xFF7A7582),
+                          color: const Color(0xFF7A7582),
                           size: 18,
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
+                        const SizedBox(width: 10),
+                        const Expanded(
                           child: Text(
                             // TODO: Phone MFA requires Blaze plan — implement after upgrade
                             'Phone MFA requires Firebase Identity Platform (Blaze plan). This feature will be enabled upon plan upgrade.',

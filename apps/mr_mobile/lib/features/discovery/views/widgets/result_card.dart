@@ -33,7 +33,7 @@ class ResultCard extends StatelessWidget {
                 ),
                 Text(
                   'Within $distance km',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     color: AppColors.textSecondary,
                   ),

@@ -20,10 +20,10 @@ class AdminExpenseScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Expense Management',
                     style: TextStyle(
                       fontSize: 28,
@@ -32,12 +32,12 @@ class AdminExpenseScreen extends StatelessWidget {
                       fontFamily: 'Geist',
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Text(
                     'Review and approve clinical disbursement requests',
                     style: TextStyle(
                       fontSize: 13,
-                      color: const Color(0xFFB9CACB),
+                      color: Color(0xFFB9CACB),
                       fontFamily: 'Geist',
                     ),
                   ),
@@ -175,9 +175,9 @@ class AdminExpenseScreen extends StatelessWidget {
                 Container(
                   width: 32,
                   height: 32,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: const LinearGradient(
+                    gradient: LinearGradient(
                       colors: [Color(0xFF74F5FF), Color(0xFF7000FF)],
                     ),
                   ),
