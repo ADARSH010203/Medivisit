@@ -1,5 +1,4 @@
 import 'dart:math' as math;
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:core/core.dart';
@@ -114,17 +113,12 @@ class _DashboardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-        child: Container(
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
+    return GlassCard(
+      level: 2,
+      borderRadius: 0, // Header should span full width without rounding
       padding: const EdgeInsets.fromLTRB(20, 12, 16, 12),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF9F9FF).withOpacity(0.85),
-        border: Border(
-          bottom: BorderSide(color: Colors.white.withOpacity(0.5)),
-        ),
-      ),
       child: Obx(() => Row(
             children: [
               // Avatar with gradient ring
@@ -142,19 +136,19 @@ class _DashboardHeader extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2),
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFEADDFF),
+                      color: isDark ? const Color(0xFF332D41) : const Color(0xFFEADDFF),
                     ),
                     child: Center(
                       child: Text(
                         ctrl.firstName.isNotEmpty
                             ? ctrl.firstName[0].toUpperCase()
                             : 'M',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFF4F378A),
+                          color: isDark ? const Color(0xFFEADDFF) : const Color(0xFF4F378A),
                         ),
                       ),
                     ),
@@ -169,18 +163,18 @@ class _DashboardHeader extends StatelessWidget {
                   children: [
                     Text(
                       'Hi, ${ctrl.firstName} 👋',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF1D1B20),
+                        color: isDark ? Colors.white : const Color(0xFF1D1B20),
                         letterSpacing: -0.3,
                       ),
                     ),
                     Text(
                       ctrl.greetingLabel,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
-                        color: Color(0xFF494551),
+                        color: isDark ? Colors.white70 : const Color(0xFF494551),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -194,8 +188,6 @@ class _DashboardHeader extends StatelessWidget {
               _NotificationBell(ctrl: ctrl),
             ],
           )),
-        ),
-      ),
     );
   }
 }
@@ -208,44 +200,39 @@ class _NotificationBell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final count = ctrl.unreadNotifications.value;
+      final isDark = Theme.of(context).brightness == Brightness.dark;
+
       return GestureDetector(
         onTap: () => Get.toNamed(AppRoutes.notifications),
-        child: Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.7),
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: Colors.white.withOpacity(0.6)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.04),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              PhosphorIcon(PhosphorIcons.bell(PhosphorIconsStyle.duotone),
-                  color: Color(0xFF494551), size: 22),
-              if (count > 0)
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFBA1A1A),
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          color: const Color(0xFFF9F9FF), width: 1.5),
+        child: GlassCard(
+          level: 1,
+          padding: EdgeInsets.zero,
+          borderRadius: 14,
+          child: SizedBox(
+            width: 44,
+            height: 44,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                PhosphorIcon(PhosphorIcons.bell(PhosphorIconsStyle.duotone),
+                    color: isDark ? Colors.white70 : const Color(0xFF494551), size: 22),
+                if (count > 0)
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Container(
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFBA1A1A),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: isDark ? const Color(0xFF151C27) : const Color(0xFFF9F9FF), width: 1.5),
+                      ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       );

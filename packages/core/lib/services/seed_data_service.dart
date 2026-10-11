@@ -18,7 +18,7 @@ class SeedDataService {
         'createdAt': FieldValue.serverTimestamp(),
         'updatedAt': FieldValue.serverTimestamp(),
       });
-      print('Seeded default territory.');
+      debugPrint('Seeded default territory.');
     }
   }
 
@@ -26,13 +26,13 @@ class SeedDataService {
     if (!kDebugMode) return;
 
     try {
-      final email = 'admin@medivisit.com';
-      final password = 'Admin@123456';
+      const email = 'admin@medivisit.com';
+      const password = 'Admin@123456';
       
       // Check if admin doc exists
       final query = await _firestore.collection('users').where('email', isEqualTo: email).limit(1).get();
       if (query.docs.isNotEmpty) {
-        print('Admin account already exists.');
+        debugPrint('Admin account already exists.');
         return;
       }
 
@@ -54,10 +54,10 @@ class SeedDataService {
           'createdAt': FieldValue.serverTimestamp(),
           'updatedAt': FieldValue.serverTimestamp(),
         });
-        print('Seeded default admin account.');
+        debugPrint('Seeded default admin account.');
       }
     } catch (e) {
-      print('Failed to seed admin: $e');
+      debugPrint('Failed to seed admin: $e');
     }
   }
 }

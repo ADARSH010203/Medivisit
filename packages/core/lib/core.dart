@@ -51,6 +51,7 @@ export 'services/background_sync_service.dart';
 export 'services/geofence_service.dart';
 export 'services/location_service.dart';
 export 'services/supabase_function_service.dart';
+export 'services/workmanager_stub.dart';
 export 'services/cloudinary_service.dart';
 export 'services/ocr_service.dart';
 export 'services/seed_data_service.dart';

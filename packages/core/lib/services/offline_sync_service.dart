@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -214,18 +214,14 @@ class OfflineSyncService extends GetxService {
             await _outbox.delete(key);
             _updateCounts();
           } catch (e) {
-            print('Sync handler failed for $type (attempt ${retryCount + 1}): $e');
+            debugPrint('Sync handler failed for $type (attempt ${retryCount + 1}): $e');
             
             final nextRetry = retryCount + 1;
             action['retry_count'] = nextRetry;
             
             if (nextRetry >= 5) {
               action['failed'] = true;
-              print('Action $type reached max retries (5). Marked as failed.');
-            } else {
-              // Exponential backoff delay: 1s, 2s, 4s, 8s, max 60s
-              final backoffSeconds = min(60, pow(2, nextRetry - 1).toInt());
-              await Future.delayed(Duration(seconds: backoffSeconds));
+              debugPrint('Action $type reached max retries (5). Marked as failed.');
             }
             
             await _outbox.put(key, jsonEncode(action));
@@ -235,7 +231,7 @@ class OfflineSyncService extends GetxService {
             break;
           }
         } else {
-          print('No handler registered for offline action type: $type');
+          debugPrint('No handler registered for offline action type: $type');
         }
       }
     } finally {

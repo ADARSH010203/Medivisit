@@ -5,10 +5,10 @@ void main() {
 
   group('Offline Sync Queue Integration Tests', () {
     test('Verify exponential backoff calculation logic', () {
-      final backoff1 = 1; // Attempt 1: 1s
-      final backoff2 = 2; // Attempt 2: 2s
-      final backoff3 = 4; // Attempt 3: 4s
-      final backoff4 = 8; // Attempt 4: 8s
+      const backoff1 = 1; // Attempt 1: 1s
+      const backoff2 = 2; // Attempt 2: 2s
+      const backoff3 = 4; // Attempt 3: 4s
+      const backoff4 = 8; // Attempt 4: 8s
 
       expect(backoff1, 1);
       expect(backoff2, 2);

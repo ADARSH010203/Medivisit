@@ -437,7 +437,7 @@ class ExpenseSubmissionScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SizedBox(
@@ -446,18 +446,18 @@ class ExpenseSubmissionScreen extends StatelessWidget {
                                         child: CircularProgressIndicator(
                                           strokeWidth: 2,
                                           valueColor: AlwaysStoppedAnimation<Color>(
-                                            const Color(0xFF575C76),
+                                            Color(0xFF575C76),
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(width: 6),
+                                      SizedBox(width: 6),
                                       Text(
                                         'PROCESSING...',
                                         style: TextStyle(
                                           fontSize: 9,
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 1.0,
-                                          color: const Color(0xFF575C76),
+                                          color: Color(0xFF575C76),
                                         ),
                                       ),
                                     ],
@@ -506,10 +506,10 @@ class ExpenseSubmissionScreen extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF575C76),
+                  color: Color(0xFF575C76),
                 ),
               ),
               if (onEdit != null)

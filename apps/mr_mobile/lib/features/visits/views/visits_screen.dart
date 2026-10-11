@@ -31,7 +31,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
       body: MeshGradientBackground(
         child: Column(
           children: [
-            _DiscoverBanner(),
+            const _DiscoverBanner(),
             _buildDaySelector(),
             Expanded(
               child: Obx(() {

@@ -16,7 +16,8 @@ class HeuristicPriorityScorer implements DoctorPriorityScorer {
       score += 30.0;
     } else {
       final lastVisit = history.first;
-      final daysSinceLast = DateTime.now().difference(lastVisit.visitDate != null ? DateTime.parse(lastVisit.visitDate!) : DateTime.now()).inDays;
+      final lastDate = DateTime.tryParse(lastVisit.visitDate) ?? DateTime.now();
+      final daysSinceLast = DateTime.now().difference(lastDate).inDays;
       if (daysSinceLast > 30) {
         score += 20.0;
       } else if (daysSinceLast < 7) {
@@ -80,9 +81,7 @@ class RouteOptimizer {
         }
       }
 
-      if (bestNext == null) {
-        bestNext = unvisited.first;
-      }
+      bestNext ??= unvisited.first;
 
       route.add(bestNext);
       unvisited.remove(bestNext);

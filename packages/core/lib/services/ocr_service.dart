@@ -1,10 +1,11 @@
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:flutter/foundation.dart';
 
 class OcrService {
   final TextRecognizer _textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
   
   // Feature flag for mock OCR in dev builds
-  final bool _useMockOcr = true;
+  final bool _useMockOcr = kDebugMode;
 
   Future<Map<String, String>> extractExpenseDetails(String imagePath) async {
     if (_useMockOcr) {
@@ -22,7 +23,7 @@ class OcrService {
       
       return _parseExpenseText(recognizedText.text);
     } catch (e) {
-      print('OCR Error: $e');
+      debugPrint('OCR Error: $e');
       return {};
     }
   }

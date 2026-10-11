@@ -496,13 +496,13 @@ class MrDetailTrackingScreen extends GetView<MrDetailTrackingController> {
           ),
 
           // Overlaid Title
-          Positioned(
+          const Positioned(
             top: 16,
             left: 16,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Territory Heat',
                   style: TextStyle(
                     color: Colors.white,
@@ -511,7 +511,7 @@ class MrDetailTrackingScreen extends GetView<MrDetailTrackingController> {
                     shadows: [Shadow(color: Colors.black54, blurRadius: 8)],
                   ),
                 ),
-                const Text(
+                Text(
                   'Focus Region Overview',
                   style: TextStyle(
                     color: Color(0xFF74F5FF),
@@ -631,16 +631,13 @@ class MrDetailTrackingScreen extends GetView<MrDetailTrackingController> {
             )
           else
             ...controller.recentVisits.take(5).map((visit) {
-              StatusPillType pillType = StatusPillType.warning;
               String statusLabel = 'Pending';
               Color statusColor = const Color(0xFFE8A800);
 
               if (visit.adminReviewStatus == 'approved' || visit.status == VisitStatus.visited) {
-                pillType = StatusPillType.success;
                 statusLabel = 'Completed';
                 statusColor = const Color(0xFF74F5FF);
               } else if (visit.adminReviewStatus == 'rejected') {
-                pillType = StatusPillType.error;
                 statusLabel = 'Canceled';
                 statusColor = const Color(0xFF849495);
               }

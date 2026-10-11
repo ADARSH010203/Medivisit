@@ -12,7 +12,8 @@ class FirebaseVisitRepository implements VisitRepository {
     // Attempt to register handler if service exists
     if (Get.isRegistered<OfflineSyncService>()) {
       Get.find<OfflineSyncService>().registerHandler('create_visit', (payload) async {
-        final id = payload.remove('id');
+        final id = payload.remove('_doc_id') as String?;
+        if (id == null || id.isEmpty) return;
         await _firestore.collection('visits').doc(id).set(payload);
       });
     }

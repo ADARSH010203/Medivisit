@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:core/core.dart';
 import 'package:geolocator/geolocator.dart';
@@ -69,7 +70,7 @@ class SmartRoutePlannerController extends GetxController {
 
       optimizedRoute.value = route;
     } catch (e) {
-      print('Route optimization failed: $e');
+      debugPrint('Error optimizing route: $e');
     } finally {
       isLoading.value = false;
     }

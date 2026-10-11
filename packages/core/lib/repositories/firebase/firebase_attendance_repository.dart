@@ -11,7 +11,8 @@ class FirebaseAttendanceRepository implements AttendanceRepository {
   FirebaseAttendanceRepository() {
     if (Get.isRegistered<OfflineSyncService>()) {
       Get.find<OfflineSyncService>().registerHandler('mark_attendance', (payload) async {
-        final id = payload.remove('id');
+        final id = payload.remove('_doc_id') as String?;
+        if (id == null || id.isEmpty) return;
         await _firestore.collection('attendance').doc(id).set(payload);
       });
     }
@@ -26,12 +27,14 @@ class FirebaseAttendanceRepository implements AttendanceRepository {
   }) async {
     final now = DateTime.now();
     final docRef = _firestore.collection('attendance').doc();
+    final hourStr = now.hour.toString().padLeft(2, '0');
+    final minStr = now.minute.toString().padLeft(2, '0');
     
     final attendance = Attendance(
       id: docRef.id,
       mrId: mrId,
       attendanceDate: DateTime(now.year, now.month, now.day),
-      attendanceTime: '${now.hour}:${now.minute}',
+      attendanceTime: '$hourStr:$minStr',
       latitude: lat,
       longitude: lng,
       locationTimestamp: now,
@@ -42,7 +45,7 @@ class FirebaseAttendanceRepository implements AttendanceRepository {
 
     if (Get.isRegistered<OfflineSyncService>()) {
       final payload = attendance.toJson();
-      payload['id'] = docRef.id;
+      payload['_doc_id'] = docRef.id;
       await Get.find<OfflineSyncService>().queueAction('mark_attendance', payload);
     } else {
       await docRef.set(attendance.toJson());

@@ -64,8 +64,8 @@ class MediVisitMobileTheme extends ThemeExtension<MediVisitMobileTheme> {
   static MediVisitMobileTheme get dark => MediVisitMobileTheme(
     primary: AppColors.primaryLight,
     secondary: AppColors.tertiary,
-    background: Color(0xFF0F172A),
-    surface: Color(0xFF1E293B),
+    background: const Color(0xFF0F172A),
+    surface: const Color(0xFF1E293B),
     titleStyle: TextStyle(
       fontFamily: AppTypography.fontFamily,
       fontSize: 20,
@@ -92,7 +92,7 @@ ThemeData buildMobileTheme(bool isDark) {
       brightness: isDark ? Brightness.dark : Brightness.light,
       primary: ext.primary,
       secondary: ext.secondary,
-      surface: ext.background,
+      surface: ext.surface, // Fixed: was ext.background
     ),
     scaffoldBackgroundColor: ext.background,
     fontFamily: AppTypography.fontFamily,

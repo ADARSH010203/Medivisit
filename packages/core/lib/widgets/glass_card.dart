@@ -46,7 +46,21 @@ class GlassCard extends StatelessWidget {
         break;
     }
 
-    final color = Colors.white; // Glass is always white base in light theme
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final color = isDark ? Colors.black : Colors.white;
+
+    final content = Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        color: color.withOpacity(opacity),
+        border: Border.all(
+          color: color.withOpacity(borderOpacity),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
+      child: child,
+    );
 
     return Container(
       margin: margin,
@@ -54,31 +68,22 @@ class GlassCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           if (level > 0)
-            const BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.04),
+            BoxShadow(
+              color: isDark ? const Color.fromRGBO(0, 0, 0, 0.3) : const Color.fromRGBO(0, 0, 0, 0.04),
               blurRadius: 32,
-              offset: Offset(0, 8),
+              offset: const Offset(0, 8),
             ),
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: Container(
-            padding: padding,
-            decoration: BoxDecoration(
-              color: color.withOpacity(opacity),
-              border: Border.all(
-                color: color.withOpacity(borderOpacity),
-                width: 1,
-              ),
+      child: level == 0
+          ? content
+          : ClipRRect(
               borderRadius: BorderRadius.circular(borderRadius),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+                child: content,
+              ),
             ),
-            child: child,
-          ),
-        ),
-      ),
     );
   }
 }

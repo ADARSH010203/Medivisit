@@ -38,6 +38,8 @@ dependencies:
   google_fonts: 6.2.1
   firebase_app_check: ^0.2.2+7
   workmanager: ^0.7.0
+  cloud_firestore: ^4.17.5
+  uuid: ^4.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

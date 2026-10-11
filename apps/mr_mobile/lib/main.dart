@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mr_mobile/l10n/generated/app_localizations.dart';
 import 'package:core/core.dart';
-import 'package:workmanager/workmanager.dart';
 
 import 'package:firebase_app_check/firebase_app_check.dart';
 
@@ -52,10 +52,12 @@ void main() async {
     webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
   );
 
-  Workmanager().initialize(
-    callbackDispatcher,
-    isInDebugMode: false,
-  );
+  if (!kIsWeb) {
+    Workmanager().initialize(
+      callbackDispatcher,
+      isInDebugMode: false,
+    );
+  }
   
   Get.put(SupabaseFunctionService());
   await Get.putAsync(() => OfflineSyncService().init());

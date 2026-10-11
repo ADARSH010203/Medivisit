@@ -61,9 +61,16 @@ class Expense {
       notes: data['notes'],
       status: statusVal,
       approvedBy: data['approved_by'],
-      approvedAt: data['approved_at'] != null ? (data['approved_at'] as Timestamp).toDate() : null,
-      createdAt: data['created_at'] != null ? (data['created_at'] as Timestamp).toDate() : null,
+      approvedAt: _parseTimestamp(data['approved_at']),
+      createdAt: _parseTimestamp(data['created_at']),
     );
+  }
+
+  static DateTime? _parseTimestamp(dynamic value) {
+    if (value == null) return null;
+    if (value is Timestamp) return value.toDate();
+    if (value is String) return DateTime.tryParse(value);
+    return null;
   }
 
   Map<String, dynamic> toFirestore() {

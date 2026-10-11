@@ -236,8 +236,8 @@ class LeaderboardScreen extends GetView<LeaderboardController> {
                                 Row(
                                   children: [
                                     PhosphorIcon(PhosphorIcons.arrowUp(PhosphorIconsStyle.bold), size: 14, color: const Color(0xFF006B5C)),
-                                    SizedBox(width: 2),
-                                    Text(
+                                    const SizedBox(width: 2),
+                                    const Text(
                                       '14 pts',
                                       style: TextStyle(
                                         fontSize: 14,

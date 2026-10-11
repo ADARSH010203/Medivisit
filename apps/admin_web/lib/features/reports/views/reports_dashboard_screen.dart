@@ -21,10 +21,10 @@ class ReportsDashboardScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Reports & Analytics',
                     style: TextStyle(
                       fontSize: 28,
@@ -33,12 +33,12 @@ class ReportsDashboardScreen extends StatelessWidget {
                       fontFamily: 'Geist',
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Text(
                     'Clinical performance overview',
                     style: TextStyle(
                       fontSize: 13,
-                      color: const Color(0xFFB9CACB),
+                      color: Color(0xFFB9CACB),
                       fontFamily: 'Geist',
                     ),
                   ),
